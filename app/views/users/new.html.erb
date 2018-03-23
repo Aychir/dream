@@ -1,0 +1,8 @@
+<h1>New User</h1>
+
+<p><%= link_to "Sign Up",   new_user_registration_path %></p>
+
+<p><%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
+<%# Need to check if user is even logged in to have this here %>
+
+<%= link_to 'Back', users_path %>
