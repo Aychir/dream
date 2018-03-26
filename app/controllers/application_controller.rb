@@ -26,4 +26,5 @@ end
 #add screen name to users
 #allow users to create a screen name at sign up
   #Check that this is valid- and it does not need to be unique
+  #May need to set length limit on this and username
 #allow users to edit their email, password, or screen name

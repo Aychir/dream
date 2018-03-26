@@ -16,6 +16,21 @@
     <%= form.text_field :email, id: :user_email %>
   </div>
 
+  <div class="field">
+    <%= form.label :screenname %>
+    <%= form.text_field :screenname, id: :user_screenname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password, id: :user_password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation%>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

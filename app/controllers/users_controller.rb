@@ -31,6 +31,10 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
+    if(@user != current_user)
+      redirect_to users_path, :notice => "You cannot edit another user..."
+    end
   end
 
   # POST /users
@@ -86,6 +90,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username)
+      params.require(:user).permit(:username, :email, :screenname, :password, :password_confirmation)
     end
 end
