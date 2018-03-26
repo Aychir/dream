@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get ':user/list_followers', to: 'users#list_followers', as: :list_followers
   #This is temporary, primarily for testing purposes
 
+  get ':user/change_password', to: 'users#change_password', as: :change_password
+
   #get ':user/follow', to: 'users#follow', as: :follow
   root 'users#index'
   #The root will not always be this, it should be the content- just testing to get signup working

@@ -1,11 +1,13 @@
 class User < ApplicationRecord
+  attr_accessor :login
+  #Make this segment both getter and setter 
+
+  attr_accessor :updating_password
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  attr_accessor :login
-  #Make this segment both getter and setter 
 
   has_many :follower_relationships, foreign_key: :following_id, class_name: 'Follow'
   #Creates an OBJECT/TABLE for when our user is being followed by another
@@ -17,6 +19,14 @@ class User < ApplicationRecord
   has_many :following_relationships, foreign_key: :follower_id, class_name: 'Follow'
   #Creates an object for when the user follows another one from the follow model
   has_many :following, through: :following_relationships, source: :following
+
+  validates :username, presence: :true, uniqueness: { case_sensitive: false }
+  #devise says to add this if we want to allow sign up with username
+
+  # Only allow letter, number, underscore and punctuation.
+  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+
+  #validates :password, presence: true, if: lambda {new_record? || !password.blank?}
 
   def follow(user)
       following_relationships.create(following_id: user)
@@ -37,11 +47,10 @@ class User < ApplicationRecord
       end
   end
 
-  validates :username, presence: :true, uniqueness: { case_sensitive: false }
-  #devise says to add this if we want to allow sign up with username
+  def should_validate_password?
+    updating_password || new_record?
+  end
 
-  # Only allow letter, number, underscore and punctuation.
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 end
 
 
