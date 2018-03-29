@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328185845) do
+ActiveRecord::Schema.define(version: 20180329033517) do
 
   create_table "block_tables", force: :cascade do |t|
   end
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 20180328185845) do
     t.index ["follower_id"], name: "index_follows_on_follower_id"
     t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
     t.index ["following_id"], name: "index_follows_on_following_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string "report_message"
+    t.integer "reported_id"
+    t.string "reported_type"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

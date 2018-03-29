@@ -11,7 +11,7 @@ class CreateBlockTable < ActiveRecord::Migration[5.1]
   end
    add_index :blocks, :blocking_id
    add_index :blocks, :blocker_id
-   add_index :blocks, [:blockinging_id, :blocker_id]
+   add_index :blocks, [:blocking_id, :blocker_id]
    #Ensure that the combination of follower/following is unique
    #Add indices in our table to allow both followers and followings
 	end

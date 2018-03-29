@@ -26,6 +26,9 @@ class User < ApplicationRecord
   has_many :blocking_relationships, foreign_key: :blocker_id, class_name: 'Block'
   has_many :blocking, through: :blocking_relationships, source: :blocking
 
+  has_many :reports
+  has_many :reports, as: :reported
+
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   #devise says to add this if we want to allow sign up with username
 
