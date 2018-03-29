@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323151951) do
+ActiveRecord::Schema.define(version: 20180328185845) do
+
+  create_table "block_tables", force: :cascade do |t|
+  end
+
+  create_table "blocks", force: :cascade do |t|
+    t.integer "blocking_id", null: false
+    t.integer "blocker_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blocker_id"], name: "index_blocks_on_blocker_id"
+    t.index ["blocking_id"], name: "index_blocks_on_blocking_id"
+    t.index [nil, "blocker_id"], name: "index_blocks_on_blockinging_id_and_blocker_id"
+  end
 
   create_table "follows", force: :cascade do |t|
     t.integer "following_id", null: false

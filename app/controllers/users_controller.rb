@@ -2,6 +2,16 @@ class UsersController < ApplicationController
   include UsersHelper
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  def list_blockers()
+    @user = User.find(params[:user])
+    @blockers = @user.blockers
+  end
+
+  def list_blocking()
+    @user = User.find(params[:user])
+    @blocking = @user.blocking
+  end
+
   def list_followers()
     @user = User.find(params[:user])
     @followers = @user.followers

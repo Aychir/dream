@@ -2,7 +2,7 @@ class User < ApplicationRecord
   attr_accessor :login
   #Make this segment both getter and setter 
 
-  attr_accessor :updating_password
+  #attr_accessor :updating_password
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -17,8 +17,14 @@ class User < ApplicationRecord
   #This connects users following current user to the following_id of the relationship object (look at rails example with patients, section 2.4)
 
   has_many :following_relationships, foreign_key: :follower_id, class_name: 'Follow'
-  #Creates an object for when the user follows another one from the follow model
   has_many :following, through: :following_relationships, source: :following
+  #Creates an object for when the user follows another one from the follow model
+
+  has_many :blocker_relationships, foreign_key: :blocking_id, class_name: 'Block'
+  has_many :blockers, through: :blocker_relationships, source: :blocker
+
+  has_many :blocking_relationships, foreign_key: :blocker_id, class_name: 'Block'
+  has_many :blocking, through: :blocking_relationships, source: :blocking
 
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   #devise says to add this if we want to allow sign up with username
@@ -37,6 +43,14 @@ class User < ApplicationRecord
     #This shouldn't occur if users can't follow themselves, but added as a precaution
   end
 
+  def block(user)
+      blocking_relationships.create(blocking_id: user)
+  end
+
+  def unblock(user)
+      blocking_relationships.find_by(blocking_id: user).destroy
+  end
+
   def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
       if login = conditions.delete(:login)
@@ -46,11 +60,11 @@ class User < ApplicationRecord
         where(conditions.to_h).first
       end
   end
-
+=begin
   def should_validate_password?
     updating_password || new_record?
   end
-
+=end
 end
 
 

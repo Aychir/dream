@@ -30,6 +30,14 @@
         <%end%>
         <td><%= link_to 'See Followers', list_followers_path(user)%></td>
         <td><%= link_to 'Following', list_following_path(user)%></td>
+        <%if @user != user && @user != nil && current_user_is_blocking(@user.id, user.id)%>
+            <td><%= link_to 'Unblock', unblock_user_path(user), method: :post%></td>
+        <%elsif @user != user && @user != nil && !current_user_is_blocking(@user.id, user.id)%>
+            <td><%= link_to 'Block', block_user_path(user), method: :post%></td>
+        <%elsif @user != nil%>
+            <td>Current User!</td>
+        <%end%>
+        <td><%= link_to 'See Blocking', list_blocking_path(user)%></td>
       </tr>
     <% end %>
   </tbody>

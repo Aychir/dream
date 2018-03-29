@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Following</h1>
+<h1>Blockers</h1>
 
 <table>
   <thead>
@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% @following.each do |user| %>
+    <% @blockers.each do |user| %>
       <tr>
         <td><%= user.email %></td>
       </tr>
@@ -22,4 +22,3 @@
 <br>
 
 <%= link_to 'Back', users_path %>
-
