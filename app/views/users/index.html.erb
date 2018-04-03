@@ -38,6 +38,7 @@
             <td>Current User!</td>
         <%end%>
         <td><%= link_to 'See Blocking', list_blocking_path(user)%></td>
+        <td><%= link_to 'Report', new_report_path(user)%></td>
       </tr>
     <% end %>
   </tbody>

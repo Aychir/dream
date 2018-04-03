@@ -63,9 +63,14 @@ class User < ApplicationRecord
         where(conditions.to_h).first
       end
   end
+
 =begin
   def should_validate_password?
     updating_password || new_record?
+  end
+
+  def report(user)
+    reports.create(reported_id: user)
   end
 =end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329033517) do
+ActiveRecord::Schema.define(version: 20180402045838) do
 
   create_table "block_tables", force: :cascade do |t|
   end
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20180329033517) do
   create_table "reports", force: :cascade do |t|
     t.string "report_message"
     t.integer "reported_id"
-    t.string "reported_type"
     t.integer "user_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
