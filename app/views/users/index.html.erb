@@ -15,28 +15,14 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
-        <%if @user == user%>
-            <td><%= link_to 'Edit', edit_user_path(user)%></td>
-        <%end%>
-        <%if @user == user%>
-            <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
-        <%if @user != user && @user != nil && current_user_is_following(@user.id, user.id)%>
-            <td><%= link_to 'Unfollow', unfollow_user_path(user), method: :post%></td>
-        <%elsif @user != user && @user != nil && !current_user_is_following(@user.id, user.id)%>
-            <td><%= link_to 'Follow', follow_user_path(user), method: :post%></td>
-        <%elsif @user != nil%>
-            <td>Current User!</td>
-        <%end%>
+        <td><%= link_to 'Edit', edit_user_path(user)%></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Unfollow', unfollow_user_path(user), method: :post%></td>
+        <td><%= link_to 'Follow', follow_user_path(user), method: :post%></td>
         <td><%= link_to 'See Followers', list_followers_path(user)%></td>
         <td><%= link_to 'Following', list_following_path(user)%></td>
-        <%if @user != user && @user != nil && current_user_is_blocking(@user.id, user.id)%>
-            <td><%= link_to 'Unblock', unblock_user_path(user), method: :post%></td>
-        <%elsif @user != user && @user != nil && !current_user_is_blocking(@user.id, user.id)%>
-            <td><%= link_to 'Block', block_user_path(user), method: :post%></td>
-        <%elsif @user != nil%>
-            <td>Current User!</td>
-        <%end%>
+        <td><%= link_to 'Unblock', unblock_user_path(user), method: :post%></td>
+        <td><%= link_to 'Block', block_user_path(user), method: :post%></td>
         <td><%= link_to 'See Blocking', list_blocking_path(user)%></td>
         <td><%= link_to 'Report', new_report_path(user)%></td>
       </tr>

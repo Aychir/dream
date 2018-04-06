@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   include UsersHelper
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  before_action :require_login, :only => [:edit, :update, :destroy] #I don't think anything else should be blocked
+
   def list_blockers()
     @user = User.find(params[:user])
     @blockers = @user.blockers
@@ -25,7 +27,7 @@ class UsersController < ApplicationController
   def change_password()
     @user = User.find(params[:user])
     if(@user != current_user)
-      redirect_to users_path, :notice => "You cannot edit another user..."
+      redirect_to users_path, :notice => "You cannot edit another user's password..."
     end
   end
 

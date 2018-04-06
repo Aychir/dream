@@ -1,5 +1,9 @@
 class RelationshipsController < ApplicationController
   include UsersHelper
+
+  before_action :require_login 
+
+  #I have handled cases of signed in users trying to (un)follow themselves or invalidly redo the action after (un)following
   def follow_user
     @user = User.find(params[:user])
     if((@user != current_user) && !current_user_is_following(current_user.id, @user.id))

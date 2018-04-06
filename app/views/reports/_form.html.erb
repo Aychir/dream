@@ -16,12 +16,28 @@
   </div> 
 
   <div class="field">
-    <%= form.label :report_message %>
-    <%= form.text_field :report_message%>
+    <%= form.radio_button :report_message, "This user has posted inappropriate content."%> This user has posted inappropriate content.
+  </br>
+  </br>
+    <%= form.radio_button :report_message, "This user has abused another in some fashion."%> This user has abused another in some fashion.
+  </br>
+  </br>
+    <%= form.radio_button :report_message, "This user's profile information/picture is abusive or hateful."%> This user's profile information/picture is abusive or hateful.
+  </br>
+  </br>
+    <%= form.radio_button :report_message, "This user appears to have lost control of their account."%> This user appears to have lost control of their account.
+  </br>
+  </br>
+    <%= form.radio_button :report_message, "This user is pretending to be someone else."%> This user is pretending to be someone else.
+  </br>
   </div>
 
   <div class="form-group center">
     <%= form.hidden_field :reported_id, value: params[:format] %>
+  </div> 
+
+  <div class="form-group center">
+    <%= form.hidden_field :reported_type, value: "User" %>
   </div> 
 
   <div class="actions">

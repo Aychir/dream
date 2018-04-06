@@ -4,8 +4,13 @@ class ApplicationController < ActionController::Base
   helper :all
   
   before_action :configure_permitted_parameters, if: :devise_controller?
-
-  #before_action :store_user_location!, if: :storable_location?
+ 
+  #What's nice about this is that I can choose where to put it, makes it easier to add this to actions and have one less thing to worry about 
+  def require_login
+    unless user_signed_in?
+      redirect_to new_user_session_path, :notice => "You must be logged in to access this..."
+    end
+  end
 
   protected
 
@@ -17,6 +22,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
   	users_path
+    #note this won't work for users that are missing information (i.e. early users that haven't received usernames)
   end
        
 
