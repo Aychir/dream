@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403024659) do
+ActiveRecord::Schema.define(version: 20180407055407) do
 
   create_table "block_tables", force: :cascade do |t|
   end
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20180403024659) do
     t.integer "reported_id"
     t.integer "user_id"
     t.string "reported_type"
-    t.index ["reported_type", "reported_id"], name: "index_reports_on_reported_type_and_reported_id", unique: true
+    t.index ["user_id", "reported_id"], name: "index_reports_on_user_id_and_reported_id", unique: true
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 

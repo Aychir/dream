@@ -1,20 +1,21 @@
 class ReportsController < ApplicationController
+  include UsersHelper
 
   before_action :require_login #You have to be logged in before you can do any of this
 
   def new
     @user = User.find(params[:format])
-    if @user == current_user
-      redirect_to users_path, notice: 'You cannot report yourself...'
-    else     
+    if(@user != current_user && !current_user_has_reported(current_user.id, @user.id))
       @report = Report.new
+    elsif @user == current_user
+      redirect_to users_path, notice: 'You cannot report yourself...'
+    else
+      redirect_to users_path, notice: 'You cannot report this user again...'
     end
   end
 
   def create
-    begin
-      @report = Report.new(report_params)
-      
+      @report = Report.new(report_params)     
         respond_to do |format|
           if @report.save
             format.html { redirect_to users_path, notice: 'Report submitted.' }
@@ -24,9 +25,6 @@ class ReportsController < ApplicationController
             format.json { render json: @report.errors, status: :unprocessable_entity }
           end
         end
-    rescue ActiveRecord::RecordNotUnique
-        redirect_to users_path, notice: 'You cannot report a user more than once.' 
-    end
   end
 
   private
