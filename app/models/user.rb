@@ -35,6 +35,8 @@ class User < ApplicationRecord
   # Only allow letter, number, underscore and punctuation.
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
+  validates :email, presence: true, format: Devise.email_regexp
+
   #validates :password, presence: true, if: lambda {new_record? || !password.blank?}
 
   def follow(user)

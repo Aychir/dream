@@ -25,7 +25,8 @@ class UsersController < ApplicationController
   end
 
   def change_password()
-    @user = User.find(params[:user])
+    @user = User.find(params[:user_id])
+    #Adjust this to be nested param to be [:user][:id]?
     if(@user != current_user)
       redirect_to users_path, :notice => "You cannot edit another user's password..."
     end
@@ -77,12 +78,27 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-          sign_in(@user, :bypass => true)
+          bypass_sign_in(@user)
           #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
           format.html { redirect_to @user, notice: 'User was successfully updated.' }
           format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_password
+    @user = User.find_by(params[:user_id])
+    respond_to do |format|
+      if @user.update_with_password(user_params)
+          bypass_sign_in(@user)
+          #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
+          format.html { redirect_to @user, notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render 'change_password' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -111,6 +127,11 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :screenname, :password, :password_confirmation)
+      if params[:user].is_a? String
+        params[:user]
+        #params.require(:user).permit(:username, :email, :screenname, :password, :password_confirmation)
+      else
+        params.require(:user).permit(:username, :email, :screenname, :password, :password_confirmation, :current_password)
+      end
     end
 end

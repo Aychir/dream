@@ -9,12 +9,16 @@ Rails.application.routes.draw do
 
   resources :reports, :only => [:new, :create]
 
-  post ':user/follow_user', to: 'relationships#follow_user', as: :follow_user
-  post ':user/unfollow_user', to: 'relationships#unfollow_user', as: :unfollow_user
+  match ':user/follow_user', to: 'relationships#follow_user', as: :follow_user, via: [:get, :post]
+  match ':user/unfollow_user', to: 'relationships#unfollow_user', as: :unfollow_user, via: [:get, :post]
   #Calling follow_user_path will return an HTTP post response by invoking follow_user from the relationships controller
 
-  post ':user/block_user', to: 'relationships#block_user', as: :block_user
-  post ':user/unblock_user', to: 'relationships#unblock_user', as: :unblock_user
+  #Match allows either action to be made when required (i.e. when signed in, it is a post method; however if not signed in it should be get [for now])
+
+  match ':user/block_user', to: 'relationships#block_user', as: :block_user, via: [:get, :post]
+  match ':user/unblock_user', to: 'relationships#unblock_user', as: :unblock_user, via: [:get, :post]
+
+  #NOTE: The blocking and following routes used to be post rather than get
 
   get ':user/list_following', to: 'users#list_following', as: :list_following
   get ':user/list_followers', to: 'users#list_followers', as: :list_followers
@@ -22,7 +26,9 @@ Rails.application.routes.draw do
   get ':user/list_blockers', to: 'users#list_blockers', as: :list_blockers
   get ':user/list_blocking', to: 'users#list_blocking', as: :list_blocking
 
-  get ':user/change_password', to: 'users#change_password', as: :change_password
+  get ':user_id/change_password', to: 'users#change_password', as: :change_password
+
+  patch ':user_id/update_password' => 'users#update_password'
 
 
   #get ':user/report_list', to: 'users#report_list', as: :report_list

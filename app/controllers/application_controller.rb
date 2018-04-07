@@ -4,9 +4,29 @@ class ApplicationController < ActionController::Base
   helper :all
   
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  after_action :store_location
+
+  def store_location
+  # store last url - this is needed for post-login redirect to whatever the user last visited.
+  if (request.fullpath != "/users/sign_in" &&
+      request.fullpath != "/users/sign_up" &&
+      request.fullpath != "/users/password" &&
+      request.fullpath != "/users/sign_out" &&
+      !request.xhr?) # don't store ajax calls
+    session["user_return_to"] = request.fullpath 
+  end
+end
  
   #What's nice about this is that I can choose where to put it, makes it easier to add this to actions and have one less thing to worry about 
   def require_login
+    if (request.fullpath != "/users/sign_in" &&
+      request.fullpath != "/users/sign_up" &&
+      request.fullpath != "/users/password" &&
+      request.fullpath != "/users/sign_out" &&
+      !request.xhr?) # don't store ajax calls
+    session["user_return_to"] = request.fullpath 
+  end
     unless user_signed_in?
       redirect_to new_user_session_path, :notice => "You must be logged in to access this..."
     end
@@ -15,22 +35,18 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
+    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :current_password]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+    #devise_parameter_sanitizer.permit :password_update, keys: [:password, :password_confirmation, :current_password]
   end
 
   def after_sign_in_path_for(resource)
-  	users_path
+  	#users_path
+    stored_location_for(resource) || root_path
     #note this won't work for users that are missing information (i.e. early users that haven't received usernames)
   end
        
 
   
 end
-
-#add screen name to users
-#allow users to create a screen name at sign up
-  #Check that this is valid- and it does not need to be unique
-  #May need to set length limit on this and username
-#allow users to edit their email, password, or screen name
