@@ -5,11 +5,12 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  after_action :store_location
+  after_action :store_location, except: [:edit]
 
   def store_location
   # store last url - this is needed for post-login redirect to whatever the user last visited.
   if (request.fullpath != "/users/sign_in" &&
+      request.fullpath != "/users/password/new" &&
       request.fullpath != "/users/sign_up" &&
       request.fullpath != "/users/password" &&
       request.fullpath != "/users/sign_out" &&
@@ -21,6 +22,7 @@ end
   #What's nice about this is that I can choose where to put it, makes it easier to add this to actions and have one less thing to worry about 
   def require_login
     if (request.fullpath != "/users/sign_in" &&
+      request.fullpath != "/users/password/new" &&
       request.fullpath != "/users/sign_up" &&
       request.fullpath != "/users/password" &&
       request.fullpath != "/users/sign_out" &&
