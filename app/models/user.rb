@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :follower_relationships, foreign_key: :following_id, class_name: 'Follow'
   #Creates an OBJECT/TABLE for when our user is being followed by another
@@ -65,16 +65,6 @@ class User < ApplicationRecord
         where(conditions.to_h).first
       end
   end
-
-=begin
-  def should_validate_password?
-    updating_password || new_record?
-  end
-
-  def report(user)
-    reports.create(reported_id: user)
-  end
-=end
 end
 
 

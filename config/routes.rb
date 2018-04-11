@@ -30,9 +30,6 @@ Rails.application.routes.draw do
 
   patch ':user_id/update_password' => 'users#update_password'
 
-
-  #get ':user/report_list', to: 'users#report_list', as: :report_list
-
   root 'users#index'
   #The root will not always be this, it should be the content- just testing to get signup working
 end

@@ -43,7 +43,7 @@ end
 
   def after_sign_in_path_for(resource)
   	#users_path
-    stored_location_for(resource) || root_path
+    request.env['omniauth.origin'] || stored_location_for(resource) || root_path
     #note this won't work for users that are missing information (i.e. early users that haven't received usernames)
   end
        
