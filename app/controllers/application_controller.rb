@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  after_action :store_location, except: [:edit]
+  after_action :store_location, except: [:edit, :new, :create, :show]
+  #For some reason doesn't affect edit in the users controller
 
   def store_location
   # store last url - this is needed for post-login redirect to whatever the user last visited.

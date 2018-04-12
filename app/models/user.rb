@@ -65,6 +65,11 @@ class User < ApplicationRecord
         where(conditions.to_h).first
       end
   end
+
+  def send_reset_password_instructions
+    return false if self.confirmed_at == nil
+    super
+  end
 end
 
 
