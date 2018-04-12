@@ -90,7 +90,7 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    @user = User.find_by(params[:user_id])
+    @user = User.find(params[:user_id])
     respond_to do |format|
       if @user.update_with_password(user_params)
           bypass_sign_in(@user)
