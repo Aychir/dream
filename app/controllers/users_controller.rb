@@ -75,13 +75,21 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
+  #Add a message if user email was changed
   def update
     respond_to do |format|
       if @user.update(user_params)
           bypass_sign_in(@user)
           #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
-          format.html { redirect_to @user, notice: 'User was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
+          if @user.unconfirmed_email != nil
+            #Just check if email was changed, then tell user to confirm new email
+              format.html { redirect_to @user, notice: "Please confirm your new email with the message we sent."}
+              format.json { render :show, status: :ok, location: @user }
+          else
+            #Tell user their screen name was updated
+              format.html { redirect_to @user, notice: "Screen name successfully updated!"}
+              format.json { render :show, status: :ok, location: @user }
+          end
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -131,7 +139,7 @@ class UsersController < ApplicationController
         params[:user]
         #params.require(:user).permit(:username, :email, :screenname, :password, :password_confirmation)
       else
-        params.require(:user).permit(:username, :email, :screenname, :password, :password_confirmation, :current_password)
+        params.require(:user).permit(:username, :email, :screenname, :password, :password_confirmation, :current_password, :unconfirmed_email)
       end
     end
 end

@@ -1,0 +1,9 @@
+Change Email:
+	-User would have to be currently logged in to access the opportunity to change their email
+	-New confirmation email sent if:
+		-New email entered is unique (not being used) and is of valid format
+	-Email not sent if:
+		-New email is in use or invalid format
+	-If user clicks on reconfirm email, user should be updated and stay logged in
+		-If logged out should they be able to change email?
+			-Yes, but they must log in
