@@ -33,3 +33,7 @@ Rails.application.routes.draw do
   root 'users#index'
   #The root will not always be this, it should be the content- just testing to get signup working
 end
+
+#Server to bind to for ssl:
+
+#rails s -b 'ssl://localhost:3000?key=localhost.key&cert=localhost.crt'
