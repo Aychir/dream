@@ -3,6 +3,8 @@ class RelationshipsController < ApplicationController
 
   before_action :require_login 
 
+  #after_action :store_location
+
   #I have handled cases of signed in users trying to (un)follow themselves or invalidly redo the action after (un)following
   def follow_user
     @user = User.find(params[:user])

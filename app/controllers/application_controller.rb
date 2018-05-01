@@ -5,13 +5,15 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  before_action :store_location, except: [:edit, :new, :create, :show]
+
   before_action :authenticate_user!, except: [:index]
 
-  after_action :store_location, except: [:edit, :new, :create, :show]
   #For some reason doesn't affect edit in the users controller
 
   def store_location
   # store last url - this is needed for post-login redirect to whatever the user last visited.
+  puts "Storing"
   if (request.fullpath != "/users/sign_in" &&
       request.fullpath != "/users/password/new" &&
       request.fullpath != "/users/sign_up" &&
