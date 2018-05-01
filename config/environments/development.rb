@@ -21,7 +21,7 @@ Rails.application.configure do
      :tls => false,
      :address => "smtp.gmail.com",
      :port => 587,
-     :domain => "gmail.com",
+     :domain => "localhost.com",
      :authentication => :login,
      :user_name => "[username]",
      :password => "[password]"

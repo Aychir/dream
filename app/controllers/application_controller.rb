@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery
 
   helper :all
   
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  before_action :authenticate_user!, except: [:index]
 
   after_action :store_location, except: [:edit, :new, :create, :show]
   #For some reason doesn't affect edit in the users controller
@@ -45,11 +47,9 @@ end
   end
 
   def after_sign_in_path_for(resource)
-  	#users_path
     request.env['omniauth.origin'] || stored_location_for(resource) || root_path
     #note this won't work for users that are missing information (i.e. early users that haven't received usernames)
   end
-       
 
   
 end

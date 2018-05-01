@@ -21,6 +21,8 @@ Devise.setup do |config|
 
   config.allow_unconfirmed_access_for = nil
 
+  #config.parent_controller = "application_controller"
+
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
 
