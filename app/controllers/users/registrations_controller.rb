@@ -5,11 +5,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    build_resource
-    yield resource if block_given?
-    respond_with resource, location: users_path
-  end
+  #def new
+  #  build_resource
+  #  yield resource if block_given?
+  #  respond_with resource, location: users_path
+  #end
 
   # POST /resource
   def create
