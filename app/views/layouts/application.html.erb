@@ -6,16 +6,23 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% if browser.ie? && (browser.version < 9) %>
+        <%= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js" %>
+        <%= javascript_include_tag "http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js" %>
+    <%end%>
+
   </head>
 
   <body>
     <%= render "layouts/navbar" %>
-  	<%if notice%>
-  		<p class="notice"><%= notice %></p>
-  	<%end%>
-  	<%if alert%>
-    	<p class="alert"><%= alert %></p>
-    <%end%>
-    <%= yield %>
+    <div id = "content">
+      	<%if notice%>
+      		<p class="notice"><%= notice %></p>
+      	<%end%>
+      	<%if alert%>
+        	<p class="alert"><%= alert %></p>
+        <%end%>
+        <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,5 +1,9 @@
 @import "bootstrap";
 
+#content{
+	width: 960px;
+	margin: auto;
+}
 
 body{
 	margin:0 !important;
@@ -7,12 +11,7 @@ body{
 }
 
 h1{
-	padding-left: 16px;
 	padding-right: 16px;
-}
-
-nav{
-	/*border-bottom: 2px solid rgb(51,51,51);*/
 }
 
 .spacer{
@@ -39,11 +38,149 @@ p{
 }
 
 .form-inline{
-	display:inline-block;
+	display:block;
 	justify-content:center;
 }
 
 .corner{
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+	input {
+		outline: none;
+	}
+	input[type=search] {
+		-webkit-appearance: textfield;
+		-webkit-box-sizing: content-box;
+		font-family: inherit;
+		font-size: 100%;
+	}
+	input::-webkit-search-decoration,
+	input::-webkit-search-cancel-button {
+		display: none; 
+	}
+
+
+	input[type=search] {
+		background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+		color: transparent;
+		cursor: pointer;
+		border: solid 1px #ccc;
+		padding-left:10px;
+		width: 15px;
+		
+		
+		
+		-webkit-transition: all .5s ease;
+		-moz-transition: all .5s ease;
+		transition: all .5s ease;
+	}
+	input[type=search]:hover {
+		background-color: #fff;
+	}
+	input[type=search]:focus {
+		width: 210px;
+		padding-left: 32px;
+		background-color: #fff;
+		border-color: #66CC75;
+		cursor: auto;
+	}
+
+
+	input:-moz-placeholder {
+		color: transparent;
+	}
+	input::-webkit-input-placeholder {
+		color: transparent;
+	}
+
+@media screen and (max-width: 980px){
+	#content{
+		width: 65%;
+	}
+
+	table{
+		word-break: break-all; 
+	}
+
+	td{
+		font-size: 0.7em;
+	}
+
+	.spacer{
+		height: 70px;
+	}
+
+	.form-inline{
+		top: 5px;
+		display: inline-block;
+	}
+
+	.text-white{
+		display: inline-block;
+		position:static; 
+		float: none;
+	}
+}
+
+@media screen and (max-width: 650px){
+	nav{
+		height:auto;
+		position: static;
+		overflow: auto;
+	}
+
+	#content{
+		width: auto;
+	}
+
+	form input[type = search]{
+		width: 15px !important;
+	}
+
+	form input[type=search]:focus {
+		width: 147px !important;
+		padding-left: 32px;
+		background-color: #fff;
+		border-color: #66CC75;
+		cursor: auto;
+	}
+
+	button{
+		display:none !important;
+	}
+
+	.form-inline{
+		top: 5px;
+		display: inline-block;
+	}
+
+	.text-white{
+		display: inline-block;
+		position:static; 
+		float: none;
+	}
+}
+
+@media screen and (max-width: 480px) {
+
+	html {
+		-webkit-text-size-adjust: none;
+	}
+
+	form input[type=search]:focus {
+		width: 100%;
+		padding-left: 32px;
+		background-color: #fff;
+		border-color: #66CC75;
+		cursor: auto;
+		.text-white{
+			display:none !important;
+		}
+	}
+
+	button{
+		display:none !important;
+	}
 }
