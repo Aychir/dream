@@ -5,7 +5,9 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://code.jquery.com/jquery-1.12.0.min.js" %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js" %>
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css" %>
     <% if browser.ie? && (browser.version < 9) %>
         <%= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js" %>
         <%= javascript_include_tag "http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js" %>
@@ -14,7 +16,9 @@
   </head>
 
   <body>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render "layouts/navbar" %>
+    <%= render "layouts/sidebar" %>
     <div id = "content">
       	<%if notice%>
       		<p class="notice"><%= notice %></p>

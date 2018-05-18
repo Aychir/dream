@@ -14,6 +14,7 @@ gem 'bootstrap'
 gem 'rails', '~> 5.1.4'
 gem 'factory_girl_rails'
 gem 'browser'
+gem 'jquery-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
