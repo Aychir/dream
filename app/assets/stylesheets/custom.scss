@@ -16,7 +16,7 @@ h1{
 
 .spacer{
 	width:100%;
-	height: 54px;
+	height: 72px;
 }
 
 #notice{
@@ -28,6 +28,10 @@ th{
 	padding-right: 16px;
 }
 
+.navbar-toggler-icon{
+	background-color: transparent !important;
+	color: white
+}
 
 .wrapper{
 	display: flex;
@@ -39,15 +43,11 @@ th{
 	float: left;
 	position: fixed;
 	overflow-y: auto;
-	padding-top: 54px !important;
+	padding-top: 72px !important;
 }
 
 .panel-group, .panel-default, .panel-collapse{
 	height: 100%;
-}
-
-.panel-title{
-	margin-top: 8px;
 }
 
 #sidebar.active {
@@ -85,6 +85,7 @@ a[data-toggle="collapse"] {
 
 .navbar-brand{
 	margin:0;
+	margin-left: 16px;
 }
 
 .form-inline{
