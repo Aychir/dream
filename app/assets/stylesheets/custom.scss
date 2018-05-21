@@ -28,9 +28,15 @@ th{
 	padding-right: 16px;
 }
 
-.navbar-toggler-icon{
-	background-color: transparent !important;
-	color: white
+i.fa.fa-bars{
+	color:white;
+	font-size: 1.385em !important;
+}
+
+button#sidebarCollapse{
+	background-color:transparent !important;
+	border: none;
+	cursor:pointer;
 }
 
 .wrapper{
