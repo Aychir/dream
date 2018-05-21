@@ -1,27 +1,31 @@
-
-	<nav id="sidebar">
-            <!-- Sidebar Header -->
-            <div class="sidebar-header">
-                <h3>Collapsible Sidebar</div>
+<nav id="sidebar">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title text-center">
+                  <a data-toggle="collapse" href="#collapse1">Following</a>
+                </h4>
             </div>
-
-            <!-- Sidebar Links -->
-            <ul class="list-unstyled components">
-                <li class="active">Home</li>
-                <li>About</li>
-                <li class = "dropdown"><!-- Link with dropdown items -->
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true">Pages</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>Page</li>
-                    </ul>
-                <li>Portfolio</li>
-                <li>Contact</li>
-            </ul>
-    </nav>
-
-        <div id="content">
-            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                <i class="glyphicon glyphicon-align-left"></i>
-                Toggle Sidebar
-            </button>
-        <div>
+            <div id="collapse1" class="panel-collapse collapse">
+            <% if current_user != nil%>
+                  <% current_user.following.each do |user|%>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item border-top">
+                              <%= link_to user, :class => "email" do%>
+                                  <div class = "email"><%= user.email %></div>
+                              <%end%>
+                          </li>
+                        </ul>
+                  <%end%>
+                  <span class = "border-top"></span>
+            <%end%>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="content">
+    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+        <i class="glyphicon glyphicon-align-left"></i>
+        Toggle Sidebar
+    </button>
+<div>

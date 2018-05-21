@@ -7,6 +7,7 @@ require 'devise'
 
 require "./app/controllers/users_controller.rb"
 require "./app/controllers/relationships_controller.rb"
+require "./app/controllers/reports_controller.rb"
 require './app/helpers/users_helper.rb'
 require './app/models/follow.rb'
 require './app/models/user.rb'

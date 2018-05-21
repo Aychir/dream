@@ -38,10 +38,45 @@ th{
 	width: 200px;
 	float: left;
 	position: fixed;
+	overflow-y: auto;
+	padding-top: 54px !important;
+}
+
+.panel-group, .panel-default, .panel-collapse{
+	height: 100%;
+}
+
+.panel-title{
+	margin-top: 8px;
 }
 
 #sidebar.active {
     margin-left: -250px;
+}
+
+#sidebar{
+	border-right: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.list-group-item:hover{
+	background-color: #E8E8E8;
+}
+
+div.email:hover{
+	color:black;
+}
+
+a.email{
+	text-decoration: none;
+}
+
+a.email:visited{
+	color:black;
+}
+
+#content.active{
+	margin-left: 150px;
+	margin-right: auto;
 }
 
 a[data-toggle="collapse"] {
@@ -62,53 +97,53 @@ a[data-toggle="collapse"] {
 	margin-right: 10px;
 }
 
-	input {
-		outline: none;
-	}
-	input[type=search] {
-		-webkit-appearance: textfield;
-		-webkit-box-sizing: content-box;
-		font-family: inherit;
-		font-size: 100%;
-	}
-	input::-webkit-search-decoration,
-	input::-webkit-search-cancel-button {
-		display: none; 
-	}
+input {
+	outline: none;
+}
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none; 
+}
 
 
-	input[type=search] {
-		background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-		color: transparent;
-		cursor: pointer;
-		border: solid 1px #ccc;
-		padding-left:10px;
-		width: 15px;
-		
-		
-		
-		-webkit-transition: all .5s ease;
-		-moz-transition: all .5s ease;
-		transition: all .5s ease;
-	}
-	input[type=search]:hover {
-		background-color: #fff;
-	}
-	input[type=search]:focus {
-		width: 210px;
-		padding-left: 32px;
-		background-color: #fff;
-		border-color: #66CC75;
-		cursor: auto;
-	}
+input[type=search] {
+	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	color: transparent;
+	cursor: pointer;
+	border: solid 1px #ccc;
+	padding-left:10px;
+	width: 15px;
+	
+	
+	
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	transition: all .5s ease;
+}
+input[type=search]:hover {
+	background-color: #fff;
+}
+input[type=search]:focus {
+	width: 210px;
+	padding-left: 32px;
+	background-color: #fff;
+	border-color: #66CC75;
+	cursor: auto;
+}
 
 
-	input:-moz-placeholder {
-		color: transparent;
-	}
-	input::-webkit-input-placeholder {
-		color: transparent;
-	}
+input:-moz-placeholder {
+	color: transparent;
+}
+input::-webkit-input-placeholder {
+	color: transparent;
+}
 
 @media screen and (max-width: 980px){
 	#content{

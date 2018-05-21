@@ -5,9 +5,11 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag "https://code.jquery.com/jquery-1.12.0.min.js" %>
+    <%= javascript_include_tag "https://code.jquery.com/jquery-3.3.1.min.js" %>
+    <%= javascript_include_tag "https://unpkg.com/popper.js/dist/umd/popper.min.js" %>
+    <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" %>
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js" %>
-    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css" %>
+    <%# stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css" %>
     <% if browser.ie? && (browser.version < 9) %>
         <%= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js" %>
         <%= javascript_include_tag "http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js" %>
@@ -18,6 +20,7 @@
   <body>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render "layouts/navbar" %>
+    <%#TO-DO: Take out navbar and see if sidebar takes full height, if it does then it could lead to solution of not getting to the bottom of the list%>
     <%= render "layouts/sidebar" %>
     <div id = "content">
       	<%if notice%>
