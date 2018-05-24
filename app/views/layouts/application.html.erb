@@ -21,15 +21,10 @@
   <body>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render "layouts/navbar" %>
-    <%#TO-DO: Take out navbar and see if sidebar takes full height, if it does then it could lead to solution of not getting to the bottom of the list%>
     <%= render "layouts/sidebar" %>
+    <div class="spacer">
+    </div>
     <div id = "content">
-        <div class="spacer">
-            &nbsp;
-        <div>
-        <div class="spacer">
-            &nbsp;
-        <div>
       	<%if notice%>
       		<p class="notice"><%= notice %></p>
       	<%end%>
