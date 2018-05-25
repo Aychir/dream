@@ -1,6 +1,11 @@
 @import "bootstrap";
 
 
+table{
+	margin:auto;
+	float:none;
+	width: inherit;
+}
 
 body{
 	margin:0 !important;
@@ -8,7 +13,8 @@ body{
 }
 
 h1{
-	padding-right: 16px;
+	margin-left: auto;
+	float: none;
 }
 
 .spacer{
@@ -16,8 +22,12 @@ h1{
 	height: 72px;
 }
 
-.col-2{
+.col-12{
 	padding: 0;
+}
+
+table.col-12{
+	word-break: break-word;
 }
 
 #notice{
@@ -49,11 +59,11 @@ button#sidebarCollapse{
 #sidebar{
 	height: 100vh;
 	float: left;
-	width: 16.67%;
 	position: fixed;
 	overflow-y: auto;
 	padding-top: 72px !important;
 }
+
 
 .panel-group, .panel-default, .panel-collapse{
 	height: 100%;
@@ -155,6 +165,21 @@ input::-webkit-input-placeholder {
 	color: transparent;
 }
 
+
+@media screen and (min-width: 768px){
+	#sidebar{
+		flex: 0 0 16.67%;
+		width: 16.67%;
+	}
+}
+
+@media screen and (max-width: 768px){
+	#sidebar{
+		flex: 0 0 0%;
+		width: 0%;
+	}
+}
+
 @media screen and (max-width: 980px){
 	#content{
 		width: 65%;
@@ -181,6 +206,16 @@ input::-webkit-input-placeholder {
 		display: inline-block;
 		position:static; 
 		float: none;
+	}
+
+	#sidebar{
+		flex: 0 0 0%;
+		width: 0%;
+	}
+
+	.col-md-2{
+		flex: 0 0 0%;
+		width: 0%;
 	}
 }
 
