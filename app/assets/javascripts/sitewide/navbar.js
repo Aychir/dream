@@ -10,14 +10,16 @@ $(window).resize(function() {
   });
 });
 
-$(document).ready(function() {
-	$('input[type="search"]').on('focus', function() {
-	    $('.right-container').hide();
-	});
-});
+$(function(){
+  $('input[type=search]').focus(function(){
+    $(".right-container").hide();
+  }).blur(function(){
+    $(".right-container").show();
+  });
 
-$(document).ready(function() {
-	$('input[type="search"]').off('focus', function() {
-	    $('.right-container').show();
-	});
+  $('input[type=search]').focus(function(){
+    $(".left-container").hide();
+  }).blur(function(){
+    $(".left-container").show();
+  });
 });
