@@ -166,7 +166,6 @@ input[type=search]:focus {
 	cursor: auto;
 }
 
-
 input:-moz-placeholder {
 	color: transparent;
 }
@@ -195,6 +194,7 @@ input::-webkit-input-placeholder {
 	form input[type=search]:focus {
 		width: 147px !important;
 		padding-left: 32px;
+		padding-right: 24px;
 		background-color: #fff;
 		border-color: #66CC75;
 		cursor: auto;
