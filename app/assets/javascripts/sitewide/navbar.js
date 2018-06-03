@@ -5,7 +5,7 @@ $(document).ready(function() {
   });
 
   $(".btn-outline-secondary").css({
-    'height': ($("ul.nav").height() + 'px')
+    'height': ($("input.form-control").outerHeight() + 'px')
   })
 });
 
@@ -15,7 +15,7 @@ $(window).resize(function() {
   });
 
  $(".btn-outline-secondary").css({
-    'height': ($("ul.nav").height() + 'px')
+    'height': ($("input.form-control").outerHeight() + 'px')
   })
 });
 
