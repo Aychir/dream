@@ -132,11 +132,13 @@ input {
 input.mr-sm-2{
 	float: left;
 	margin-right: 0 !important;
+	border-radius: 0 !important;
 }
 
 button.btn-outline-secondary{
 	color: white;
 	height: inherit;
+	border-radius: 0 !important;
 }
 
 p#searchButton{
@@ -173,7 +175,7 @@ input[type=search]:hover {
 }
 
 input[type=search]:focus {
-	padding-left: 16px;
+	padding-left: 32px;
 	background-color: #fff;
 	border-color: #66CC75;
 	cursor: auto;
@@ -254,7 +256,6 @@ input::-webkit-input-placeholder {
 
 	.form-inline{
 		top: 5px;
-		display: inline-block;
 	}
 
 	.text-white{
