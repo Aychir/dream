@@ -17,3 +17,16 @@ $(function(){
 		}
 	});
 });
+
+$(window).resize(function(){
+	if($('#sidebar').hasClass('active') && $(window).width() <= 768){
+		$('#sidebar').toggleClass('active');
+        $('#content').toggleClass('active');
+	}
+
+	if($('#sidebar').hasClass('sidebarOverlay') && $(window).width() > 768){
+		$('body').toggleClass('overlay');
+		$('#sidebar').toggleClass('sidebarOverlay');
+		$('.col-12 td').toggleClass('noClick');
+	}
+});
