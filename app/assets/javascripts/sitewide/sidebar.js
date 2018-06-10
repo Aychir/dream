@@ -30,3 +30,13 @@ $(window).resize(function(){
 		$('.col-12 td').toggleClass('noClick');
 	}
 });
+
+$(function(){
+	$('#content').on('click', function(){
+		if($('body').hasClass('overlay')){
+			$('body').toggleClass('overlay');
+			$('#sidebar').toggleClass('sidebarOverlay');
+			$('.col-12 td').toggleClass('noClick');
+		}
+	});
+});

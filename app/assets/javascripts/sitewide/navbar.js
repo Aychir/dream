@@ -23,18 +23,18 @@ $(window).resize(function() {
 $(function(){
       $('input[type=search]').focus(function(){
         if($(window).width() <= 648){
-          $(".right-container").hide(300);
+          $(".right-container").hide(350);
         }}).blur(function(){
         if($(window).width() <= 648){
-          $(".right-container").show(300);
+          $(".right-container").show(410);
         }});
 
       $('input[type=search]').focus(function(){
         if($(window).width() <= 648){
-          $(".left-container").hide(300);
+          $(".left-container").hide(350);
         }}).blur(function(){
         if($(window).width() <= 648){
-          $(".left-container").show(300);
+          $(".left-container").show(350);
         }});
 });
 
@@ -46,7 +46,7 @@ $(window).resize(function(){
     }
     else{
       $(".left-container").show(300);
-      $(".right-container").show(300);
+      $(".right-container").show(410);
     }
   }
 });
