@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper :all
@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_action :store_location, except: [:edit, :new, :create, :show]
 
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:show, :index, :list_followers, :list_blocking, :list_following]
 
   #For some reason doesn't affect edit in the users controller
 
