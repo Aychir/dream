@@ -27,7 +27,6 @@ h1{
 }
 
 table.col-12{
-	width: 960px;
 	word-break: break-all;
 }
 
@@ -70,8 +69,14 @@ button#sidebarCollapse{
 	display: flex;
 }
 
+#content{
+	margin-left: 240px;
+	width: 100%;
+}
+
 #sidebar{
 	height: 100vh;
+	width: 240px;
 	float: left;
 	position: fixed;
 	overflow-y: auto;
@@ -116,7 +121,7 @@ a.email:visited{
 }
 
 #content.active{
-	margin-left: 150px;
+	margin-left: 0px;
 	margin-right: auto;
 }
 
@@ -207,19 +212,13 @@ input::-webkit-input-placeholder {
 }
 
 
+
 .sidebarOverlay{
 		flex: 0 0 45% !important;
-		width: 45% !important;
+		width: 240px !important;
 		background-color:white !important;
 		display:block !important;
 		z-index: 1;
-}
-
-@media screen and (min-width: 768px){
-	#sidebar{
-		flex: 0 0 16.67%;
-		width: 16.67%;
-	}
 }
 
 @media screen and (max-width: 768px){
@@ -264,7 +263,6 @@ input::-webkit-input-placeholder {
 @media screen and (max-width: 960px){
 	#content{
 		margin: auto;
-		width: 65%;
 	}
 
 	table{
@@ -296,7 +294,7 @@ input::-webkit-input-placeholder {
 
 	.col-md-2{
 		flex: 0 0 0%;
-		width: 0%;
+		width: 0% !important;
 	}
 }
 
