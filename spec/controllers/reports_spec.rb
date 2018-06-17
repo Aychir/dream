@@ -1,8 +1,10 @@
 require 'spec_helper'
+require 'rails_helper'
 require 'rspec/rails'
 require 'reports_controller'
 require 'users_helper'
 require 'follow'
+require "capybara/rails"
 require 'user'
 
 #Must run tests in rails directory and call rspec spec/controllers/* or rspec spec/controllers/users_controller_spec.rb
@@ -20,26 +22,31 @@ describe ReportsController do
 
 	let(:report) {@user.reports.create()}
 
-	it 'should make user report user2' do
-		@user.follow(@user2.id)
-		expect(Follow.find_by(follower_id: @user.id, following_id: @user2.id)).to_not eq nil
+	it 'should render report options' do
+		sign_in @user
+		get :new, params: {format: 1}
+		expect(response).to render_template 'reports/new'
 	end
 
-	it 'should destroy an existing relationship' do
-		@user.follow(@user2.id)
-		@user.unfollow(@user2.id)
-		expect(Follow.find_by(follower_id: @user.id, following_id: @user2.id)).to eq nil
+	it 'should report with a given message' do
+		sign_in @user
+		render_template 'reports/_form'
+		post :create, params: {report: {user_id: @user.id, report_message: "This user has posted inappropriate content.", reported_id: 1, reported_type: "User"}}
+		response.should redirect_to(users_path)
 	end
 
-	it 'should block a user' do
-		@user.block(@user2.id)
-		expect(Block.find_by(blocker_id: @user.id, blocking_id: @user2.id)).to_not eq nil
+	it 'should not report yourself' do
+		sign_in @user
+		get :new, params: {format: @user.id}
+		response.should have_http_status(302)
 	end
 
-	it 'should unblock a user' do
-		@user.block(@user2.id)
-		@user.unblock(@user2.id)
-		expect(Block.find_by(blocker_id: @user.id, blocking_id: @user2.id)).to eq nil
+	it 'should not re-report a user' do
+		sign_in @user
+		render_template 'reports/_form'
+		post :create, params: {report: {user_id: @user.id, report_message: "This user has posted inappropriate content.", reported_id: 1, reported_type: "User"}}
+		get :new, params: {format: 1}
+		response.should have_http_status(302)
 	end
 
 end

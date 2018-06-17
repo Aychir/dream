@@ -57,9 +57,16 @@ describe RelationshipsController do
 		expect(Follow.find_by(follower_id: @user.id, following_id: @user2.id)).to eq nil
 	end
 
-	it 'should not create a relationship when attempting to follow yourself' do
-		@user.follow(@user.id)
-		expect(Follow.find_by(follower_id: @user.id, following_id: @user2.id)).to eq nil
+	it 'should not allow current user to follow current user' do
+		sign_in @user
+		post :follow_user, params: {user: @user.id}
+		response.should have_http_status(302)
+	end
+
+	it 'should not allow current user to unfollow current user' do
+		sign_in @user
+		post :unfollow_user, params: {user: @user.id}
+		response.should have_http_status(302)
 	end
 
 	#NOTE: I am not testing unauthentciated users being redirected because this is Devise generated code?
@@ -79,6 +86,39 @@ describe RelationshipsController do
 	it 'should not block yourself' do
 		@user.follow(@user.id)
 		expect(Block.find_by(blocker_id: @user.id, blocking_id: @user2.id)).to eq nil
+	end
+
+	it 'should not allow you to unblock yourself' do
+		sign_in @user
+		post :unblock_user, params: {user: @user.id}
+		response.should have_http_status(302)
+	end
+
+	it 'should not reblock someone that a user already blocks' do
+		@userRefollow = FactoryGirl.create(:user)
+		sign_in @userRefollow
+		post :block_user, params: {user: 1}
+		post :block_user, params: {user: 1}
+		response.should have_http_status(302)
+	end
+
+	it 'should not unblock someone that a user has no relationship with' do
+		@userRefollow = FactoryGirl.create(:user)
+		sign_in @userRefollow
+		post :unblock_user, params: {user: 1}
+		response.should have_http_status(302)
+	end
+
+	it 'unauthenticated user should not block without being authenticated' do
+		@userBefore = FactoryGirl.create(:user)
+		post :block_user, params: {user: @userBefore.id}
+		response.should redirect_to(new_user_session_path)
+	end
+
+	it 'unauthenticated user should not unblock without being authenticated' do
+		@userBefore = FactoryGirl.create(:user)
+		post :unblock_user, params: {user: @userBefore.id}
+		response.should redirect_to(new_user_session_path)
 	end
 
 end

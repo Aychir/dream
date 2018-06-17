@@ -16,6 +16,7 @@ gem 'factory_girl_rails'
 gem 'browser'
 gem 'jquery-rails'
 gem "font-awesome-rails"
+gem 'rails-controller-testing'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

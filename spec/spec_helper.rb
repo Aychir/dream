@@ -5,6 +5,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require_relative 'support/controller_helpers'
 require 'devise'
 
+require "capybara/rails"
+
 require "./app/controllers/users_controller.rb"
 require "./app/controllers/relationships_controller.rb"
 require "./app/controllers/reports_controller.rb"
@@ -34,6 +36,8 @@ RSpec.configure do |config|
   config.after do
     Warden.test_reset!
   end
+
+  config.include Capybara::DSL
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
