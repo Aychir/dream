@@ -77,22 +77,35 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   #Add a message if user email was changed
   def update
-    respond_to do |format|
-      if @user.update(user_params)
+    @user = User.find(params[:id])
+    puts @user.email
+    puts "Hello"
+    if (params[:user][:email] != @user.email) && (@user.unconfirmed_email != nil)
+      #if the user hasn't confirmed their email and they try to change it, give them this message
+      redirect_to @user, notice: "You must first confirm your email before attempting to change to a new one"
+    elsif (params[:user][:email] != @user.email) && (@user.unconfirmed_email == nil)
+      respond_to do |format|
+        if @user.update(user_params)
           bypass_sign_in(@user)
-          #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
-          if @user.unconfirmed_email != nil
-            #Just check if email was changed, then tell user to confirm new email
-              format.html { redirect_to @user, notice: "Please confirm your new email with the message we sent."}
-              format.json { render :show, status: :ok, location: @user }
-          else
-            #Tell user their screen name was updated
-              format.html { redirect_to @user, notice: "Screen name successfully updated!"}
-              format.json { render :show, status: :ok, location: @user }
-          end
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+            #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
+          format.html { redirect_to @user, notice: "Fuck you"}
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @user.update(user_params)
+          bypass_sign_in(@user)
+            #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
+          format.html { redirect_to @user, notice: "Your screenname has been updated!"}
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
