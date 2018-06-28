@@ -30,6 +30,20 @@ class UsersController < ApplicationController
     if(@user != current_user)
       redirect_to users_path, :notice => "You cannot edit another user's password..."
     end
+    if(current_user.unconfirmed_email == nil)
+      redirect_to edit_user_path(@user), :notice => "You must confirm your email before you are able to change your password."
+    end
+  end
+
+  def change_email()
+    @user = User.find(params[:user_id])
+    #Adjust this to be nested param to be [:user][:id]?
+    if(@user != current_user)
+      redirect_to users_path, :notice => "You cannot edit another user's email..."
+    end
+    if(current_user.unconfirmed_email == nil)
+      redirect_to edit_user_path(@user), :notice => "You must confirm your email before you are able to change it."
+    end
   end
 
   # GET /users
@@ -52,6 +66,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @email = @user.email
     if(@user != current_user)
       redirect_to users_path, :notice => "You cannot edit another user..."
     end
@@ -76,31 +91,58 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   #Add a message if user email was changed
-  def update
+def update
+  @user = User.find(params[:id])
+  if (params[:user][:email] != @user.email) && (@user.unconfirmed_email != nil)
+    #if the user hasn't confirmed their email and they try to change it, give them this message
+    redirect_to @user, notice: "You must first confirm your email before attempting to change to a new one..."
+  elsif (params[:user][:email] != @user.email) && (@user.unconfirmed_email == nil)
+    #User has confirmed their email and decide to change their email
     respond_to do |format|
       if @user.update(user_params)
-          bypass_sign_in(@user)
+        bypass_sign_in(@user)
           #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
-          if @user.unconfirmed_email != nil
-            #Just check if email was changed, then tell user to confirm new email
-              format.html { redirect_to @user, notice: "Please confirm your new email with the message we sent."}
-              format.json { render :show, status: :ok, location: @user }
-          else
-            #Tell user their screen name was updated
-              format.html { redirect_to @user, notice: "Screen name successfully updated!"}
-              format.json { render :show, status: :ok, location: @user }
-          end
+        format.html { redirect_to @user, notice: "Please confirm your new email with the confirmation we have sent you."}
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  else
+    respond_to do |format|
+      if @user.update(user_params)
+        bypass_sign_in(@user)
+          #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
+        format.html { redirect_to @user}
+        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
+end 
 
   def update_password
     @user = User.find(params[:user_id])
     respond_to do |format|
       if @user.update_with_password(user_params)
+          bypass_sign_in(@user)
+          #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
+          format.html { redirect_to @user, notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render 'change_password' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_email
+    @user = User.find(params[:user_id])
+    respond_to do |format|
+      if @user.update(user_params)
           bypass_sign_in(@user)
           #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
           format.html { redirect_to @user, notice: 'User was successfully updated.' }

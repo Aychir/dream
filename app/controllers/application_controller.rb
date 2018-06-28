@@ -14,6 +14,7 @@
   def store_location
   # store last url - this is needed for post-login redirect to whatever the user last visited.
   puts "Storing"
+ # puts assigns(:user).errors.inspect
   if (request.fullpath != "/users/sign_in" &&
       request.fullpath != "/users/password/new" &&
       request.fullpath != "/users/sign_up" &&
@@ -22,6 +23,7 @@
       !request.xhr?) # don't store ajax calls
     session["user_return_to"] = request.fullpath 
   end
+  puts request.fullpath
 end
  
   #What's nice about this is that I can choose where to put it, makes it easier to add this to actions and have one less thing to worry about 

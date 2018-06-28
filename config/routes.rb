@@ -28,7 +28,10 @@ Rails.application.routes.draw do
 
   get ':user_id/change_password', to: 'users#change_password', as: :change_password
 
+  get ':user_id/change_email', to: 'users#change_email', as: :change_email
+
   patch ':user_id/update_password' => 'users#update_password'
+  patch ':user_id/update_email' => 'users#update_email'
 
   root 'users#index'
   #The root will not always be this, it should be the content- just testing to get signup working
