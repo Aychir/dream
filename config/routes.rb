@@ -27,11 +27,12 @@ Rails.application.routes.draw do
   get ':user/list_blocking', to: 'users#list_blocking', as: :list_blocking
 
   get ':user_id/change_password', to: 'users#change_password', as: :change_password
-
   get ':user_id/change_email', to: 'users#change_email', as: :change_email
+  get ':user_id/change_username', to: 'users#change_username', as: :change_username
 
   patch ':user_id/update_password' => 'users#update_password'
   patch ':user_id/update_email' => 'users#update_email'
+  patch ':user_id/update_username' => 'users#update_username'
 
   root 'users#index'
   #The root will not always be this, it should be the content- just testing to get signup working

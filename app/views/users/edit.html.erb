@@ -2,6 +2,7 @@
 
 <%= render 'form', user: @user %>
 
+<%= link_to 'Edit Username', change_username_path(@user) %> |
 <%= link_to 'Edit Email', change_email_path(@user) %> |
 <%= link_to 'Edit Password', change_password_path(@user) %> |
 <%= link_to 'Show', @user %> |

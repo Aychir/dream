@@ -30,8 +30,9 @@ class UsersController < ApplicationController
     if(@user != current_user)
       redirect_to users_path, :notice => "You cannot edit another user's password..."
     end
-    if(current_user.unconfirmed_email == nil)
-      redirect_to edit_user_path(@user), :notice => "You must confirm your email before you are able to change your password."
+    if(@user.confirmed? == false)
+      @user.send_confirmation_instructions
+      redirect_to edit_user_path(@user), :notice => "You must confirm your email before you are able to change your password. We have resent the confirmation email."
     end
   end
 
@@ -41,8 +42,21 @@ class UsersController < ApplicationController
     if(@user != current_user)
       redirect_to users_path, :notice => "You cannot edit another user's email..."
     end
-    if(current_user.unconfirmed_email == nil)
-      redirect_to edit_user_path(@user), :notice => "You must confirm your email before you are able to change it."
+    if(@user.confirmed? == false)
+      @user.send_confirmation_instructions
+      redirect_to edit_user_path(@user), :notice => "You must confirm your email before you are able to change it. We have resent the confirmation email."
+    end
+  end
+
+  def change_username()
+    @user = User.find(params[:user_id])
+    #Adjust this to be nested param to be [:user][:id]?
+    if(@user != current_user)
+      redirect_to users_path, :notice => "You cannot edit another user's username..."
+    end
+    if(@user.confirmed? == false)
+      @user.send_confirmation_instructions
+      redirect_to edit_user_path(@user), :notice => "You must confirm your email before you are able to change your username. We have resent the confirmation email."
     end
   end
 
@@ -92,37 +106,18 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   #Add a message if user email was changed
 def update
-  @user = User.find(params[:id])
-  if (params[:user][:email] != @user.email) && (@user.unconfirmed_email != nil)
-    #if the user hasn't confirmed their email and they try to change it, give them this message
-    redirect_to @user, notice: "You must first confirm your email before attempting to change to a new one..."
-  elsif (params[:user][:email] != @user.email) && (@user.unconfirmed_email == nil)
-    #User has confirmed their email and decide to change their email
-    respond_to do |format|
-      if @user.update(user_params)
-        bypass_sign_in(@user)
-          #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
-        format.html { redirect_to @user, notice: "Please confirm your new email with the confirmation we have sent you."}
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  else
-    respond_to do |format|
-      if @user.update(user_params)
-        bypass_sign_in(@user)
-          #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
-        format.html { redirect_to @user}
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+  respond_to do |format|
+    if @user.update(user_params)
+      bypass_sign_in(@user)
+        #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
+      format.html { redirect_to @user, notice: "Your screenname has updated."}
+      format.json { render :show, status: :ok, location: @user }
+    else
+      format.html { render :edit }
+      format.json { render json: @user.errors, status: :unprocessable_entity }
     end
   end
-end 
+end
 
   def update_password
     @user = User.find(params[:user_id])
@@ -130,7 +125,7 @@ end
       if @user.update_with_password(user_params)
           bypass_sign_in(@user)
           #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
-          format.html { redirect_to @user, notice: 'User was successfully updated.' }
+          format.html { redirect_to @user, notice: 'Password was successfully updated.' }
           format.json { render :show, status: :ok, location: @user }
       else
         format.html { render 'change_password' }
@@ -145,10 +140,25 @@ end
       if @user.update(user_params)
           bypass_sign_in(@user)
           #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
-          format.html { redirect_to @user, notice: 'User was successfully updated.' }
+          format.html { redirect_to @user, notice: 'Confirm your new email with the confirmation we sent to finalize the change.' }
           format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render 'change_password' }
+        format.html { render 'change_email' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_username
+    @user = User.find(params[:user_id])
+    respond_to do |format|
+      if @user.update(user_params)
+          bypass_sign_in(@user)
+          #Could be an issue with efficiency, unnecessarily logging back in if it's not needed- don't think so though
+          format.html { redirect_to @user, notice: 'Username was successfully updated!' }
+          format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render 'change_username' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

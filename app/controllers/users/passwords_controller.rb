@@ -14,7 +14,8 @@ class Users::PasswordsController < Devise::PasswordsController
       elsif @user == nil
         redirect_to new_user_password_url, :notice => "That email does not have an account, double-check you typed it correctly or sign up if you don't have an account!"
       else
-       redirect_to new_user_password_url, :notice => "You must confirm your email to reset your password."
+       @user.send_confirmation_instructions
+       redirect_to new_user_password_url, :notice => "You must confirm your email to reset your password. We have resent a confirmation email."
       end
   end
 
