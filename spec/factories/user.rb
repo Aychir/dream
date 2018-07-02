@@ -9,9 +9,15 @@ FactoryGirl.define do
   	"user#{n}"
   end
 
+  sequence :id do |n|
+    n = User.count + 1;
+    "#{n}"
+  end
+
   factory :user do
   	username
     email
+    id
     password "111111"
     password_confirmation "111111"
   end

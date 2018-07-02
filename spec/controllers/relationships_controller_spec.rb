@@ -14,13 +14,13 @@ describe RelationshipsController do
 
 	let(:user) { create :user }
 
-	it 'unauthenticated user should not follow without being authenticated' do
+	it 'should not allow unauthenticated user to follow without being authenticated' do
 		@userBefore = FactoryGirl.create(:user)
 		post :follow_user, params: {user: @userBefore.id}
 		response.should redirect_to(new_user_session_path)
 	end
 
-	it 'unauthenticated user should not unfollow without being authenticated' do
+	it 'should not allow unauthenticated user to unfollow without being authenticated' do
 		@userBefore = FactoryGirl.create(:user)
 		post :unfollow_user, params: {user: @userBefore.id}
 		response.should redirect_to(new_user_session_path)
