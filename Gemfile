@@ -7,6 +7,7 @@ end
 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'exception_handler', '~> 0.7.7.0'
 gem 'thin'
 gem 'rspec'
 gem 'rspec-rails'

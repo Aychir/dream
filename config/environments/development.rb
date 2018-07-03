@@ -11,8 +11,8 @@ Rails.application.configure do
 
   config.reload_classes_only_on_change = false
 
-  # Show full error reports.
-  config.consider_all_requests_local = true
+  # Show full error reports. 
+  config.consider_all_requests_local = false #NOTE WAS TRUE
 
   config.force_ssl = true
 
