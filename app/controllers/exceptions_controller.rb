@@ -1,20 +1,19 @@
-class ExceptionController < ApplicationController
-  respond_to :json, :js, :html
-  before_action :set_status
-  layout :layout_status
+class ExceptionsController < ApplicationController
+  respond_to :json, :js, :html, :xml
+  before_action :status
+  layout :layout
 
   def show
+    puts "Show"
     respond_with status: @status
   end
 
   protected
 
-  def set_status
-    def status
-      @exception = env['action_dispatch.exception']
-      @status    = ActionDispatch::ExceptionWrapper.new(env, @exception).status_code
-      @response  = ActionDispatch::ExceptionWrapper.rescue_responses[@exception.class.name]
-    end
+  def status
+    @exception  = env['action_dispatch.exception']
+    @status     = ActionDispatch::ExceptionWrapper.new(env, @exception).status_code
+    @response   = ActionDispatch::ExceptionWrapper.rescue_responses[@exception.class.name]
   end
 
   #Format
@@ -32,6 +31,7 @@ class ExceptionController < ApplicationController
 
   #Layout
   def layout_status
+    puts "Hey"
     @status.to_s == "404" ? "application" : "error"
   end
 end

@@ -249,7 +249,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   devise
-  exception_handler (~> 0.7.7.0)
+  exception_handler
   factory_girl_rails
   font-awesome-rails
   jbuilder (~> 2.5)
