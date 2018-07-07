@@ -7,6 +7,10 @@ $(document).ready(function() {
   $(".btn-outline-secondary").css({
     'height': ($("input.form-control").outerHeight() + 'px')
   })
+
+  $("#content").css({
+    'padding-top': ($("nav.navbar").height() + 16 + 'px')
+  });
 });
 
 $(window).resize(function() {
@@ -16,7 +20,11 @@ $(window).resize(function() {
 
  $(".btn-outline-secondary").css({
     'height': ($("input.form-control").outerHeight() + 'px')
-  })
+  });
+
+ $("#content").css({
+    'padding-top': ($("nav.navbar").height() + 16 + 'px')
+  });
 });
 
 //Collapsing of the left & right sides of navbar when screen too small
