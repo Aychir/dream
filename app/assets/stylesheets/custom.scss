@@ -69,6 +69,20 @@ table{
 }
 
 /*------------------------------------------------------------------------Navbar CSS------------------------------------------------------------------------*/
+.right-text{
+	font-size: 1rem !important;
+}
+
+i.fa.fa-search{
+	color:white;
+}
+
+button#searchIconButton{
+	background-color:transparent !important;
+	border: none;
+	cursor:pointer;
+}
+
 i.fa.fa-bars{
 	color:white;
 	font-size: 1.25rem !important;
@@ -82,9 +96,6 @@ button#sidebarCollapse{
 	cursor:pointer;
 }
 
-.right-container .nav-item{
-	font-size: 1rem;
-}
 
 a[data-toggle="collapse"] {
     position: relative;
@@ -96,23 +107,31 @@ a[data-toggle="collapse"] {
 	color: #d065ff !important;
 }
 
-.form-inline{
-	justify-content:center;
-}
 
 .corner{
 	/*margin-left: 10px;*/
 	margin-right: auto;
 }
 
-input {
-	outline: none;
+#searchForm{
+	display:none;
 }
 
-input.mr-sm-2{
-	float: left;
-	margin-right: 0 !important;
-	border-radius: 0 !important;
+.searchBox{
+	box-sizing: border-box;
+	border: 0;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	width: 350px;
+}
+
+.search{
+	border: 0;
+	width: 50px;
+}
+
+i.fa.fa-search.searchInButton {
+    color: black;
 }
 
 button.btn-outline-secondary{
@@ -126,54 +145,6 @@ p#searchButton{
 	
 }
 
-input[type=search] {
-	-webkit-appearance: textfield;
-	-webkit-box-sizing: content-box;
-	height: inherit;
-	font-family: inherit;
-	font-size: 100%;
-}
-
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button {
-	display: none; 
-}
-
-input[type=search] {
-	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-	color: transparent;
-	cursor: pointer;
-	border: solid 1px #ccc;
-	padding-left:10px;
-	width: 15px;
-	-webkit-transition: all .5s ease;
-	-moz-transition: all .5s ease;
-	transition: all .5s ease;
-}
-
-input[type=search]:hover {
-	background-color: #fff;
-}
-
-input[type=search]:focus {
-	padding-left: 32px;
-	background-color: #fff;
-	border-color: #d065ff;
-	cursor: auto;
-}
-
-input:-moz-placeholder {
-	color: transparent;
-}
-
-input::-webkit-input-placeholder {
-	color: transparent;
-}
-
-.right-container{
-	display: flex;
-	/*justify-content: center;*/
-}
 
 #far-right{
 	padding-left: 10px;
@@ -247,10 +218,6 @@ input::-webkit-input-placeholder {
 		height: 70px;
 	}
 
-	.form-inline{
-		top: 5px;
-	}
-
 	.text-white{
 		display: inline-block;
 		position:static; 
@@ -271,35 +238,6 @@ input::-webkit-input-placeholder {
 @media screen and (max-width: 768px){
 	#sidebar{
 		display: none;
-	}
-
-	form input[type = search]{
-		width: 15px !important;
-	}
-
-	form input[type=search]:focus {
-		width: 147px !important;
-		padding-left: 32px;
-		padding-right: 24px;
-		background-color: #fff;
-		border-color: #d065ff;
-		cursor: auto;
-	}
-
-	.form-inline{
-		top: 5px;
-		display: inline-block;
-	}
-
-	form input[type=search]:focus {
-		width: 100%;
-		padding-left: 32px;
-		background-color: #fff;
-		border-color: #d065ff;
-		cursor: auto;
-		.text-white{
-			display:none !important;
-		}
 	}
 
 	.btn-outline-secondary{
