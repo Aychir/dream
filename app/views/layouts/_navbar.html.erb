@@ -13,7 +13,7 @@
     <button type = "button" id = "searchIconButton">
         <i class = "fa fa-search right-text"></i>
     </button>
-    <form id = "searchForm">
+    <form id = "searchForm" class="nav-item">
       <input type="text" placeholder="Search" name="search" class="searchBox"></input><button class="search"type="submit"><i class="fa fa-search searchInButton"></i></button>
     </form>
     <% if !user_signed_in? %>
@@ -23,7 +23,7 @@
         </div>
     <%else%>
         <div>
-            <li class = "nav-item"><%= link_to current_user.email, current_user, class: "text-white right-text"%></li>
+            <%= link_to current_user.email, current_user, class: "text-white right-text nav-item"%>
         </div>
     <%end%>
 </nav>

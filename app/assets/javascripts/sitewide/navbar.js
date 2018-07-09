@@ -27,23 +27,37 @@
 //   });
 // });
 
-$(document).ready(function() {
-  $("button.search").css({
-     'height': ($("input.searchBox").outerHeight() + 'px')
-   });
-});
+// $(document).ready(function() {
+//   $("button.search").css({
+//      'height': ($("input.searchBox").outerHeight() + 'px')
+//    });
+// });
 
-$(document).ready(function(){
-	$("#searchForm").hide();
-});
+// $(document).ready(function(){
+// 	$("#searchForm").hide();
+// });
 
 
 $(function(){
-	$('#searchIconButton').on('click', function(){
-		$("#searchForm").css({
-			'display':("block")
-		});
+	$('#searchIconButton').on('click', function(event){
+		event.stopPropagation();
+		$("#searchIconButton").toggle();
+		$("#searchForm").toggle();
+		$("button.search").css({
+     		'height': ($("input.searchBox").outerHeight() + 'px')
+  		 });
 	});
+	$('#searchForm').on('click', function(event){
+		event.stopPropagation();
+	});
+});
+
+
+$("body").click(function(){
+	if($("#searchIconButton").css('display') == 'none') {
+		$("#searchIconButton").toggle();
+		$("#searchForm").toggle();
+	}
 });
 
 
