@@ -18,12 +18,14 @@
     </form>
     <% if !user_signed_in? %>
         <div>
-           <%= link_to "Sign Up", new_user_registration_path, class: "text-white nav-item right-text"%>
-           <%= link_to "Log In", new_user_session_path, class: "text-white nav-item right-text"%>
+            <%= link_to "Log In", new_user_session_path, class: "text-white nav-item right-text btn btn-outline-primary far-right"%>
+            <%= link_to "Sign Up", new_user_registration_path, class: "text-white nav-item right-text btn btn-primary far-right"%>
         </div>
     <%else%>
+        <div id = "square" class = "nav-item"></div>
         <div>
             <%= link_to current_user.email, current_user, class: "text-white right-text nav-item"%>
         </div>
+        <button id = "postButton" class = "btn-round-lg text-white">POST</button>
     <%end%>
 </nav>

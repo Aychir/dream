@@ -61,6 +61,22 @@ $("body").click(function(){
 });
 
 
+
+//Code to have the log-in button match width of sign up button
+$(document).ready(function() {
+  $(".btn-outline-primary").css({
+    'width': ($(".btn-primary").outerWidth() + 'px')
+  });
+});
+
+$(window).resize(function() {
+	$(".btn-outline-primary").css({
+    'width': ($(".btn-primary").outerWidth() + 'px')
+  });
+});
+
+
+
 //Collapsing of the left & right sides of navbar when screen too small
 // $(function(){
 //       $('input[type=search]').focus(function(){

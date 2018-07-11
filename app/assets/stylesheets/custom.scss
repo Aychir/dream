@@ -96,6 +96,31 @@ button#sidebarCollapse{
 	cursor:pointer;
 }
 
+.btn-outline-primary:hover{
+	background-color:transparent;
+}
+
+button.btn-round-lg{
+	border-radius: 22.5px !important;
+	background-color: transparent;
+	border-color: #d065ff;
+	border-style: solid;
+	margin-left: 15px;
+	cursor: pointer;
+	padding: 4px 24px;
+}
+
+button.btn-round-lg:hover{
+	background-color: #d065ff;
+}
+
+#square { 
+	width: 25px; 
+	height: 25px; 
+	background: #d065ff;
+	margin-left: 15px;
+	margin-right: 15px;
+}
 
 a[data-toggle="collapse"] {
     position: relative;
@@ -150,8 +175,8 @@ p#searchButton{
 }
 
 
-#far-right{
-	padding-left: 10px;
+.far-right{
+	margin-left: 20px;
 }
 
 /*-------------------------------------------------------------------------Sidebar CSS--------------------------------------------------------------------------*/
