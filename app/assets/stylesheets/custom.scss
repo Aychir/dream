@@ -84,6 +84,7 @@ button#searchIconButton{
 	border: none;
 	cursor:pointer;
 	padding: 0;
+	margin-right: 15px;
 }
 
 i.fa.fa-bars{
@@ -107,7 +108,6 @@ button.btn-round-lg{
 	background-color: transparent;
 	border-color: #d065ff;
 	border-style: solid;
-	margin-left: 15px;
 	cursor: pointer;
 	padding: 4px 24px;
 }
@@ -120,7 +120,6 @@ button.btn-round-lg:hover{
 	width: 25px; 
 	height: 25px; 
 	background: #d065ff;
-	margin-left: 15px;
 	margin-right: 15px;
 }
 
@@ -136,6 +135,9 @@ a[data-toggle="collapse"] {
 	color: #d065ff !important;
 }
 
+.d-none{
+	margin-right: 15px;
+}
 
 .corner{
 	/*margin-left: 10px;*/
@@ -144,6 +146,7 @@ a[data-toggle="collapse"] {
 
 #searchForm{
 	display:none;
+	margin-right: 15px;
 }
 
 button.search{
@@ -157,6 +160,7 @@ button.search{
 	padding-bottom: 4px;
 	padding-left: 8px;
 	width: 350px;
+	outline: none;
 }
 
 .search{
