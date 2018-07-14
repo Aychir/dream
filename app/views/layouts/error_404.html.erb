@@ -1,4 +1,44 @@
-<div class="error_container">
-<p>Unfortunately this page wasn't found, but please feel free to check out more content using the sidebar to the left.</p>
-  <%= link_to "Back to home", root_path %>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dream</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" %>
+    <%= javascript_include_tag "https://code.jquery.com/jquery-3.3.1.min.js" %>
+    <%= javascript_include_tag "https://unpkg.com/popper.js/dist/umd/popper.min.js" %>
+    <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js" %>
+    <%# stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css" %>
+    <% if browser.ie? && (browser.version < 9) %>
+        <%= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js" %>
+        <%= javascript_include_tag "http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js" %>
+    <%end%>
+
+  </head>
+
+  <body>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render "layouts/navbar" %>
+    <div class = "container-fluid no-padding">
+      <div class = "row">
+        <div>
+          <%= render "layouts/sidebar" %>
+        </div>
+        <div id = "content">
+        	<div class = "error-outer">
+	          	<div class="error-sheet">
+	          		<div class = "error-inner">
+						<div class = "frowny_face"><h6>:(</h6></div>
+						<p>Unfortunately this page wasn't found, but please feel free to check out more content using the sidebar to the left.</p>
+		  				<%= link_to "Back to home", root_path %>
+		  			</div>
+				</div>
+			</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

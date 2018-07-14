@@ -37,7 +37,7 @@
 // 	$("#searchForm").hide();
 // });
 
-
+//Click the icon, get the search form and its button
 $(function(){
 	$('#searchIconButton').on('click', function(event){
 		event.stopPropagation();
@@ -52,7 +52,7 @@ $(function(){
 	});
 });
 
-
+//Click anywhere away from the visible search form, make it disappear and have the icon reappear
 $("body").click(function(){
 	if($("#searchIconButton").css('display') == 'none') {
 		$("#searchIconButton").toggle();
@@ -76,6 +76,21 @@ $(window).resize(function() {
 });
 
 
+//Function to make the 'avatar' disappear for mobile width screens
+$(function(){
+	if($(window).width() <= 360){
+		$("#square").hide();
+	}
+});
+
+$(window).resize(function(){
+	if($(window).width() <= 360){
+		$("#square").hide();
+	}
+	else{
+		$("#square").show();
+	}
+});
 
 //Collapsing of the left & right sides of navbar when screen too small
 // $(function(){

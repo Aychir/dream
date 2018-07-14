@@ -3,6 +3,8 @@
 body{
 	margin:0 !important;
 	padding:0;
+	height:100vh;
+	background-color: #F3F3F3 !important;
 }
 
 /*----------------------------------------------------------------Table/Content CSS----------------------------------------------------------------*/
@@ -81,6 +83,7 @@ button#searchIconButton{
 	background-color:transparent !important;
 	border: none;
 	cursor:pointer;
+	padding: 0;
 }
 
 i.fa.fa-bars{
@@ -90,8 +93,7 @@ i.fa.fa-bars{
 
 button#sidebarCollapse{
 	background-color:transparent !important;
-	padding-top: 0.3125rem;
-	padding-bottom: 0.3125rem;
+	padding: 0;
 	border: none;
 	cursor:pointer;
 }
@@ -127,8 +129,10 @@ a[data-toggle="collapse"] {
 }
 
 .navbar-brand a{
+	padding: 0;
+	padding-bottom: 1px;
 	margin:0;
-	margin-left: 16px;
+	margin-left: 12px;
 	color: #d065ff !important;
 }
 
@@ -149,9 +153,9 @@ button.search{
 
 .searchBox{
 	box-sizing: border-box;
-	border: 0;
 	padding-top: 4px;
 	padding-bottom: 4px;
+	padding-left: 8px;
 	width: 350px;
 }
 
@@ -187,6 +191,7 @@ p#searchButton{
 
 #sidebar{
 	box-shadow: 0px 0px 0px 2px #ececec;
+	background-color: white;
 }
 
 #sidebar.active {
@@ -208,11 +213,11 @@ p#searchButton{
 }
 
 .sidebarOverlay{
-		flex: 0 0 45% !important;
-		width: 240px !important;
-		background-color:white !important;
-		display:block !important;
-		z-index: 1;
+	flex: 0 0 45% !important;
+	width: 240px !important;
+	background-color:white !important;
+	display:block !important;
+	z-index: 1;
 }
 
 .overlay {
@@ -268,10 +273,6 @@ p#searchButton{
 	#sidebar{
 		display: none;
 	}
-
-	.btn-outline-secondary{
-		display: none;
-	}
 }
 
 @media screen and (max-width: 650px){
@@ -285,41 +286,30 @@ p#searchButton{
 		width: auto;
 	}
 
-
 	.text-white{
 		display: inline-block;
 		position:static; 
 		float: none;
 	}
-
 }
 
-@media screen and (max-width: 480px) {
 
-	nav.bg-dark{
-		padding: 0;
-		padding-top: 8px;
-		padding-bottom: 8px;
-	}
 
-	.nav-item{
-		font-size: 0.75rem;
-	}
+/*---------------------------------------------------------------------Error Page CSS----------------------------------------------------------------------------*/
+.error-outer{
+	display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
 
-	.navbar-brand{
-		margin-left: 4px;
-	}
+.error-sheet{
+	display: table-cell;
+	vertical-align: middle;
+}
 
-	.corner{
-		margin-left: 0px;
-		font-size: 0.7rem;
-	}
-
-	i.fa.fa-bars{
-		font-size: 1rem !important;
-	}
-
-	html {
-		-webkit-text-size-adjust: none;
-	}
+.error-inner{
+	margin-left: auto;
+	margin-right: auto;
+	width: 90vh;
 }
