@@ -1,5 +1,5 @@
 <nav class = "navbar navbar-expand navbar-dark bg-dark fixed-top">
-    <ul class = "nav navbar-nav align-items-center">
+    <ul id = "left-elements" class = "nav navbar-nav align-items-center">
         <li class = "nav-item">
             <button type="button" id="sidebarCollapse">
                 <i class="fa fa-bars"></i>
@@ -21,12 +21,12 @@
             </form>
         </li>
         <% if !user_signed_in? %>
-                <li><%= link_to "Log In", new_user_session_path, class: "text-white nav-item right-text btn btn-outline-primary far-right"%></li>
-                <li><%= link_to "Sign Up", new_user_registration_path, class: "text-white nav-item right-text btn btn-primary far-right"%></li>
+                <li><%= link_to "Log In", new_user_session_path, class: "text-white nav-item right-text btn btn-outline-primary far-right right-elements"%></li>
+                <li><%= link_to "Sign Up", new_user_registration_path, class: "text-white nav-item right-text btn btn-primary far-right right-elements"%></li>
         <%else%>
-            <li id = "square" class = "nav-item"></li>
-            <li class = "d-none d-sm-block"><%= link_to current_user.email, current_user, class: "nav-item right-text text-white"%></li>
-            <li class = "nav-item"><button id = "postButton" class = "btn-round-lg text-white">POST</button></li>
+            <li id = "square" class = "nav-item right-elements"></li>
+            <li class = "d-none d-sm-block"><%= link_to current_user.email, current_user, class: "nav-item right-text text-white right-elements"%></li>
+            <li class = "nav-item"><button id = "postButton" class = "btn-round-lg text-white right-elements">POST</button></li>
         <%end%>
     </ul>
 </nav>

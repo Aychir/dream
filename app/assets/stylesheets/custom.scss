@@ -155,12 +155,16 @@ button.search{
 }
 
 .searchBox{
-	box-sizing: border-box;
-	padding-top: 4px;
-	padding-bottom: 4px;
+	border: 0;
+	padding-top: 6px;
+	padding-bottom: 6px;
 	padding-left: 8px;
 	width: 350px;
 	outline: none;
+}
+
+.narrowSearch{
+	width: 100vh;
 }
 
 .search{
@@ -189,6 +193,31 @@ p#searchButton{
 
 /*-------------------------------------------------------------------------Sidebar CSS--------------------------------------------------------------------------*/
 
+.about-section{
+	display: inline;
+	list-style: none;
+	padding: 0;
+	width: 100%;
+	margin-left: 16px;
+	position: absolute;
+	bottom: 0;
+}
+
+
+#second-row{
+	margin-left: 16px;
+}
+
+.about-section li{
+	margin-right: 8px;
+	margin-bottom: 8px;
+	display: inline;
+}
+
+.panel-title{
+	margin-left: 16px;
+}
+
 .panel-group, .panel-default, .panel-collapse{
 	height: 100%;
 }
@@ -196,6 +225,7 @@ p#searchButton{
 #sidebar{
 	box-shadow: 0px 0px 0px 2px #ececec;
 	background-color: white;
+	overflow-x: hidden;
 }
 
 #sidebar.active {

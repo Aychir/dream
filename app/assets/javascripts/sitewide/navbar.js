@@ -41,6 +41,7 @@
 $(function(){
 	$('#searchIconButton').on('click', function(event){
 		event.stopPropagation();
+
 		$("#searchIconButton").toggle();
 		$("#searchForm").toggle();
 		$("button.search").css({
@@ -90,6 +91,16 @@ $(window).resize(function(){
 	else{
 		$("#square").show();
 	}
+});
+
+//When screen not wide enough, make search bar full width and collapse all nav-items
+$(function(){
+	$('input').focus(function(){
+		$('#left-elements').hide();
+		$('.right-elements').hide();
+		$('input.searchBox').toggleClass('narrowSearch');
+		$('ul.ml-auto').toggleClass('ml-auto');
+	});
 });
 
 //Collapsing of the left & right sides of navbar when screen too small
