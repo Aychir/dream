@@ -203,13 +203,22 @@ p#searchButton{
 	padding: 0;
 	width: 100%;
 	margin-left: 16px;
-	/*positioned relative to its parent which is the panel and can be placed in a specific location, very powerful*/
 	position: absolute;
-	bottom: 10px; /*Note this should change to match the difference in height from Feeds to navbar*/
+	padding-top: 22px;
+	padding-bottom: 22px;
+}
+
+.bottomZero{
+	bottom: 0;
+	padding-bottom: 0px;
 }
 
 .noShow{
 	display:none;
+}
+
+.panel-heading{
+	position: relative;
 }
 
 .fullHeight{

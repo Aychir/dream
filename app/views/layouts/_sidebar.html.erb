@@ -6,25 +6,30 @@
             <h6 class="panel-title">
                 <a data-toggle="collapse" href="#collapse1">Following</a>
             </h6>
-    </div>
-    <div id = "sidebarList" class="panel panel-default panel-group">
-        <div id="collapse1" class="panel-collapse collapse">
-            <% if current_user != nil%>
-                  <% current_user.following.each do |user|%>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item border-top">
-                              <%= link_to user, :class => "email" do%>
-                                  <div class = "email"><%= user.email %></div>
-                              <%end%>
-                          </li>
-                        </ul>
-                  <%end%>
-                  <span class = "border-top"></span>
-            <%end%>
+        <div id = "sidebarList" class="panel panel-default panel-group">
+            <div id="collapse1" class="panel-collapse collapse">
+                <% if current_user != nil%>
+                      <% current_user.following.each do |user|%>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item border-top">
+                                  <%= link_to user, :class => "email" do%>
+                                      <div class = "email"><%= user.email %></div>
+                                  <%end%>
+                              </li>
+                            </ul>
+                      <%end%>
+                      <span class = "border-top"></span>
+                <%end%>
+            </div>
+            <!-- <ul class = "about-section">
+                <li>About</li><li>User Agreement</li><li>Help</li>
+                <li>Advertise</li><li>Content</li><li>Copyright</li>
+            </ul> -->
         </div>
     </div>
-    <ul class = "about-section">
-        <li>About</li><li>User Agreement</li><li>Help</li>
-        <li>Advertise</li><li>Content</li><li>Copyright</li>
+    <ul class = "about-section bottomZero">
+                <li>About</li><li>User Agreement</li><li>Help</li>
+                <li>Advertise</li><li>Content</li><li>Copyright</li>
     </ul>
 </nav>
+
