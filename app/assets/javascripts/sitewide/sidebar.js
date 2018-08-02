@@ -40,3 +40,14 @@ $(function(){
 		}
 	});
 });
+
+$(document).ready(function() {
+  $('#sidebarList').toggleClass('noShow');
+});
+
+$(function(){
+	$('.panel-heading').on('click', function(){
+		$('#sidebarList').toggleClass('noShow');
+		$('#sidebar').toggleClass('fullHeight');
+	});
+});

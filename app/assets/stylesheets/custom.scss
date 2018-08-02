@@ -1,15 +1,14 @@
-@import "bootstrap";
+@import "bootstrap"; 
 
 body{
 	margin:0 !important;
 	padding:0;
+	/*Want the height to be all that we can view on a screen*/
 	height:100vh;
 	background-color: #F3F3F3 !important;
 }
 
 /*----------------------------------------------------------------Table/Content CSS----------------------------------------------------------------*/
-
-
 h1{
 	margin-left: auto;
 	float: none;
@@ -20,7 +19,10 @@ h1{
 }
 
 table.col-12{
+	/*Ensure that the table can't be bigger than this*/
 	max-width: 960px;
+
+	/*break on character, not by word*/
 	word-break: break-all;
 }
 
@@ -34,12 +36,14 @@ th{
 }
 
 .wrapper{
+	/*Determine how this object fits into the flex container it is in, it is a block-level element*/
 	display: flex;
 }
 
 #content{
 	margin-left: 240px;
 	width: 100%;
+	height: 100vh;
 	background-color: #F3F3F3;
 }
 
@@ -124,6 +128,7 @@ button.btn-round-lg:hover{
 }
 
 a[data-toggle="collapse"] {
+	/*Item is positioned relative to where it would be originally*/
     position: relative;
 }
 
@@ -182,10 +187,8 @@ button.search{
 }
 
 p#searchButton{
-	text-align: center;
-	
+	text-align: center;	
 }
-
 
 .far-right{
 	margin-left: 20px;
@@ -194,15 +197,24 @@ p#searchButton{
 /*-------------------------------------------------------------------------Sidebar CSS--------------------------------------------------------------------------*/
 
 .about-section{
+	/*elements displayed inline like span element*/
 	display: inline;
 	list-style: none;
 	padding: 0;
 	width: 100%;
 	margin-left: 16px;
+	/*positioned relative to its parent which is the panel and can be placed in a specific location, very powerful*/
 	position: absolute;
-	bottom: 0;
+	bottom: 10px; /*Note this should change to match the difference in height from Feeds to navbar*/
 }
 
+.noShow{
+	display:none;
+}
+
+.fullHeight{
+	height: 100% !important;
+}
 
 #second-row{
 	margin-left: 16px;
@@ -211,6 +223,7 @@ p#searchButton{
 .about-section li{
 	margin-right: 8px;
 	margin-bottom: 8px;
+	/*Displays inline without ability to change size of element*/
 	display: inline;
 }
 
@@ -236,9 +249,11 @@ p#searchButton{
 	height: 100vh;
 	width: 240px;
 	float: left;
+	/*Fixed means it is in the same position within the viewport while sticky is the position based on scrolling (stick to a part when you scroll down a point)*/
 	position: fixed;
 	overflow-y: auto;
 	padding-top: 72px !important;
+	padding-bottom: 16px;
 	border-right: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -250,11 +265,14 @@ p#searchButton{
 	flex: 0 0 45% !important;
 	width: 240px !important;
 	background-color:white !important;
+
+	/*Displays like a full-width block element, like p*/
 	display:block !important;
 	z-index: 1;
 }
 
 .overlay {
+	/*Make relative so that we can actually specify top left right bottom attributes*/
     position: relative;
     width: 100%;
     height: 100%;
@@ -263,6 +281,7 @@ p#searchButton{
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
+    /*Use this to set the effect above the font in the background*/
     z-index: 2;
     cursor: pointer;
 }
@@ -287,8 +306,8 @@ p#searchButton{
 	}
 
 	.text-white{
+		/*displays like an inline element, but you can alter height and width within the line*/
 		display: inline-block;
-		position:static; 
 		float: none;
 	}
 
@@ -305,6 +324,7 @@ p#searchButton{
 
 @media screen and (max-width: 768px){
 	#sidebar{
+		/*Sets the visibility to 'gone'*/
 		display: none;
 	}
 }
@@ -312,7 +332,6 @@ p#searchButton{
 @media screen and (max-width: 650px){
 	nav{
 		height:auto;
-		position: static;
 		overflow: auto;
 	}
 
@@ -321,8 +340,7 @@ p#searchButton{
 	}
 
 	.text-white{
-		display: inline-block;
-		position:static; 
+		display: inline;
 		float: none;
 	}
 }
@@ -331,13 +349,16 @@ p#searchButton{
 
 /*---------------------------------------------------------------------Error Page CSS----------------------------------------------------------------------------*/
 .error-outer{
+	/*Item displays like a table element*/
 	display: table;
-    position: absolute;
+	/*Position based on outer most POSITIONED ancestor, which may be the body by default if not set- most powerful because it can be positioned anywhere within the parent*/
+    position: relative;
     height: 100%;
     width: 100%;
 }
 
 .error-sheet{
+	/*Item displays like a td element*/ 
 	display: table-cell;
 	vertical-align: middle;
 }

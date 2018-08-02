@@ -2,31 +2,29 @@
     <div class="feeds">
         <h6 class = 'panel-title'>Feeds</h6>
     </div>
-    <div class="panel panel-default panel-group">
-        <div class="panel-heading">
+    <div class="panel-heading">
             <h6 class="panel-title">
-              <a data-toggle="collapse" href="#collapse1">Following</a>
+                <a data-toggle="collapse" href="#collapse1">Following</a>
             </h6>
-        </div>
+    </div>
+    <div id = "sidebarList" class="panel panel-default panel-group">
         <div id="collapse1" class="panel-collapse collapse">
-        <% if current_user != nil%>
-              <% current_user.following.each do |user|%>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item border-top">
-                          <%= link_to user, :class => "email" do%>
-                              <div class = "email"><%= user.email %></div>
-                          <%end%>
-                      </li>
-                    </ul>
-              <%end%>
-              <span class = "border-top"></span>
-        <%end%>
+            <% if current_user != nil%>
+                  <% current_user.following.each do |user|%>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item border-top">
+                              <%= link_to user, :class => "email" do%>
+                                  <div class = "email"><%= user.email %></div>
+                              <%end%>
+                          </li>
+                        </ul>
+                  <%end%>
+                  <span class = "border-top"></span>
+            <%end%>
         </div>
     </div>
-    <div style = "margin-bottom: 16px;">
-        <ul class = "about-section">
-            <li>About</li><li>User Agreement</li><li>Help</li>
-            <li>Advertise</li><li>Content</li><li>Copyright</li>
-        </ul>
-    </div>
+    <ul class = "about-section">
+        <li>About</li><li>User Agreement</li><li>Help</li>
+        <li>Advertise</li><li>Content</li><li>Copyright</li>
+    </ul>
 </nav>
