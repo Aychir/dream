@@ -74,6 +74,40 @@ table{
 	width: inherit;
 }
 
+.form-template-outer{
+	/*Item displays like a table element*/
+	display: table;
+	/*Position based on outer most POSITIONED ancestor, which may be the body by default if not set- most powerful because it can be positioned anywhere within the parent*/
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.form-template-cell{
+	/*Item displays like a td element, aligning vertically*/ 
+	display: table-cell;
+	padding-top: 108px;
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+.form-template-inner{
+	/*Here we center the object horizontally*/
+	margin-left: auto;
+	margin-right: auto;
+	/*This is to add distance from the edge of a smaller screen size.*/
+	/*This prevents text from overflowing, by setting a limit.*/
+	max-width: 90vh;
+	background-color: white;
+	padding-left: 24px;
+	padding-top: 24px;
+	padding-bottom: 24px;
+}
+
+.field input{
+	width: 35%;
+}
+
 /*------------------------------------------------------------------------Navbar CSS------------------------------------------------------------------------*/
 .right-text{
 	font-size: 1rem !important;
@@ -352,7 +386,6 @@ p#searchButton{
 		float: none;
 	}
 }
-
 
 
 /*---------------------------------------------------------------------Error Page CSS----------------------------------------------------------------------------*/

@@ -95,7 +95,7 @@ $(window).resize(function(){
 
 //When screen not wide enough, make search bar full width and collapse all nav-items
 $(function(){
-	$('input').focus(function(){
+	$('.searchBox').focus(function(){
 		$('#left-elements').hide();
 		$('.right-elements').hide();
 		$('input.searchBox').toggleClass('narrowSearch');
