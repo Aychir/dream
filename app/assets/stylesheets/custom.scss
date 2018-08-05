@@ -97,7 +97,7 @@ table{
 	margin-right: auto;
 	/*This is to add distance from the edge of a smaller screen size.*/
 	/*This prevents text from overflowing, by setting a limit.*/
-	max-width: 90vh;
+	max-width: 70%;
 	background-color: white;
 	padding-left: 24px;
 	padding-top: 24px;
@@ -314,6 +314,7 @@ p#searchButton{
 	z-index: 1;
 }
 
+/*To make overlay work, we need it to basically cover EVERYTHING, not make it an add-on to an existing element.*/
 .overlay {
 	/*Make relative so that we can actually specify top left right bottom attributes*/
     position: fixed;
@@ -377,18 +378,6 @@ p#searchButton{
 	}
 }
 
-@media screen and (max-width: 650px){
-	nav{
-		height:auto;
-		overflow: auto;
-	}
-
-	.text-white{
-		display: inline;
-		float: none;
-	}
-}
-
 
 /*---------------------------------------------------------------------Error Page CSS----------------------------------------------------------------------------*/
 .error-outer{
@@ -414,7 +403,7 @@ p#searchButton{
 	padding-left: 24px;
 	padding-right: 24px;
 	/*This prevents text from overflowing, by setting a limit.*/
-	max-width: 90vh;
+	max-width: 60%;
 }
 
 #frowny-face h6{
