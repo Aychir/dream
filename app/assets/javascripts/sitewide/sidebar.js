@@ -11,7 +11,7 @@ $(function(){
         	$('#content').toggleClass('active');
 		}
 		else{
-			$('#content').toggleClass('overlay');
+			$(".overlay").toggleClass('blockDisplay');
 			$('#sidebar').toggleClass('sidebarOverlay');
 			$('.col-12 td').toggleClass('noClick');
 		}
@@ -25,7 +25,7 @@ $(window).resize(function(){
 	}
 
 	if($('#sidebar').hasClass('sidebarOverlay') && $(window).width() > 960){
-		$('#content').toggleClass('overlay');
+		$(".overlay").toggleClass('blockDisplay');
 		$('#sidebar').toggleClass('sidebarOverlay');
 		$('.col-12 td').toggleClass('noClick');
 	}
@@ -33,8 +33,8 @@ $(window).resize(function(){
 
 $(function(){
 	$('#content').on('click', function(){
-		if($('#content').hasClass('overlay')){
-			$('#content').toggleClass('overlay');
+		if($('.overlay').hasClass('blockDisplay')){
+			$(".overlay").toggleClass('blockDisplay');
 			$('#sidebar').toggleClass('sidebarOverlay');
 			$('.col-12 td').toggleClass('noClick');
 		}

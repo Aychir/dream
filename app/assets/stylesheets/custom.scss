@@ -316,7 +316,7 @@ p#searchButton{
 
 .overlay {
 	/*Make relative so that we can actually specify top left right bottom attributes*/
-    position: relative;
+    position: fixed;
     width: 100%;
     /*Want the overlay to take the full visible height, not the size of the content itself*/
     height: 100vh !important;
@@ -326,6 +326,12 @@ p#searchButton{
     bottom: 0;
     background-color: rgba(0,0,0,0.5) !important;
     cursor: pointer;
+    display: none;
+    z-index: 1;
+}
+
+.blockDisplay{
+	display: block !important;
 }
 
 /*-------------------------------------------------Responsive CSS in order from largest to smallest sizes-------------------------------------------------*/
@@ -375,10 +381,6 @@ p#searchButton{
 	nav{
 		height:auto;
 		overflow: auto;
-	}
-
-	#content{
-		width: auto;
 	}
 
 	.text-white{
