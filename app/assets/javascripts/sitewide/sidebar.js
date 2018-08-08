@@ -4,6 +4,7 @@ $(function() {
     });
 });
 
+//If the window > 960px, just collapse the sidebar- else we need the overlay effect
 $(function(){
 	$('#sidebarCollapse').on('click', function(){
 		if($(window).width() > 960){
@@ -18,6 +19,11 @@ $(function(){
 	});
 });
 
+/*
+	As we resize the window, we must check if the sidebar is collapsed- if it is and the
+	window is under 960px, we must undo the effects of the collapsed sidebar. On the other hand
+	if the overlay effect is active, then when it is too big- we want to let the overlay go.
+*/
 $(window).resize(function(){
 	if($('#sidebar').hasClass('active') && $(window).width() <= 960){
 		$('#sidebar').toggleClass('active');
@@ -58,6 +64,13 @@ $(function(){
 	 		//We want to make it do nothing until the display is none
 	 		$("#collapse1").css('display', 'none');
 		}
-		$('.about-section').toggleClass('bottomZero');
+		//This should only toggle if the following height is long enough to push it past bottom - 0
+		if($("#collapse1").outerHeight() > 572 && ($(".about-section").hasClass('bottomZero'))){
+			$('.about-section').toggleClass('bottomZero');
+		}
+		else if($("#collapse1").outerHeight() < 572 && !($(".about-section").hasClass('bottomZero'))){
+			$('.about-section').toggleClass('bottomZero');
+		}
+		console.log($("#collapse1").outerHeight())
 	});
 });

@@ -1,6 +1,7 @@
 <div class = "form-template-outer">
   <div class = "form-template-cell">
     <div class = "form-template-inner">
+      <div class = "insideFormTemplate">
         <h2>Log in</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -13,15 +14,16 @@
           </div>
 
           <div class="actions">
-            <%= f.submit "Log in" %>
+            <%= f.submit "Log in", class: "loginButton" %>
             <% if devise_mapping.rememberable? -%>
-              <div id = "remember" class="field">
+              <div id = "remember">
                 <%= f.check_box :remember_me %> <%= f.label :remember_me %>
               </div>
             <% end -%>
           </div>
         <% end %>
-      <%= render "devise/shared/links" %>
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 </div>
