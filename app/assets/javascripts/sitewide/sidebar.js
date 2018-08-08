@@ -68,7 +68,13 @@ $(function(){
 	 		$("#collapse1").css('display', 'none');
 		}
 		//This should only toggle if the following height is long enough to push it past bottom - 0
-		$('.about-section').toggleClass('bottomZero');
+		if($('#collapse1').outerHeight() > 577 && $(".about-section").hasClass('bottomZero')){
+			$('.about-section').toggleClass('bottomZero');
+		}
+		else if($('#collapse1').outerHeight() < 577 && !$(".about-section").hasClass('bottomZero')){
+			$('.about-section').toggleClass('bottomZero');
+		}
+		//else if()
 		$(".panel-title a").css("pointer-events", "auto");
 	});
 });
