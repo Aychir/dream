@@ -56,6 +56,9 @@ $(function(){
 */
 $(function(){
 	$('.panel-title a').on('click', function(){
+		//This may not work for all browsers- a better approach could be youtube style revealing part of the sidebar and preventing 
+		//	spam from being possible
+		$(".panel-title a").css("pointer-events", "none");
 		//Do this because the timing of the about section was off when collapsing collapse1
 		if($("#collapse1").css('display') == 'none'){
 			$("#collapse1").css('display', 'block');
@@ -65,12 +68,7 @@ $(function(){
 	 		$("#collapse1").css('display', 'none');
 		}
 		//This should only toggle if the following height is long enough to push it past bottom - 0
-		if($("#collapse1").outerHeight() > 572 && ($(".about-section").hasClass('bottomZero'))){
-			$('.about-section').toggleClass('bottomZero');
-		}
-		else if($("#collapse1").outerHeight() < 572 && !($(".about-section").hasClass('bottomZero'))){
-			$('.about-section').toggleClass('bottomZero');
-		}
-		console.log($("#collapse1").outerHeight())
+		$('.about-section').toggleClass('bottomZero');
+		$(".panel-title a").css("pointer-events", "auto");
 	});
 });
