@@ -42,6 +42,17 @@ $(function(){
 	$('#searchIconButton').on('click', function(event){
 		event.stopPropagation();
 
+		if($(window).width() < 720){
+			$('#left-elements').hide();
+			$('.right-elements').hide();
+			$('input.searchBox').toggleClass('narrowSearch');
+			//$('#navSecondHalf').toggleClass('ml-auto');
+			$('input.searchBox').toggleClass('narrowSearch');
+			$('#navSecondHalf').addClass('mr-auto');
+		}
+
+		//if($(window).width() < 540)
+
 		$("#searchIconButton").toggle();
 		$("#searchForm").toggle();
 		$("button.search").css({
@@ -58,10 +69,42 @@ $("body").click(function(){
 	if($("#searchIconButton").css('display') == 'none') {
 		$("#searchIconButton").toggle();
 		$("#searchForm").toggle();
+		$('#left-elements').show();
+		$('.right-elements').show();
+		$('#navSecondHalf').removeClass('mr-auto');
 	}
 });
 
+/*
+	This function checks if we pass the threshold for the search bar of 720px when the search bar is meant
+	to be expanded. If it is expanded and the window becomes smaller than 720, we want to hide all other
+	elements and shift the box to the middle- if you expand back out, you show the elements and take off the
+	right margin added.
+*/
+$(window).resize(function() {
+	if($(window).width() >= 720 && $("#searchIconButton").css('display') == 'none'){
+		$('#left-elements').show();
+		$('.right-elements').show();
+		$('#navSecondHalf').removeClass('mr-auto');
+	}
 
+	else if($(window).width() < 720 && $("#searchIconButton").css('display') == 'none'){
+		$('#left-elements').hide();
+		$('.right-elements').hide();
+		$('#navSecondHalf').addClass('mr-auto');
+	}
+
+	if($(window).width() < 420 && $("button.search").css('display') != 'none'){
+		$("button.search").css({
+			'display': 'none'
+		});
+	}
+	else if($(window).width() >= 420 && $("button.search").css('display') == 'none'){
+		$("button.search").css({
+			'display': 'inline'
+		});
+	}
+});
 
 //Code to have the log-in button match width of sign up button
 $(document).ready(function() {
@@ -94,14 +137,16 @@ $(window).resize(function(){
 });
 
 //When screen not wide enough, make search bar full width and collapse all nav-items
-$(function(){
-	$('.searchBox').focus(function(){
-		$('#left-elements').hide();
-		$('.right-elements').hide();
-		$('input.searchBox').toggleClass('narrowSearch');
-		$('ul.ml-auto').toggleClass('ml-auto');
-	});
-});
+// $(function(){
+// 	$('.searchBox').focus(function(){
+// 		if($(window).width() < 540){
+// 			$('#left-elements').hide();
+// 			$('.right-elements').hide();
+// 			$('input.searchBox').toggleClass('narrowSearch');
+// 			$('ul.ml-auto').toggleClass('ml-auto');
+// 		}
+// 	});
+// });
 
 //Collapsing of the left & right sides of navbar when screen too small
 // $(function(){

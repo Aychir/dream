@@ -69,10 +69,12 @@ $(function(){
 		}
 		//This should only toggle if the following height is long enough to push it past bottom - 0
 		if($('#collapse1').outerHeight() > 577 && $(".about-section").hasClass('bottomZero')){
-			$('.about-section').toggleClass('bottomZero');
+			$('.about-section').removeClass('bottomZero');
+			console.log("Greater")
 		}
 		else if($('#collapse1').outerHeight() < 577 && !$(".about-section").hasClass('bottomZero')){
-			$('.about-section').toggleClass('bottomZero');
+			$('.about-section').addClass('bottomZero');
+			console.log("Greater")
 		}
 		//else if()
 		$(".panel-title a").css("pointer-events", "auto");

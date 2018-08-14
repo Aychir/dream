@@ -4,6 +4,6 @@ $(document).ready(function() {
   });
 
   $(".error-sheet").css({
-  	'padding-top': ($("body").outerHeight()/2 + 'px')
+  	'padding-top': ($("body").outerHeight()/4 + 'px')
   });
 });
