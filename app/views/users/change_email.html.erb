@@ -1,6 +1,17 @@
-<h1>Editing Email</h1>
+<div class = "form-template-outer">
+  <div class = "form-template-cell">
+    <div class = "form-template-inner">
+      <div class = "insideFormTemplate">
+          <h2><span class = "form-title">Change Email</span></h2>
 
-<%= render 'email_form', user: @user %>
+			<%= render 'email_form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', edit_user_path(@user) %>
+			<div class = "actions"><div><%= link_to 'Edit Username', change_username_path(@user) %> |
+			<%= link_to 'Edit Screenname', edit_user_path(@user) %> |
+			<%= link_to 'Edit Password', change_password_path(@user) %> |
+			<%= link_to 'Show', @user %> |
+			<%= link_to 'Back', users_path %></div></div>
+		</div>
+    </div>
+  </div>
+</div>

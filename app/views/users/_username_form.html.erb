@@ -12,11 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username, id: :user_screenname %>
+    <p><%= form.text_field :username, id: :user_screenname, placeholder: "Username", class: "form-field" %></p>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Change Username!", class: "loginButton" %>
   </div>
 <% end %>

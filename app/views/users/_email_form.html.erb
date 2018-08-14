@@ -12,11 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :email, placeholder: user.email %>
-    <%= form.email_field :email %>
+    <p><%= form.email_field :email, placeholder: user.email, class: "form-field" %></p>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Change Email", class: "loginButton" %>
   </div>
 <% end %>

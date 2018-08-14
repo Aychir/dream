@@ -12,11 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :screenname %>
-    <%= form.text_field :screenname, id: :user_screenname %>
+    <p><%= form.text_field :screenname, id: :user_screenname, placeholder: "Screenname", class: "form-field" %></p>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Change Screenname", class: "loginButton"%>
   </div>
 <% end %>
