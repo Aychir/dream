@@ -51,32 +51,30 @@ $(function(){
 	This function will toggle class bottomZero (initially used) because bottom: 0 is set in there
 	and this will allow the only relative ancestor to be the body, so it will position at the bottom
 	of the sidebar. When clicking the link, we first expand/collapse the list for transition purposes
-	and toggle bottomZero, this takes off the bottome attribute and allows the element to overflow to 
+	and toggle bottomZero, this takes off the bottom attribute and allows the element to overflow to 
 	the bottom of the document- in its original position because it has no TLBR attributes set.
 */
 $(function(){
-	$('.panel-title a').on('click', function(){
-		//This may not work for all browsers- a better approach could be youtube style revealing part of the sidebar and preventing 
-		//	spam from being possible
-		$(".panel-title a").css("pointer-events", "none");
-		//Do this because the timing of the about section was off when collapsing collapse1
-		if($("#collapse1").css('display') == 'none'){
-			$("#collapse1").css('display', 'block');
-		}
-		else{
-	 		//We want to make it do nothing until the display is none
-	 		$("#collapse1").css('display', 'none');
-		}
-		//This should only toggle if the following height is long enough to push it past bottom - 0
-		if($('#collapse1').outerHeight() > 577 && $(".about-section").hasClass('bottomZero')){
+	$('#down-arrow a').on('click', function(){
+		$("#collapse1").css('display', 'block');
+		//If content overflows sidebar height, we want to remove bottom: 0 and make the switch to the up arrow
+		if($('#collapse1').height() > $('#sidebar').height()){
+			$("#down-arrow").css('display', 'none');
+			$("#up-arrow").css('display', 'inline-block');
 			$('.about-section').removeClass('bottomZero');
-			console.log("Greater")
 		}
-		else if($('#collapse1').outerHeight() < 577 && !$(".about-section").hasClass('bottomZero')){
-			$('.about-section').addClass('bottomZero');
-			console.log("Greater")
+		//We want to change to up arrow only if the user actually follows someone (already check for authenticated user)
+		else if($('#collapse1').height() < $('#sidebar').height() && $('#collapse1').height() > 0){
+			$("#down-arrow").css('display', 'none');
+			$("#up-arrow").css('display', 'inline-block');
 		}
-		//else if()
-		$(".panel-title a").css("pointer-events", "auto");
+	});
+
+	//Up arrow should always come reverse the effects, no matter what
+	$('#up-arrow a').on('click', function(){
+		$("#collapse1").css('display', 'none');
+		$("#down-arrow").css('display', 'inline-block');
+		$("#up-arrow").css('display', 'none');
+		$('.about-section').addClass('bottomZero');
 	});
 });

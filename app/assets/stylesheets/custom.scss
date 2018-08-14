@@ -6,6 +6,7 @@ body{
 	/*Want the height to be all that we can view on a screen*/
 	height:100vh;
 	background-color: #F3F3F3 !important;
+	color: black;
 }
 
 .row{
@@ -88,6 +89,29 @@ label{
 .test{
 	position: relative;
 }
+
+#notice{
+	margin-left:auto;
+	margin-right: auto;
+	color: #d065ff !important;
+	display: table;
+	padding-top: 16px;
+}
+
+.fa-angle-down{
+	padding-right: 8px;
+}
+
+.fa-angle-up{
+	padding-right: 8px;
+}
+
+#up-arrow{
+	display:none;
+	margin-top: 8px;
+	margin-bottom: 8px !important;
+}
+
 
 /*----------------------------------------------------------------Table/Content CSS----------------------------------------------------------------*/
 h1{
@@ -324,8 +348,8 @@ p#searchButton{
 	width: 100%;
 	margin-left: 16px;
 	position: absolute;
-	padding-top: 22px;
-	padding-bottom: 22px;
+	padding-top: 16px;
+	padding-bottom: 16px;
 }
 
 .bottomZero{

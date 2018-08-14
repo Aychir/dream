@@ -3,9 +3,7 @@
         <h6 class = 'panel-title'>Feeds</h6>
     </div>
     <div class="panel-heading">
-            <h6 class="panel-title">
-                <a data-toggle="collapse" href="#collapse1">Following</a>
-            </h6>
+        <h6 class="panel-title">Following</h6>
         <div id = "sidebarList" class="panel panel-default panel-group">
             <div id="collapse1" class="panel-collapse collapse">
                 <% if current_user != nil%>
@@ -22,6 +20,14 @@
                 <%end%>
             </div>
         </div>
+        <% if current_user != nil%>
+            <p class="panel-title" id = "down-arrow">
+                <a data-toggle="collapse" href="#collapse1"><i class="fa fa-angle-down"></i>Show All</a>
+            </p>
+            <p class="panel-title" id = "up-arrow">
+                <a data-toggle="collapse" href="#collapse1"><i class="fa fa-angle-up"></i>Show None</a>
+            </p>
+        <%end%>
     </div>
     <ul class = "about-section bottomZero">
       <li>About</li><li>User Agreement</li><li>Help</li>
