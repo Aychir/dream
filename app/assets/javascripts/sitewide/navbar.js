@@ -80,6 +80,10 @@ $("body").click(function(){
 	to be expanded. If it is expanded and the window becomes smaller than 720, we want to hide all other
 	elements and shift the box to the middle- if you expand back out, you show the elements and take off the
 	right margin added.
+
+	The second half says that if the search form is active (in a different way than above) then once we get
+	below 420 ;) then make it disappear. On the flip side, if it gets bigger than the threshold, then change it 
+	to an inline element (i.e. make it show up)
 */
 $(window).resize(function() {
 	if($(window).width() >= 720 && $("#searchIconButton").css('display') == 'none'){
