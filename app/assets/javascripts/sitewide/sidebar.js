@@ -38,7 +38,7 @@ $(window).resize(function(){
 });
 
 $(function(){
-	$('#content').on('click', function(){
+	$('.overlay').on('click', function(){
 		if($('.overlay').hasClass('blockDisplay')){
 			$(".overlay").toggleClass('blockDisplay');
 			$('#sidebar').toggleClass('sidebarOverlay');
