@@ -34,6 +34,19 @@ Rails.application.routes.draw do
   patch ':user_id/update_email' => 'users#update_email'
   patch ':user_id/update_username' => 'users#update_username'
 
+  get '/sports', to: 'users#sports', as: :sports
+  get '/funny', to: 'users#funny', as: :funny
+  get '/gaming', to: 'users#gaming', as: :gaming
+  get '/music', to: 'users#music', as: :music
+  get '/pictures', to: 'users#pictures', as: :pictures
+  get '/wtf', to: 'users#wtf', as: :wtf
+  get '/food', to: 'users#food', as: :food
+  get '/animals', to: 'users#animals', as: :animals
+  get '/news', to: 'users#news', as: :news
+  get '/learning', to: 'users#learning', as: :learning
+  get '/fitness', to:'users#fitness', as: :fitness
+  get '/nsfw', to: 'users#nsfw', as: :nsfw
+
   root 'users#index'
   #The root will not always be this, it should be the content- just testing to get signup working
 end

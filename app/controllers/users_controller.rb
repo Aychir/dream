@@ -60,6 +60,66 @@ class UsersController < ApplicationController
     end
   end
 
+  def sports
+    @user = current_user
+    @users = User.all
+  end
+
+  def funny
+    @user = current_user
+    @users = User.all
+  end
+
+  def gaming
+    @user = current_user
+    @users = User.all
+  end
+
+  def music
+    @user = current_user
+    @users = User.all
+  end
+
+  def pictures
+    @user = current_user
+    @users = User.all
+  end
+
+  def wtf
+    @user = current_user
+    @users = User.all
+  end
+
+  def food
+    @user = current_user
+    @users = User.all
+  end
+
+  def animals
+    @user = current_user
+    @users = User.all
+  end
+
+  def news
+    @user = current_user
+    @users = User.all
+  end
+
+  def learning
+    @user = current_user
+    @users = User.all
+  end
+
+  def fitness
+    @user = current_user
+    @users = User.all
+  end
+
+  def nsfw
+    @user = current_user
+    @users = User.all
+  end
+
   # GET /users
   # GET /users.json
   def index

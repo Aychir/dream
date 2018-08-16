@@ -31,95 +31,95 @@
       <div class="panel-heading" id = "following">
         <h6 class="panel-title" style = "margin-bottom: 0;">Popular Categories</h6>
         <ul class = "list-group list-group-flush">
-                <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                <li class = "list-group-item sidebar-categories <%= current_page?(sports_path) ? 'selected-border' : ''%>">
+                  <%= link_to sports_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="fa fa-futbol-o fa-category"></i>
                         <span class = "category">Sports</span>
                       </nav>
                   <%end%>
                 </li>
-                <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                <li class = "list-group-item sidebar-categories <%= current_page?(funny_path) ? 'selected-border' : ''%>">
+                  <%= link_to funny_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="fa fa-smile-o fa-category"></i>
                         <span class = "category">Funny</span>
                       </nav>
                   <%end%>
                 </li>
-                <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                <li class = "list-group-item sidebar-categories <%= current_page?(gaming_path) ? 'selected-border' : ''%>">
+                  <%= link_to gaming_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="fa fa-gamepad fa-category"></i>
-                        <span class = "category">Video Games</span>
+                        <span class = "category">Gaming</span>
                       </nav>
                   <%end%>
                 </li>
-                <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                <li class = "list-group-item sidebar-categories <%= current_page?(music_path) ? 'selected-border' : ''%>">
+                  <%= link_to music_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="fa fa-music fa-category"></i>
                         <span class = "category">Music</span>
                       </nav>
                   <%end%>
                 </li>
-                <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                <li class = "list-group-item sidebar-categories <%= current_page?(pictures_path) ? 'selected-border' : ''%>">
+                  <%= link_to pictures_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="fa fa-camera fa-category"></i>
                         <span class = "category">Pictures</span>
                       </nav>
                   <%end%>
                 </li>
-                <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                <li class = "list-group-item sidebar-categories <%= current_page?(wtf_path) ? 'selected-border' : ''%>">
+                  <%= link_to wtf_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="far fa-frown-open fa-category"></i>
                         <span class = "category">WTF</span>
                       </nav>
                   <%end%>
                 </li>
-                <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                <li class = "list-group-item sidebar-categories <%= current_page?(food_path) ? 'selected-border' : ''%>">
+                  <%= link_to food_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="fas fa-utensils fa-category"></i>
                         <span class = "category">Food</span>
                       </nav>
                   <%end%>
                 </li>
-                <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                <li class = "list-group-item sidebar-categories <%= current_page?(animals_path) ? 'selected-border' : ''%>">
+                  <%= link_to animals_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="fa fa-paw fa-category"></i>
                         <span class = "category">Animals</span>
                       </nav>
                   <%end%>
                 </li>
-                <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                <li class = "list-group-item sidebar-categories <%= current_page?(news_path) ? 'selected-border' : ''%>">
+                  <%= link_to news_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="fa fa-newspaper-o fa-category"></i>
                         <span class = "category">News</span>
                       </nav>
                   <%end%>
                 </li>
-                <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                <li class = "list-group-item sidebar-categories <%= current_page?(learning_path) ? 'selected-border' : ''%>">
+                  <%= link_to learning_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="fa fa-question fa-category"></i>
                         <span class = "category">Learning</span>
                       </nav>
                   <%end%>
                 </li>
-                <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                <li class = "list-group-item sidebar-categories <%= current_page?(fitness_path) ? 'selected-border' : ''%>">
+                  <%= link_to fitness_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="fas fa-dumbbell fa-category"></i>
                         <span class = "category">Fitness</span>
                       </nav>
                   <%end%>
-                  <li class = "list-group-item sidebar-categories">
-                  <%= link_to root_path do%>
+                  <li class = "list-group-item sidebar-categories <%= current_page?(nsfw_path) ? 'selected-border' : ''%>">
+                  <%= link_to nsfw_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="far fa-surprise fa-category"></i>
                         <span class = "category">NSFW</span>
