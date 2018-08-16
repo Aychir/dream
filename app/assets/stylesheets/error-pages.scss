@@ -1,0 +1,28 @@
+.error-outer{
+	/*Item displays like a table element*/
+	display: table;
+	/*Position based on outer most POSITIONED ancestor, which may be the body by default if not set- most powerful because it can be positioned anywhere within the parent*/
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.error-sheet{
+	/*Item displays like a td element, aligning vertically*/ 
+	display: table-cell;
+}
+
+.error-inner{
+	/*Here we center the object horizontally*/
+	margin-left: auto;
+	margin-right: auto;
+	/*This is to add distance from the edge of a smaller screen size.*/
+	padding-left: 24px;
+	padding-right: 24px;
+	/*This prevents text from overflowing, by setting a limit.*/
+	max-width: 60%;
+}
+
+#frowny-face h6{
+	font-size: 3rem;
+}

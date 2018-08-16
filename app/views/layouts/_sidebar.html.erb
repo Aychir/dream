@@ -1,7 +1,7 @@
 <nav id="sidebar">
     <div id="quick-feeds">
             <ul class = "list-group list-group-flush">
-                <li class = "list-group-item sidebar-categories">
+                <li class = "list-group-item sidebar-categories <%= current_page?(root_path) || current_page?(users_path)  ? 'selected-border' : ''%>">
                   <%= link_to root_path do%>
                       <nav class = "nav navbar-nav align-items-center">
                         <i class="fa fa-home fa-category"></i>
@@ -74,7 +74,7 @@
                 <li class = "list-group-item sidebar-categories">
                   <%= link_to root_path do%>
                       <nav class = "nav navbar-nav align-items-center">
-                        <i class="fa fa-exclamation fa-category"></i>
+                        <i class="far fa-frown-open fa-category"></i>
                         <span class = "category">WTF</span>
                       </nav>
                   <%end%>
@@ -137,7 +137,7 @@
                 <div id="collapse1" class="panel-collapse collapse">
                           <% current_user.following.each do |user|%>
                                 <ul class="list-group list-group-flush">
-                                  <li class="list-group-item border-top">
+                                  <li class="list-group-item border-top <%= current_page?(user) ? 'selected-border' : ''%>">
                                       <%= link_to user, :class => "email" do%>
                                           <div class = "email"><%= user.email %></div>
                                       <%end%>

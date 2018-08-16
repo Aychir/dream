@@ -32,6 +32,6 @@ class ExceptionsController < ApplicationController
   #Layout
   def layout_status
     puts "Hey"
-    @status.to_s == "404" ? "application" : "error"
+    @status.to_s >= "400" ? "application" : "error"
   end
 end

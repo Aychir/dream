@@ -1,0 +1,109 @@
+.field input{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid #7a1bb4 2px;
+}
+
+.insideFormTemplate *{
+	max-width: 485px;
+}
+
+label{
+	display: inline-block !important;
+}
+
+.loginButton{
+	/*Float to the left of all other inline elements, which we made the remember me button and checkbox*/
+	float: left;
+	margin-right: 16px;
+	border-radius: 22.5px !important;
+	background-color: #d065ff;
+	border-color: #d065ff;
+	border-style: solid;
+	cursor: pointer;
+	padding: 3px 18px;
+}
+
+#new_user{
+	margin-top: 16px;
+}
+
+#remember *{
+	vertical-align: middle;
+}
+
+#remember label{
+	margin: 0;
+}
+
+.insideFormTemplate{
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 485px;
+}
+
+.form-title{
+	display: table;
+	margin: 0 auto;
+}
+
+.actions *{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.form-field{
+	display: block;
+	width: 90% !important;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.form-field:focus{
+	outline-style: none;
+	border-bottom: solid #7a1bb4 2px;
+}
+
+.actions{
+	display: flex;
+	align-items: center;
+}
+
+.test{
+	position: relative;
+}
+
+.form-template-outer{
+	/*Item displays like a table element*/
+	display: table;
+	/*Position based on outer most POSITIONED ancestor, which may be the body by default if not set- most powerful because it can be positioned anywhere within the parent*/
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.form-template-cell{
+	/*Item displays like a td element, aligning vertically*/ 
+	display: table-cell;
+	padding-top: 108px;
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+.form-template-inner{
+	/*Here we center the object horizontally*/
+	margin-left: auto;
+	margin-right: auto;
+	/*This is to add distance from the edge of a smaller screen size.*/
+	/*This prevents text from overflowing, by setting a limit.*/
+	max-width: 70%;
+	background-color: white;
+	padding-top: 24px;
+	padding-bottom: 24px;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.form-template-inner .field input{
+	width: 60%;
+}

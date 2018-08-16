@@ -1,0 +1,142 @@
+@import "bootstrap"; 
+
+.about-section{
+	/*elements displayed inline like span element*/
+	display: inline;
+	list-style: none;
+	padding: 0;
+	width: 100%;
+	margin-left: 16px;
+	position: absolute;
+	padding-top: 16px;
+	padding-bottom: 16px;
+}
+
+.bottomZero{
+	bottom: 0;
+}
+
+.noShow{
+	display:none;
+}
+
+.panel-heading{
+	position: relative;
+}
+
+.fullHeight{
+	height: 100% !important;
+}
+
+#second-row{
+	margin-left: 16px;
+}
+
+.about-section li{
+	margin-right: 8px;
+	margin-bottom: 8px;
+	/*Displays inline without ability to change size of element*/
+	display: inline;
+}
+
+.panel-title{
+	margin-left: 16px;
+}
+
+.panel-group, .panel-default, .panel-collapse{
+	height: 100%;
+}
+
+#sidebar{
+	box-shadow: 0px 0px 0px 2px #ececec;
+	background-color: white;
+	overflow-x: hidden;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar{
+	height: 100vh;
+	width: 240px;
+	float: left;
+	/*Fixed means it is in the same position within the viewport while sticky is the position based on scrolling (stick to a part when you scroll down a point)*/
+	position: fixed;
+	overflow-y: auto;
+	padding-top: 62px !important;
+	padding-bottom: 16px;
+	border-right: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.list-group-item:hover{
+	background-color: #E8E8E8;
+}
+
+.sidebarOverlay{
+	flex: 0 0 45% !important;
+	width: 240px !important;
+	background-color:white !important;
+
+	/*Displays like a full-width block element, like p*/
+	display:block !important;
+	z-index: 1;
+}
+
+/*To make overlay work, we need it to basically cover EVERYTHING, not make it an add-on to an existing element.*/
+.overlay {
+	/*Make relative so that we can actually specify top left right bottom attributes*/
+    position: fixed;
+    width: 100%;
+    /*Want the overlay to take the full visible height, not the size of the content itself*/
+    height: 100vh !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5) !important;
+    cursor: pointer;
+    display: none;
+    z-index: 1;
+    margin-left: 240px;
+}
+
+.blockDisplay{
+	display: block !important;
+}
+
+.sidebar-categories{
+	display: table;
+	width: 100%;
+	border-top: none;
+	border-bottom: none;
+}
+
+.sidebar-categories nav{
+	flex-direction: row;
+}
+
+#following{
+	margin-top: 16px;
+}
+
+.category{
+	display: table-cell;
+	vertical-align: middle; 
+}
+
+.selected-border{
+	border-left: 5px #d065ff solid !important;
+	padding-left: calc(1.25rem - 5px);
+}
+
+nav *:hover{
+	color: black;
+	text-decoration: none;
+}
+
+#up-arrow{
+	display:none;
+	margin-top: 8px;
+	margin-bottom: 8px !important;
+}

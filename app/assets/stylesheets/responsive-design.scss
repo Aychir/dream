@@ -1,0 +1,42 @@
+@import "bootstrap";
+
+@media screen and (max-width: 960px){
+	#content{
+		margin: auto;
+	}
+
+	table{
+		word-break: break-all; 
+	}
+
+	td{
+		font-size: 0.7em;
+	}
+
+	.spacer{
+		height: 70px;
+	}
+
+	.text-white{
+		/*displays like an inline element, but you can alter height and width within the line*/
+		display: inline-block;
+		float: none;
+	}
+
+	#sidebar{
+		flex: 0 0 0%;
+		width: 0%;
+	}
+
+	.col-md-2{
+		flex: 0 0 0%;
+		width: 0% !important;
+	}
+}
+
+@media screen and (max-width: 768px){
+	#sidebar{
+		/*Sets the visibility to 'gone'*/
+		display: none;
+	}
+}
