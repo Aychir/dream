@@ -61,7 +61,7 @@ $(function(){
 		if($('#collapse1').height() > $('#sidebar').height()){
 			$("#down-arrow").css('display', 'none');
 			$("#up-arrow").css('display', 'inline-block');
-			$('.about-section').removeClass('bottomZero');
+			//$('.about-section').removeClass('bottomZero');
 		}
 		//We want to change to up arrow only if the user actually follows someone (already check for authenticated user)
 		else if($('#collapse1').height() < $('#sidebar').height() && $('#collapse1').height() > 0){
@@ -75,6 +75,6 @@ $(function(){
 		$("#collapse1").css('display', 'none');
 		$("#down-arrow").css('display', 'inline-block');
 		$("#up-arrow").css('display', 'none');
-		$('.about-section').addClass('bottomZero');
+		//$('.about-section').addClass('bottomZero');
 	});
 });

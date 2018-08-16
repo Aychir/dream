@@ -1,37 +1,163 @@
 <nav id="sidebar">
-    <div class="feeds">
-        <h6 class = 'panel-title'>Feeds</h6>
+    <div id="quick-feeds">
+            <ul class = "list-group list-group-flush">
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-home fa-category"></i>
+                        <span class = "category">Home</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-line-chart fa-category"></i>
+                        <span class = "category">Hot</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-random fa-category"></i>
+                        <span class = "category">New</span>
+                      </nav>
+                  <%end%>
+                </li>
+            </ul>
     </div>
-    <div class="panel-heading">
-        <h6 class="panel-title">Following</h6>
-        <div id = "sidebarList" class="panel panel-default panel-group">
-            <div id="collapse1" class="panel-collapse collapse">
-                <% if current_user != nil%>
-                      <% current_user.following.each do |user|%>
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item border-top">
-                                  <%= link_to user, :class => "email" do%>
-                                      <div class = "email"><%= user.email %></div>
-                                  <%end%>
-                              </li>
-                            </ul>
-                      <%end%>
-                      <span class = "border-top"></span>
-                <%end%>
+    <div id = "category-feeds">
+      <div class="panel-heading" id = "following">
+        <h6 class="panel-title" style = "margin-bottom: 0;">Popular Categories</h6>
+        <ul class = "list-group list-group-flush">
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-home fa-category"></i>
+                        <span class = "category">Sports</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-line-chart fa-category"></i>
+                        <span class = "category">Funny</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-random fa-category"></i>
+                        <span class = "category">Video Games</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-random fa-category"></i>
+                        <span class = "category">Music</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-random fa-category"></i>
+                        <span class = "category">Pictures</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-random fa-category"></i>
+                        <span class = "category">WTF</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-random fa-category"></i>
+                        <span class = "category">Food</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-random fa-category"></i>
+                        <span class = "category">Animals</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-random fa-category"></i>
+                        <span class = "category">News</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-random fa-category"></i>
+                        <span class = "category">Learning</span>
+                      </nav>
+                  <%end%>
+                </li>
+                <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-random fa-category"></i>
+                        <span class = "category">Fitness</span>
+                      </nav>
+                  <%end%>
+                  <li class = "list-group-item sidebar-categories">
+                  <%= link_to root_path do%>
+                      <nav class = "nav navbar-nav align-items-center">
+                        <i class="fa fa-random fa-category"></i>
+                        <span class = "category">NSFW</span>
+                      </nav>
+                  <%end%>
+                </li>
+                </li>
+            </ul>
+          </div>
+    </div> 
+    <% if current_user != nil%>
+        <div class="panel-heading" id = "following">
+            <h6 class="panel-title">Following</h6>
+            <div id = "sidebarList" class="panel panel-default panel-group">
+                <div id="collapse1" class="panel-collapse collapse">
+                          <% current_user.following.each do |user|%>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item border-top">
+                                      <%= link_to user, :class => "email" do%>
+                                          <div class = "email"><%= user.email %></div>
+                                      <%end%>
+                                  </li>
+                                </ul>
+                          <%end%>
+                          <span class = "border-top"></span>
+                </div>
             </div>
+                <p class="panel-title" id = "down-arrow">
+                    <a data-toggle="collapse" href="#collapse1"><i class="fa fa-angle-down"></i>Show All</a>
+                </p>
+                <p class="panel-title" id = "up-arrow">
+                    <a data-toggle="collapse" href="#collapse1"><i class="fa fa-angle-up"></i>Show None</a>
+                </p>
         </div>
-        <% if current_user != nil%>
-            <p class="panel-title" id = "down-arrow">
-                <a data-toggle="collapse" href="#collapse1"><i class="fa fa-angle-down"></i>Show All</a>
-            </p>
-            <p class="panel-title" id = "up-arrow">
-                <a data-toggle="collapse" href="#collapse1"><i class="fa fa-angle-up"></i>Show None</a>
-            </p>
-        <%end%>
-    </div>
-    <ul class = "about-section bottomZero">
-      <li>About</li><li>User Agreement</li><li>Help</li>
-      <li>Advertise</li><li>Content</li><li>Copyright</li>
+    <%end%>
+    <ul class = "about-section">
+          <li>About</li><li>User Agreement</li><li>Help</li>
+          <li>Advertise</li><li>Content</li><li>Copyright</li>
     </ul>
 </nav>
 
