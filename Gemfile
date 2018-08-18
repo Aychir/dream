@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'rails-controller-testing'
 gem "aws-sdk-s3", require: false
+gem 'mini_magick'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
