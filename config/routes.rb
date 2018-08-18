@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :reports, :only => [:new, :create]
 
+  resources :posts
+
   match ':user/follow_user', to: 'relationships#follow_user', as: :follow_user, via: [:get, :post]
   match ':user/unfollow_user', to: 'relationships#unfollow_user', as: :unfollow_user, via: [:get, :post]
   #Calling follow_user_path will return an HTTP post response by invoking follow_user from the relationships controller

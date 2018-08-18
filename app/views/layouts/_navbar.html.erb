@@ -26,7 +26,7 @@
         <%else%>
             <li id = "square" class = "nav-item right-elements"></li>
             <li class = "d-none d-sm-block"><%= link_to current_user.email, current_user, class: "nav-item right-text text-white right-elements"%></li>
-            <li class = "nav-item"><button id = "postButton" class = "btn-round-lg text-white right-elements">POST</button></li>
+            <li class = "nav-item"><%= link_to '<button id = "postButton" class = "btn-round-lg text-white right-elements">Post</button>'.html_safe, new_post_path%></li>
         <%end%>
     </ul>
 </nav>
