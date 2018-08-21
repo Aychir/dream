@@ -1,10 +1,20 @@
 <% if @post.image.attached? %>
 <!-- @post.image.present? will always return true, use attached? to check presence -->
-<div id = "post-outer-container">
-  <p>
-    <strong>Image:</strong>
-    <br>
-    <%= image_tag @post.image.variant(resize: "500x500") %>
-  </p>
-</div>
+    <div class = post-container>
+	    <strong>Image:</strong>
+	    <br>
+	    <%#@post.image.variant(rotate: "90")%>
+	    <%# image_tag @post.image, class: "image-resize"%>
+	    <% if @width > 1080 %>
+	    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize"%>
+	    <% elsif @width < 320 %>
+	    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize"%>
+	    <%end%>
+
+	    <% if @ratio < 0.8 %>
+	    	<%#crop%>
+	    	<p>Bad ratio</p>
+	    <%end%>
+	</div>
+  
 <% end %>

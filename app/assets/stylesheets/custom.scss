@@ -55,7 +55,7 @@ th{
 	margin-left: 240px;
 	margin-top: 54px !important;
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	background-color: #F3F3F3;
 }
 
@@ -86,4 +86,19 @@ table{
 	width: inherit;
 }
 
+.post-container{
+	width: 614px;
+	overflow: hidden;
+	background: black;
+	position: relative;
+}
 
+.image-resize{
+	max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+img {
+    image-orientation: from-image;
+}

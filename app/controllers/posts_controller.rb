@@ -6,6 +6,10 @@ class PostsController < ApplicationController
 	end
 
 	def show
+		@width = @post.image.metadata[:width]
+		@height = @post.image.metadata[:height]
+		@ratio = @width/@height
+		#puts @post.image.metadata[:width]
   	end
 
   	def new
