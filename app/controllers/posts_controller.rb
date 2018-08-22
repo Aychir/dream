@@ -8,8 +8,27 @@ class PostsController < ApplicationController
 	def show
 		@width = @post.image.metadata[:width]
 		@height = @post.image.metadata[:height]
-		@ratio = @width/@height
-		#puts @post.image.metadata[:width]
+		@ratio = @width.to_f/@height
+
+		# if @width > 1080
+		# 	puts "Width too big"
+		# 	@post.image.variant(resize: "1080")
+		# elsif @width < 320
+		# 	puts "Width too small"
+		# 	@post.image.variant(resize: "320")
+		# end
+
+		# if @ratio < 0.8
+		# 	#shave vertically
+		# 	puts "Height too big"
+		# 	@shaveSize = @width/0.8
+		# 	@post.image.variant(shave: "x#{@height - @shaveSize}")
+		# elsif @ratio > 1.91
+		# 	#shave horizontally
+		# 	puts "Height too small"
+		# 	@shaveSize = 1.91 * height;
+		# 	@post.image.variant(shave: "#{@width - @shaveSize}")
+		# end
   	end
 
   	def new

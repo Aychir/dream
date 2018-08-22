@@ -9,11 +9,12 @@
 	    <% elsif @width > 1080 && @ratio < 0.8 %>
 	    	<%#crop vertically%>
 	    	<% @shaveSize = 1080/0.8 %>
-	    	<% @shaveHeight = 1080/@ratio %>
+	    	<%# @shaveHeight = 1080/@ratio %>
 	    	<%= @shaveSize %>
-	    	<%= @shaveHeight %>
-	    	<%= @shaveHeight - @shaveSize %>
-	    	<%= image_tag @post.image.variant(resize: "1080", shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
+	    	<%= @height %>
+	    	<%= @height - @shaveSize %>
+	    	<% @post.image.variant(resize: "1080", :only_path "true").processed.service_url %>
+	    	<%= image_tag @post.image.variant(shave: "#{@height - @shaveSize}"), class: "image-resize" %>
 	    <% elsif @width > 1080 && @ratio >1.91%>
 	    	<% @shaveSize = 1.91 * 566 %>
 	    	<%= image_tag @post.image.variant(resize: "1080", shave: "#{@width - @shaveSize}"), class: "image-resize" %>
