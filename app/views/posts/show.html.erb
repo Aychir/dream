@@ -1,22 +1,41 @@
 <% if @post.image.attached? %>
-<!-- @post.image.present? will always return true, use attached? to check presence -->
     <div class = post-container>
-	    <strong>Image:</strong>
-	    <br>
-	    <%#@post.image.variant(rotate: "90")%>
 	    <% if @width > 1080 && @ratio >= 0.8 && @ratio <= 1.91%>
+	    	<%#good ratio no need to crop%>
 	    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize"%>
 	    <% elsif @width > 1080 && @ratio < 0.8 %>
 	    	<%#crop vertically%>
 	    	<% @shaveSize = 1080/0.8 %>
 	    	<% @shaveHeight = 1080/@ratio %>
-	    	<%= @shaveSize %>
-	    	<%= @shaveHeight %>
-	    	<%= @shaveHeight - @shaveSize %>
 	    	<%= image_tag @post.image.variant(resize: "1080", shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
-	    <% elsif @width > 1080 && @ratio >1.91%>
-	    	<% @shaveSize = 1.91 * 566 %>
-	    	<%= image_tag @post.image.variant(resize: "1080", shave: "#{@width - @shaveSize}"), class: "image-resize" %>
+	    <% elsif @width > 1080 && @ratio > 1.91%>
+	    	<%#No longer cropping horizontally%>
+	    	<%# @shaveSize = 1.91 * 566 %>
+	    	<%# @shaveWidth = @ratio * 566 %>
+	    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize" %>
+	    <% elsif @width < 320 && @ratio >= 0.8 && @ratio <= 1.91 %>
+	    	<%= image_tag @post.image.variant(resize: "320"), class: "image-resize"%>
+	    <% elsif @width < 320 && @ratio < 0.8 %>
+	    	<%#crop vertically%>
+	    	<% @shaveSize = 320/0.8 %>
+	    	<% @shaveHeight = 320/@ratio %>
+	    	<%= image_tag @post.image.variant(resize: "320", shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
+	    <% elsif @width < 320 && @ratio > 1.91 %>
+			<%# No longer cropping horizontally%>	    	
+			<%# @shaveSize = 1.91 * 168 %>
+	    	<%# @shaveWidth = @ratio * 168 %>
+	    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize" %>
+	    <% elsif @width >= 320 && @width <= 1080 && @ratio < 0.8 %>
+	    	<% @shaveSize = @width/0.8 %>
+	    	<% @shaveHeight = @width/@ratio %>
+	    	<%= image_tag @post.image.variant(shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
+	    <% elsif @width >= 320 && @width <= 1080 && @ratio > 1.91 %>
+	    	<%# No longer cropping horizontally%>
+	    	<%# @shaveSize = 1.91 * @height %>
+	    	<%# @shaveWidth = @ratio * @height %>
+	    	<%= image_tag @post.image, class: "image-resize" %>
+	    <% else %>
+	    	<%= image_tag @post.image, class: "image-resize" %>
 	    <%end%>
 	    
 	</div>
