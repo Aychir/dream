@@ -1,8 +1,6 @@
 <% if @post.image.attached? %>
     <div class = post-container>
-	    <video>
-  			<source src=<%= rails_blob_url(@post.image) %> type="video/mp4" />
-  		</video>
+	    <%=video_tag(url_for(@post.image))%>  
 	</div>
   
 <% end %>
