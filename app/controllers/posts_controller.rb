@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 		@width = @post.image.metadata[:width]
 		@height = @post.image.metadata[:height]
 		@ratio = @width.to_f/@height
+		@type = @post.image.blob.content_type
+		puts @type.chr
   	end
 
   	def new
