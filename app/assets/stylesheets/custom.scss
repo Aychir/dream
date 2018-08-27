@@ -88,6 +88,7 @@ table{
 
 .post-container{
 	width: 614px;
+	/*height: 768px;*/
 	overflow: hidden;
 	background: black;
 	position: relative;
@@ -95,8 +96,8 @@ table{
 
 .image-resize{
 	max-width: 100%;
-    height: auto;
-    width: auto;
+	max-height: 768px;
+    width: 100%;
 }
 
 img {
@@ -110,4 +111,18 @@ video {
 	display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.too-narrow{
+	max-width: 100%;
+	max-height: 768px;
+    width: 100%;
+	object-fit: cover;
+}
+
+.too-wide{
+	max-width: 100%;
+	max-height: 768px;
+    width: 100%;
+	object-fit: contain;
 }
