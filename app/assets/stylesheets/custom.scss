@@ -87,11 +87,13 @@ table{
 }
 
 .post-container{
-	width: 614px;
-	/*height: 768px;*/
+	max-width: 614px;
 	overflow: hidden;
 	background: black;
 	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .image-resize{
@@ -126,3 +128,13 @@ video {
     width: 100%;
 	object-fit: contain;
 }
+
+.post-title{
+	background-color: white;
+    width: 614px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+    padding-left: 8px;
+}
+

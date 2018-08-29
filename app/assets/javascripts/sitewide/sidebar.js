@@ -4,6 +4,14 @@ $(function() {
     });
 });
 
+$(function(){
+	if($(window).width() <= 960){
+		$('#content').addClass('active');
+		$('#sidebar').addClass('active');
+	}	
+});
+
+
 //If the window > 960px, just collapse the sidebar- else we need the overlay effect
 $(function(){
 	$('#sidebarCollapse').on('click', function(){
@@ -15,6 +23,12 @@ $(function(){
 			$(".overlay").toggleClass('blockDisplay');
 			$('#sidebar').toggleClass('sidebarOverlay');
 			$('.col-12 td').toggleClass('noClick');
+			if($('#sidebar').hasClass('sidebarOverlay')){
+				$('#sidebar').removeClass('active');
+			}
+			else{
+				$('#sidebar').addClass('active');
+			}
 		}
 	});
 });
@@ -25,15 +39,24 @@ $(function(){
 	if the overlay effect is active, then when it is too big- we want to let the overlay go.
 */
 $(window).resize(function(){
-	if($('#sidebar').hasClass('active') && $(window).width() <= 960){
-		$('#sidebar').toggleClass('active');
-        $('#content').toggleClass('active');
+	if(!($('#sidebar').hasClass('active')) && $(window).width() <= 960){
+		if(!($('#sidebar').hasClass('sidebarOverlay'))){
+			$('#sidebar').addClass('active');
+        	$('#content').addClass('active');
+    	}
+	}
+
+	//How to differentiate from small to big and from big to big
+	if(($('#content').hasClass('active')) && $(window).width() > 960){
+		$('#sidebar').removeClass('active');
+        $('#content').removeClass('active');
 	}
 
 	if($('#sidebar').hasClass('sidebarOverlay') && $(window).width() > 960){
 		$(".overlay").toggleClass('blockDisplay');
 		$('#sidebar').toggleClass('sidebarOverlay');
 		$('.col-12 td').toggleClass('noClick');
+		$('#content').removeClass('active');
 	}
 });
 
