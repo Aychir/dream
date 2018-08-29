@@ -70,6 +70,7 @@ $(function(){
 			$(".overlay").toggleClass('blockDisplay');
 			$('#sidebar').toggleClass('sidebarOverlay');
 			$('.col-12 td').toggleClass('noClick');
+			$('#sidebar').addClass('active');
 		}
 	});
 });
