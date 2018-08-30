@@ -1,7 +1,11 @@
 <% if @post.image.attached? %>
-	<div id = "post">
-		<div class = "post-title"><%= @post.title %></div>
 		<div class = "post-container">
+			<ul class = "post-header">
+				<li><p id = "post-avatar" class = "post-header-list"></p></li>
+				<li><p class = "post-header-list">&#8226;</p></li>
+				<li><p class = "post-header-list">User</p></li>
+			</ul>
+			<div class = "post-title"><%= @post.title %></div>
 			<% if @type.chr == 'i' %>
 				<% if @width > 1080 && @ratio >= 0.8 && @ratio <= 1.91%>
 			    	<%#good ratio no need to crop%>
@@ -47,6 +51,12 @@
 					<%= video_tag(url_for(@post.image), class: "too-narrow", :controls => "true") %>
 				<% end %>
 			<% end %>
+			<ul id = "post-footer">
+				<li>
+					<i class="fas fa-arrow-up arrow post-footer-list"></i>
+					<i class="fas fa-arrow-down arrow post-footer-list"></i>
+					<p id = "comment-count">N Points</p>
+				</li>
+			</ul>
 		</div>
-	</div>
 <% end %>

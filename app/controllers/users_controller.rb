@@ -26,7 +26,6 @@ class UsersController < ApplicationController
 
   def change_password()
     @user = User.find(params[:user_id])
-    #Adjust this to be nested param to be [:user][:id]?
     if(@user != current_user)
       redirect_to users_path, :notice => "You cannot edit another user's password..."
     end
@@ -38,7 +37,6 @@ class UsersController < ApplicationController
 
   def change_email()
     @user = User.find(params[:user_id])
-    #Adjust this to be nested param to be [:user][:id]?
     if(@user != current_user)
       redirect_to users_path, :notice => "You cannot edit another user's email..."
     end
@@ -50,7 +48,6 @@ class UsersController < ApplicationController
 
   def change_username()
     @user = User.find(params[:user_id])
-    #Adjust this to be nested param to be [:user][:id]?
     if(@user != current_user)
       redirect_to users_path, :notice => "You cannot edit another user's username..."
     end

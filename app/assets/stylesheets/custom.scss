@@ -89,11 +89,14 @@ table{
 .post-container{
 	max-width: 614px;
 	overflow: hidden;
-	background: black;
+	background: white;
 	position: relative;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin-top: 16px;
 }
 
 .image-resize{
@@ -138,3 +141,61 @@ video {
     padding-left: 8px;
 }
 
+.post-header{
+	list-style: none;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	align-items: center;
+}
+
+.post-header li{
+	float: left;
+}
+
+li .post-header-list{
+	margin-bottom: 0;
+	color: gray;
+	margin-right: 6px;
+}
+
+#post-avatar { 
+	width: 25px; 
+	height: 25px; 
+	background: #d065ff;
+	margin-right: 8px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-left: 8px;
+}
+
+#post-footer{
+	list-style: none;
+	overflow: hidden;
+	padding: 0;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	display: flex;
+	align-items: center;
+}
+
+#post-footer li{
+	float: left;
+	display: table;
+}
+
+.arrow{
+	font-size: 28px;
+}
+
+.post-footer-list{
+	margin-left: 8px;
+}
+
+#comment-count{
+	display: table-cell;
+	margin-bottom: 0;
+	vertical-align: middle;
+	padding-left: 8px;
+}
