@@ -183,6 +183,12 @@ li .post-header-list{
 #post-footer li{
 	float: left;
 	display: table;
+	width: 33%;
+	text-align: center;
+}
+
+#post-footer li p{
+	display: table-cell;
 }
 
 .arrow{
@@ -194,8 +200,8 @@ li .post-header-list{
 }
 
 #comment-count{
-	display: table-cell;
+	display: inline-block !important;
 	margin-bottom: 0;
-	vertical-align: middle;
+	vertical-align: super;
 	padding-left: 8px;
 }
