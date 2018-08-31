@@ -4,7 +4,8 @@
 				<li><p id = "post-avatar" class = "post-header-list"></p></li>
 				<li><p class = "post-header-list">&#8226;</p></li>
 				<li><p class = "post-header-list"><%=@post.user.username%></p></li>
-				<li class = "right-side-header"><p class = "post-header-list"><%=time_ago_in_words(@post.created_at)%> ago</p></li>
+				<li id = "right-side-header"><p class = "post-header-list"><%=time_ago_in_words(@post.created_at)%> ago</p></li>
+				<li><i id = "three-dots" class = "fa fa-ellipsis-v post-header-list"></i></li>
 			</ul>
 			<div class = "post-title"><%= @post.title %></div>
 			<% if @type.chr == 'i' %>
@@ -62,7 +63,7 @@
 					<p>N Comments</p>
 				</li>
 				<li>
-					<p>SHARE</p>
+					<button type="button" id = "share-button" class="btn btn-outline">Share</button>
 				</li>
 			</ul>
 		</div>
