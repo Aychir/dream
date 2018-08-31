@@ -148,6 +148,7 @@ video {
 	margin: 0;
 	display: flex;
 	align-items: center;
+	border-bottom: 1px solid rgb(219, 205, 203);
 }
 
 .post-header li{
@@ -204,4 +205,9 @@ li .post-header-list{
 	margin-bottom: 0;
 	vertical-align: super;
 	padding-left: 8px;
+}
+
+#footer-middle{
+	border-left: 1px solid rgb(169, 135, 165);
+	border-right: 1px solid rgb(169, 135, 165);
 }
