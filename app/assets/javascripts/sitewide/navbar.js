@@ -71,6 +71,9 @@ $("body").click(function(){
 		$("#searchForm").toggle();
 		$('#left-elements').show();
 		$('.right-elements').show();
+		if($(window).width() < 360){
+			$('#square').hide();
+		}
 		$('#navSecondHalf').removeClass('mr-auto');
 	}
 });
@@ -86,13 +89,13 @@ $("body").click(function(){
 	to an inline element (i.e. make it show up)
 */
 $(window).resize(function() {
-	if($(window).width() >= 720 && $("#searchIconButton").css('display') == 'none'){
+	if($(window).width() > 760 && $("#searchIconButton").css('display') == 'none'){
 		$('#left-elements').show();
 		$('.right-elements').show();
 		$('#navSecondHalf').removeClass('mr-auto');
 	}
 
-	else if($(window).width() < 720 && $("#searchIconButton").css('display') == 'none'){
+	else if($(window).width() <= 760 && $("#searchIconButton").css('display') == 'none'){
 		$('#left-elements').hide();
 		$('.right-elements').hide();
 		$('#navSecondHalf').addClass('mr-auto');
@@ -135,7 +138,7 @@ $(window).resize(function(){
 	if($(window).width() <= 360){
 		$("#square").hide();
 	}
-	else{
+	else if($(window).width() > 360 && $("#searchIconButton").css('display') != 'none'){
 		$("#square").show();
 	}
 });

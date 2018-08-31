@@ -29,6 +29,8 @@ class User < ApplicationRecord
   has_many :reports
   has_many :reports, as: :reported
 
+  has_many :posts
+
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   #devise says to add this if we want to allow sign up with username
 

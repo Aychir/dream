@@ -10,15 +10,15 @@ class PostsController < ApplicationController
 		@height = @post.image.metadata[:height]
 		@ratio = @width.to_f/@height
 		@type = @post.image.blob.content_type
-		puts "WIDTH: #{@width}" 
   	end
 
   	def new
-    	@post = Post.new
+    	#@post = Post.new
+    	@post = current_user.posts.build
   	end
 
   	def create
-    	@post = Post.new(post_params)
+    	@post = current_user.posts.new(post_params)
 
 	    respond_to do |format|
 	      if @post.save

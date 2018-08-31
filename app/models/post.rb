@@ -1,5 +1,8 @@
 require_relative '/Users/chiriac/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/file_validators-2.3.0/lib/file_validators.rb' 
 class Post < ApplicationRecord
+
+	belongs_to :user
+
 	has_one_attached :image
 
 	validate :image_attached

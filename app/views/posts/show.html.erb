@@ -3,7 +3,8 @@
 			<ul class = "post-header">
 				<li><p id = "post-avatar" class = "post-header-list"></p></li>
 				<li><p class = "post-header-list">&#8226;</p></li>
-				<li><p class = "post-header-list">User</p></li>
+				<li><p class = "post-header-list"><%=@post.user.username%></p></li>
+				<li class = "right-side-header"><p class = "post-header-list"><%=time_ago_in_words(@post.created_at)%> ago</p></li>
 			</ul>
 			<div class = "post-title"><%= @post.title %></div>
 			<% if @type.chr == 'i' %>
