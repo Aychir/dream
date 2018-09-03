@@ -20,6 +20,10 @@ class PostsController < ApplicationController
   	def create
     	@post = current_user.posts.new(post_params)
 
+    	@post.tags = @post.tags[0].split(",")
+
+    	#We must better parse the input and think about how it would get parsed (# vs ,)
+
 	    respond_to do |format|
 	      if @post.save
 	        format.html { redirect_to @post, notice: 'User was successfully created.' }
@@ -39,6 +43,6 @@ class PostsController < ApplicationController
    		 end
 
 		def post_params
-			params.require(:post).permit(:caption, :title, :image)
+			params.require(:post).permit(:caption, :title, :image, tags: [])
 		end
 end

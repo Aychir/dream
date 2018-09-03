@@ -5,7 +5,26 @@
 				<li><p class = "post-header-list">&#8226;</p></li>
 				<li><p class = "post-header-list"><%=@post.user.username%></p></li>
 				<li id = "right-side-header"><p class = "post-header-list"><%=time_ago_in_words(@post.created_at)%> ago</p></li>
-				<li><i id = "three-dots" class = "fa fa-ellipsis-v post-header-list"></i></li>
+				<!-- <li> -->
+					<!-- <div class="dropdown">
+  						<button onclick="myFunction()" class="dropbtn">
+  							<i class="fas fa-ellipsis-v"></i>
+  						</button>
+					    <div id="post-dropdown" class="dropdown-content">
+					        <a href="#">Link 1</a>
+					    	<a href="#">Link 2</a>
+					    	<a href="#">Link 3</a>
+					  	</div>
+					</div> -->
+					<div class="dropdown">
+					    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+					    <div id="myDropdown" class="dropdown-content">
+						    <a href="#">Link 1</a>
+						    <a href="#">Link 2</a>
+						    <a href="#">Link 3</a>
+					    </div>
+					</div>
+				<!-- </li> -->
 			</ul>
 			<div class = "post-title"><%= @post.title %></div>
 			<% if @type.chr == 'i' %>

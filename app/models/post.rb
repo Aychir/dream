@@ -11,6 +11,8 @@ class Post < ApplicationRecord
 
 	validate :correct_image_size
 
+	serialize :tags, Array
+
 	private
 
 	def image_attached
