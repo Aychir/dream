@@ -18,7 +18,7 @@
 					</div>
 				</li>
 			</ul>
-			<div class = "post-title"><%= @post.title %></div>
+			<div class = "post-title"><%= link_to @post.title, post_url(@post.id) %></div>
 			<% if @type.chr == 'i' %>
 				<% if @width > 1080 && @ratio >= 0.8 && @ratio <= 1.91%>
 			    	<%#good ratio no need to crop%>
