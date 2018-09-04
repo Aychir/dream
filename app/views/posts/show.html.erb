@@ -5,16 +5,17 @@
 				<li><p class = "post-header-list">&#8226;</p></li>
 				<li><p class = "post-header-list"><%=@post.user.username%></p></li>
 				<li id = "right-side-header"><p class = "post-header-list"><%=time_ago_in_words(@post.created_at)%> ago</p></li>
-				<div class="dropdown">
-				    <button onclick="myFunction()" class="dropbtn" id = "settings-button">
-							<i class="fas fa-ellipsis-v"></i>
+				<li>
+					<div class="dropdown post-header-list">
+					    <button onclick="postDropdownFunction()" id = "settings-button">
+								<i class="fas fa-ellipsis-v"></i>
 						</button>
-				    <div id="myDropdown" class="dropdown-content">
-					    <a href="#">Link 1</a>
-					    <a href="#">Link 2</a>
-					    <a href="#">Link 3</a>
-				    </div>
-				</div>
+					    <div id="settings-dropdown" class="dropdown-content">
+						    <a href="#">Hide Post</a>
+						    <a href="#">Report Post</a>
+					    </div>
+					</div>
+				</li>
 			</ul>
 			<div class = "post-title"><%= @post.title %></div>
 			<% if @type.chr == 'i' %>
@@ -28,8 +29,6 @@
 			    	<%= image_tag @post.image.variant(resize: "1080", shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
 			    <% elsif @width > 1080 && @ratio > 1.91%>
 			    	<%#No longer cropping horizontally%>
-			    	<%# @shaveSize = 1.91 * 566 %>
-			    	<%# @shaveWidth = @ratio * 566 %>
 			    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize" %>
 			    <% elsif @width < 320 && @ratio >= 0.8 && @ratio <= 1.91 %>
 			    	<%= image_tag @post.image.variant(resize: "320"), class: "image-resize"%>
@@ -40,8 +39,6 @@
 			    	<%= image_tag @post.image.variant(resize: "320", shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
 			    <% elsif @width < 320 && @ratio > 1.91 %>
 					<%# No longer cropping horizontally%>	    	
-					<%# @shaveSize = 1.91 * 168 %>
-			    	<%# @shaveWidth = @ratio * 168 %>
 			    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize" %>
 			    <% elsif @width >= 320 && @width <= 1080 && @ratio < 0.8 %>
 			    	<% @shaveSize = @width/0.8 %>
@@ -49,8 +46,6 @@
 			    	<%= image_tag @post.image.variant(shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
 			    <% elsif @width >= 320 && @width <= 1080 && @ratio > 1.91 %>
 			    	<%# No longer cropping horizontally%>
-			    	<%# @shaveSize = 1.91 * @height %>
-			    	<%# @shaveWidth = @ratio * @height %>
 			    	<%= image_tag @post.image, class: "image-resize" %>
 			    <% else %>
 			    	<%= image_tag @post.image, class: "image-resize" %>
