@@ -1,5 +1,5 @@
 <% if @post.image.attached? %>
-		<div class = "post-container">
+		<div class = "post-container" id = <%= @postId %> >
 			<ul class = "post-header">
 				<li><p id = "post-avatar" class = "post-header-list"></p></li>
 				<li><p class = "post-header-list">&#8226;</p></li>
@@ -11,8 +11,9 @@
 								<i class="fas fa-ellipsis-v"></i>
 						</button>
 					    <div id="settings-dropdown" class="dropdown-content">
-						    <a href="#">Hide Post</a>
-						    <a href="#">Report Post</a>
+					    	<a href="#" onclick="copyPostUrlFunction('<%= post_url(@post.id) %>')">Get Post Link</a>
+						    <a href="#" onclick="hidePostFunction(<%= @postId %>)">Hide Post</a>
+						    <%= link_to 'Report Post', new_report_path(@post)%>
 					    </div>
 					</div>
 				</li>
@@ -58,16 +59,13 @@
 				<% end %>
 			<% end %>
 			<ul id = "post-footer">
-				<li>
+				<li id = "footer-middle">
 					<i class="fas fa-arrow-up arrow post-footer-list"></i>
 					<i class="fas fa-arrow-down arrow post-footer-list"></i>
 					<p id = "comment-count">N Points</p>
 				</li>
-				<li id = "footer-middle">
+				<li >
 					<p>N Comments</p>
-				</li>
-				<li>
-					<button type="button" id = "share-button" class="btn btn-outline">Share</button>
 				</li>
 			</ul>
 		</div>
