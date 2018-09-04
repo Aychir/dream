@@ -20,13 +20,11 @@ class PostsController < ApplicationController
   	def create
     	@post = current_user.posts.new(post_params)
 
-    	@post.tags = @post.tags[0].split(",")
-
-    	#We must better parse the input and think about how it would get parsed (# vs ,)
+    	parse_tags
 
 	    respond_to do |format|
 	      if @post.save
-	        format.html { redirect_to @post, notice: 'User was successfully created.' }
+	        format.html { redirect_to @post, notice: 'Your post was successfully created!' }
 	        format.json { render :show, status: :created }
 	      else
 	        format.html { render :new }
@@ -44,5 +42,21 @@ class PostsController < ApplicationController
 
 		def post_params
 			params.require(:post).permit(:caption, :title, :image, tags: [])
+		end
+
+		def parse_tags
+			#make the tag lowercase for consistency
+    		@post.tags[0].downcase
+
+    		#parsing the input for hashtags
+    		@post.tags = @post.tags[0].split("\#")
+
+    		#Take off the first element if splitting it makes an empty string at first index
+    		@post.tags.shift if @post.tags[0] == ""
+
+    		#remove all nonalphanumeric characters in every string
+    		@post.tags.each do |tag|
+    			tag.gsub!(/\p{^Alnum}/, '')
+    		end
 		end
 end
