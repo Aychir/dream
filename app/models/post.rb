@@ -3,6 +3,9 @@ class Post < ApplicationRecord
 
 	belongs_to :user
 
+	has_many :reports
+  	has_many :reports, as: :reported_content
+
 	has_one_attached :image
 
 	validate :image_attached

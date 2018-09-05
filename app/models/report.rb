@@ -4,4 +4,6 @@ class Report < ApplicationRecord
 		#I think that it screwed it up because it still said reported did not exist but this allowed it to work
 	belongs_to :user
 
+	belongs_to :post
+
 end

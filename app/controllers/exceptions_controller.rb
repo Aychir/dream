@@ -1,5 +1,6 @@
 class ExceptionsController < ApplicationController
   respond_to :json, :js, :html, :xml
+  skip_before_action :authenticate_user!
   before_action :status
   layout :layout
 

@@ -194,13 +194,14 @@ li .post-header-list{
 
 .arrow{
 	font-size: 28px;
+	cursor: pointer;
 }
 
 .post-footer-list{
 	margin-left: 8px;
 }
 
-#comment-count{
+.footer-counts{
 	display: inline-block !important;
 	margin-bottom: 0;
 	vertical-align: super;
@@ -230,4 +231,17 @@ li .post-header-list{
 #share-button:hover{
 	background-color:rgb(106,90,205);
 	color: white;
+}
+
+.upvoted{
+	color: orange;
+}
+
+.downvoted{
+	color: blue;
+}
+
+#comment-icon{
+	font-size: 22px;
+	cursor: pointer;
 }

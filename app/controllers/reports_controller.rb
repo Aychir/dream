@@ -4,6 +4,7 @@ class ReportsController < ApplicationController
   before_action :require_login #You have to be logged in before you can do any of this
 
   def new
+    #here check if user or post through reported_type
     @user = User.find(params[:format])
     if(@user != current_user && !current_user_has_reported(current_user.id, @user.id))
       @report = Report.new
