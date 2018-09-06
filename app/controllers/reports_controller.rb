@@ -4,7 +4,11 @@ class ReportsController < ApplicationController
   before_action :require_login #You have to be logged in before you can do any of this
 
   def new
-    if(params[:report_source] == "user")
+    @userCheck = true
+
+    puts " HEY #{params[:reported_source]}"
+
+    if(params[:reported_source] == "user")
       @user = User.find(params[:format])
       if(@user != current_user && !current_user_has_reported(current_user.id, @user.id))
         @report = Report.new
@@ -13,10 +17,12 @@ class ReportsController < ApplicationController
       else
         redirect_to users_path, notice: 'You cannot report this user again...'
       end
+
     else
+      @userCheck = false
       @post = Post.find(params[:format])
+      @report = Report.new
       #here need to check if user has already reported the post
-      #need to differentiate form type at new
     end
   end
 

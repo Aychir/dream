@@ -14,7 +14,7 @@
 					    	<a href="#" onclick="copyPostUrlFunction('<%= post_url(@post.id) %>')">Get Post Link</a>
 						    <a href="#" onclick="hidePostFunction(<%= @postId %>)">Hide Post</a>
 						    <%if current_user != nil%>
-						    	<%= link_to 'Report Post', new_report_path(@post, report_source: "post")%>
+						    	<%= link_to 'Report Post', new_report_path(@post, reported_source: "post")%>
 						    <%end%>
 					    </div>
 					</div>

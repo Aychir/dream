@@ -1,5 +1,11 @@
 <h1>Editing User</h1>
 
-<%= render 'form', report: @report %>
+<%if @userCheck == true%>
+	<%puts @report%>
+	<%= render 'form', report: @report %>
+<%elsif @userCheck == false%>
+	<%puts @report%>
+	<%= render 'postReportForm', report: @report %>
+<%end%>
 
 <%= link_to 'Back', users_path %>
