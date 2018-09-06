@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_01_163526) do
+ActiveRecord::Schema.define(version: 2018_09_06_024948) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2018_09_01_163526) do
     t.integer "reported_id"
     t.integer "user_id"
     t.string "reported_type"
+    t.integer "post_id"
+    t.index ["post_id"], name: "index_reports_on_post_id"
     t.index ["user_id", "reported_id"], name: "index_reports_on_user_id_and_reported_id", unique: true
     t.index ["user_id"], name: "index_reports_on_user_id"
   end

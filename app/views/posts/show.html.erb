@@ -13,7 +13,9 @@
 					    <div id="settings-dropdown" class="dropdown-content">
 					    	<a href="#" onclick="copyPostUrlFunction('<%= post_url(@post.id) %>')">Get Post Link</a>
 						    <a href="#" onclick="hidePostFunction(<%= @postId %>)">Hide Post</a>
-						    <%= link_to 'Report Post', new_report_path(@post)%>
+						    <%if current_user != nil%>
+						    	<%= link_to 'Report Post', new_report_path(@post, report_source: "post")%>
+						    <%end%>
 					    </div>
 					</div>
 				</li>

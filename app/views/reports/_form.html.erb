@@ -13,6 +13,7 @@
 
   <div class="form-group center">
     <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :post_id, value: 244 %>
   </div> 
 
   <div class="field">
@@ -38,6 +39,7 @@
 
   <div class="form-group center">
     <%= form.hidden_field :reported_type, value: "User" %>
+    <%= form.hidden_field :reported_type, value: "Post" %>
   </div> 
 
   <div class="actions">
