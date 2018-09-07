@@ -9,7 +9,7 @@
 			<%= render 'form', report: @report %>
 		<%elsif @userCheck == false%>
 			<%puts @report%>
-			<%= render 'postReportForm', report: @report %>
+			<%= render 'postReportForm', report: @report, post: @post %>
 		<%end%>
 	  </div>
     </div>

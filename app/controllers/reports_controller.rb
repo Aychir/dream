@@ -6,8 +6,6 @@ class ReportsController < ApplicationController
   def new
     @userCheck = true
 
-    puts " HEY #{params[:reported_source]}"
-
     if(params[:reported_source] == "user")
       @user = User.find(params[:format])
       if(@user != current_user && !current_user_has_reported(current_user.id, @user.id))
@@ -33,12 +31,10 @@ class ReportsController < ApplicationController
       @report = Report.new(report_params)     
         respond_to do |format|
           if @report.save
-            puts "HI"
             format.html { redirect_to users_path, notice: 'Report submitted.' }
             format.json { render :show, status: :created, location: @report.user_id }
           else
-            puts "RIP"
-            format.html { redirect_to new_report_path, notice: 'Report not submitted! Please try again.'}
+            format.html { redirect_to users_path, notice: 'Report not submitted! Please try again.'}
             format.json { render json: @report.errors, status: :unprocessable_entity }
           end
         end
