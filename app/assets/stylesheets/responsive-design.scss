@@ -40,3 +40,10 @@
 		margin: auto;
 	}
 }
+
+@media screen and (max-width: 420px){
+	.far-right{
+		padding: 0.15rem 0.25rem !important;
+		font-size: 0.8rem !important;
+	}
+}
