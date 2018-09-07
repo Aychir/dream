@@ -1,11 +1,17 @@
-<h1>Editing User</h1>
+<div class = "form-template-outer">
+  <div class = "form-template-cell">
+    <div class = "form-template-inner">
+      <div class = "insideFormTemplate">
+		<h1><span class = "form-title">Report</span></h1>
 
-<%if @userCheck == true%>
-	<%puts @report%>
-	<%= render 'form', report: @report %>
-<%elsif @userCheck == false%>
-	<%puts @report%>
-	<%= render 'postReportForm', report: @report %>
-<%end%>
-
-<%= link_to 'Back', users_path %>
+		<%if @userCheck == true%>
+			<%puts @report%>
+			<%= render 'form', report: @report %>
+		<%elsif @userCheck == false%>
+			<%puts @report%>
+			<%= render 'postReportForm', report: @report %>
+		<%end%>
+	  </div>
+    </div>
+  </div>
+</div>

@@ -107,3 +107,7 @@ label{
 .form-template-inner .field input{
 	width: 60%;
 }
+
+.form-template-inner .field input[type="radio"]{
+	width: inherit;
+}

@@ -6,7 +6,7 @@
 				<li><p class = "post-header-list"><%=@post.user.username%></p></li>
 				<li id = "right-side-header"><p class = "post-header-list"><%=time_ago_in_words(@post.created_at)%> ago</p></li>
 				<li>
-					<div class="dropdown post-header-list">
+					<div class="post-header-list">
 					    <button onclick="postDropdownFunction()" id = "settings-button">
 								<i class="fas fa-ellipsis-v"></i>
 						</button>

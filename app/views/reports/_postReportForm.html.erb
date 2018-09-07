@@ -17,10 +17,10 @@
   </div> 
 
   <div class="field">
-    <span class = "Test"><%= form.radio_button :report_message, "This user has posted inappropriate content."%> This user has posted inappropriate content.</span>
+    <span class = "Test"><%= form.radio_button :report_message, "This user has posted inappropriate content."%> This post has inappropriate content.</span>
   </br>
   </br>
-    <%= form.radio_button :report_message, "This user has abused another in some fashion."%> This user has abused another in some fashion.
+    <%= form.radio_button :report_message, "This user has abused another in some fashion."%> This post has abused another user in some fashion.
   </br>
   </br>
     <%= form.radio_button :report_message, "This user's profile information/picture is abusive or hateful."%> This user's profile information/picture is abusive or hateful.
@@ -43,6 +43,6 @@
   </div> 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Report", class: "loginButton" %>
   </div>
 <% end %>
