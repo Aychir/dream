@@ -1,0 +1,9 @@
+<% if has_voted_for(current_user.id, @post.id)%>
+						<%= link_to vote_path(voted_relationship_id(current_user.id, @post.id)), method: "DELETE", :remote => true do%>
+							<i id = "the-up-arrow" class="fas fa-arrow-up arrow post-footer-list upvoted"></i>
+						<%end%>
+					<%else%>
+						<%= link_to votes_path(vote: {:user_id => current_user.id, :post_id => @post.id}), method: "POST", :remote => true do%>
+							<i id = "the-up-arrow" class="fas fa-arrow-up arrow post-footer-list"></i>
+						<%end%>
+					<%end%>

@@ -6,6 +6,9 @@ class Post < ApplicationRecord
 	has_many :reports
   	has_many :reports, as: :reported_content
 
+  	has_many :votes
+  	has_many :voters, through: :votes
+
 	has_one_attached :image
 
 	validate :image_attached

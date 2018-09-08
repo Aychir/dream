@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	include VotesHelper
 
 	before_action :set_post, only: [:show]
 
@@ -14,7 +15,6 @@ class PostsController < ApplicationController
   	end
 
   	def new
-    	#@post = Post.new
     	@post = current_user.posts.build
   	end
 
@@ -32,14 +32,14 @@ class PostsController < ApplicationController
 	        format.json { render json: @post.errors, status: :unprocessable_entity }
 	      end
 	    end
-  end
+  	end
 
 
 	private
 
 		def set_post
       		@post = Post.find(params[:id])
-   		 end
+   		end
 
 		def post_params
 			params.require(:post).permit(:caption, :title, :image, tags: [])

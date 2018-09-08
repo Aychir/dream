@@ -31,6 +31,9 @@ class User < ApplicationRecord
 
   has_many :posts
 
+  has_many :votes
+  has_many :liked_posts, through: :votes
+
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   #devise says to add this if we want to allow sign up with username
 
