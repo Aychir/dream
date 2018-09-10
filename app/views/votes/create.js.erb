@@ -1,0 +1,15 @@
+// app/views/upvotes/create.js.erb
+$(document).ready(function() {
+  $('#the-up-arrow').css('color', 'red');
+  //$("#new_vote").attr("method", "");
+  $("#new_vote").attr("action", "244/votes/18");
+  $("#new_vote").append("<input name=\"_method\" type=\"hidden\" value=\"delete\" />");
+
+  // $.ajax({
+  // 		type: "DELETE",
+  // 		url: "244/votes/18",
+  // 		beforeSend: $.rails.CSRFProtection
+  // });
+});
+
+//here i need to change the form on the show post so it references the delete method

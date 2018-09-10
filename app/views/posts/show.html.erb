@@ -62,7 +62,7 @@
 			<% end %>
 			<ul id = "post-footer">
 				<li id = "footer-middle">
-					<%= form_for @post.votes.build, :remote => true do |f| %>
+					<%= form_for [@post, @vote], :remote => true do |f| %>
   						<%= f.hidden_field :user_id, value: current_user.id %>
   						<%= f.hidden_field :post_id, value: @post.id %>
   						<%= button_tag type: 'submit' do %>

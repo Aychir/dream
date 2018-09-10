@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 		@ratio = @width.to_f/@height
 		@type = @post.image.blob.content_type
 		@postId = @post.id
+		@vote = Vote.new
   	end
 
   	def new

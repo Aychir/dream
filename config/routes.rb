@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :reports, :only => [:new, :create]
 
-  resources :posts
-
-  resources :votes, :only => [:create, :destroy]
+  resources :posts do
+      resources :votes, :only => [:create, :update, :destroy]
+  end
 
   match ':user/follow_user', to: 'relationships#follow_user', as: :follow_user, via: [:get, :post]
   match ':user/unfollow_user', to: 'relationships#unfollow_user', as: :unfollow_user, via: [:get, :post]
