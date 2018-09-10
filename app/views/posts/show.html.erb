@@ -62,14 +62,20 @@
 			<% end %>
 			<ul id = "post-footer">
 				<li id = "footer-middle">
-					<%= form_for [@post, @vote], :remote => true do |f| %>
+					<%= form_for [@post, @vote], :remote => true, :html => {:id => "the-upvote-form", :class => "vote-buttons"} do |f| %>
   						<%= f.hidden_field :user_id, value: current_user.id %>
   						<%= f.hidden_field :post_id, value: @post.id %>
   						<%= button_tag type: 'submit' do %>
   							<i id = "the-up-arrow" class="fas fa-arrow-up arrow post-footer-list"></i>
   						<%end%>
 					<% end %>
-					<i id = "the-down-arrow" class="fas fa-arrow-down arrow post-footer-list down-arrow"></i>
+					<%= form_for [@post, @vote], :remote => true, :html => {:id => "the-downvote-form",  :class => "vote-buttons"} do |f| %>
+  						<%= f.hidden_field :user_id, value: current_user.id %>
+  						<%= f.hidden_field :post_id, value: @post.id %>
+  						<%= button_tag type: 'submit' do %>
+  							<i id = "the-down-arrow" class="fas fa-arrow-down arrow post-footer-list down-arrow"></i>
+  						<%end%>
+					<% end %>
 					<p class = "footer-counts">N Points</p>
 				</li>
 				<li>
