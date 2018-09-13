@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :posts do
       resources :votes, :only => [:create, :update, :destroy]
   end
+  delete 'votes/:vote_id/destroy_downvote', to: 'votes#destroy_downvote', as: :destroy_downvote
+  post 'votes/create_downvote', to: 'votes#create_downvote', as: :create_downvote
 
   match ':user/follow_user', to: 'relationships#follow_user', as: :follow_user, via: [:get, :post]
   match ':user/unfollow_user', to: 'relationships#unfollow_user', as: :unfollow_user, via: [:get, :post]

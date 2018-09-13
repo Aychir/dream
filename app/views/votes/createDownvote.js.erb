@@ -1,0 +1,3 @@
+$('#the-down-arrow').css('color', 'purple');
+$("#the-downvote-form").attr("action", "/votes/<%= @vote.id %>/destroy_downvote");
+$("#the-downvote-form").append("<input id = \"undo-downvote\" name=\"_method\" type=\"hidden\" value=\"delete\" />");

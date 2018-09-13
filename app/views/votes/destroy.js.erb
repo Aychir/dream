@@ -1,6 +1,3 @@
-$(document).ready(function() {
-	console.log('now we want to upvote');
-	$('#the-up-arrow').css('color', 'black');
-	$("#the-upvote-form").attr("action", "/posts/<%= @post_id %>/votes");
-	$("#undo-upvote").remove();
-});
+$('#the-up-arrow').css('color', 'black');
+$("#the-upvote-form").attr("action", "/posts/<%= @post_id %>/votes");
+$("#undo-upvote").remove();
