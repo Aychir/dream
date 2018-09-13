@@ -75,11 +75,11 @@ end
   
 So what's next?
 -User not signed in shouldn't be able to vote but to open up a sign up/login dialogue?
--Implement voting for downvotes as well
+-Implement voting for downvotes as well X
 -Differentiate between voting types
 -Change implementation to reflect change in voting type
 -Show when the post is upvoted and have a delete form instead of create form ready when page is loaded 
-end
+end (Upon load determine if user has upvoted or downvoted)
 -If a user has upvoted and then clicks the downvote, it must create a downvote and delete the upvote
 
 =end

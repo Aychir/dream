@@ -1,4 +1,4 @@
-$('#the-up-arrow').css('color', 'red');
+$('#the-up-arrow').css('color', 'orange');
 $("#the-upvote-form").attr("action", "/posts/<%= @post_id %>/votes/<%= @vote.id %>");
 $("#the-upvote-form").append("<input id = \"undo-upvote\" name=\"_method\" type=\"hidden\" value=\"delete\" />");
 
