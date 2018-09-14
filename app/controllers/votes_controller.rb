@@ -67,7 +67,7 @@ class VotesController < ApplicationController
   end
 
 	def vote_params
-		params.require(:vote).permit(:user_id, :post_id)
+		params.require(:vote).permit(:user_id, :post_id, :vote_type)
 	end
 end
 
@@ -76,7 +76,7 @@ end
 So what's next?
 -User not signed in shouldn't be able to vote but to open up a sign up/login dialogue?
 -Implement voting for downvotes as well X
--Differentiate between voting types
+-Differentiate between voting types X
 -Change implementation to reflect change in voting type
 -Show when the post is upvoted and have a delete form instead of create form ready when page is loaded 
 end (Upon load determine if user has upvoted or downvoted)
