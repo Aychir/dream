@@ -42,11 +42,28 @@ class VotesController < ApplicationController
 
     #This will be the update from upvote to downvote
     @post_id = params[:vote][:post_id]
+
+    respond_to do |format|
+      if @vote.update(vote_params)
+        format.js
+      else
+        @vote.destroy
+      end
+    end
   end
 
   def update_to_upvote
     @post_id = params[:vote][:post_id]
     @vote_id = params[:vote_id]
+    @vote = Vote.find(@vote_id)
+
+    respond_to do |format|
+      if @vote.update(vote_params)
+        format.js { render 'update_to_upvote.js.erb' }
+      else
+        @vote.destroy
+      end
+    end
   end
 
   def destroy
