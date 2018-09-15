@@ -63,8 +63,10 @@
 			<ul id = "post-footer">
 				<li id = "footer-middle">
 					<% if user_signed_in? %>
-						<% if has_voted_for(current_user.id, @post.id) %>
+						<% if has_upvoted_for(current_user.id, @post.id) %>
 							<%= render 'upvotedForm', post: @post, vote: @vote %>
+						<% elsif has_downvoted_for(current_user.id, @post.id)%>
+							<%= render 'downvotedForm', post: @post, vote: @vote %>
 						<% else %>
 							<%= render 'noVotesForm', post: @post, vote: @vote %>
 						<% end %>

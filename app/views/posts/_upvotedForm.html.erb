@@ -7,7 +7,8 @@
 		<i id = "the-up-arrow" class="fas fa-arrow-up arrow post-footer-list upvoted"></i>
 	<%end%>
 <% end %>
-<%= form_for [@post, @vote], :remote => true, :html => {:id => "the-downvote-form",  :class => "vote-buttons"}, :url => create_downvote_path do |f| %>
+<%= form_for [@post, @vote], :remote => true, :html => {:id => "the-downvote-form",  :class => "vote-buttons", :method => :patch} do |f| %>
+	<script type="text/javascript">changeDownvoteAction(<%= @post.id %>, <%= voted_relationship_id(current_user.id, @post.id)%>);</script>
 	<%# How do we delete the upvote and which process goes first? %>
 	<%# instead of deleting, could we just change the vote type it still is a vote? %>
 	<%# javascript response should change both forms, we need to either update as an upvote or delete the downvote #>
@@ -18,3 +19,8 @@
 		<i id = "the-down-arrow" class="fas fa-arrow-down arrow post-footer-list down-arrow"></i>
 	<%end%>
 <% end %>
+
+<%# I think there is an issue with changeUpvoteAction
+ Do this:
+ 	Load an upvoted post
+ 	Down, up, up, up %>

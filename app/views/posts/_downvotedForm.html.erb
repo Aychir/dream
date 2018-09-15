@@ -1,0 +1,11 @@
+
+
+<%= form_for [@post, @vote], :remote => true, :html => {:id => "the-downvote-form", :class => "vote-buttons", :method => :delete} do |f| %>
+	<script type="text/javascript">changeDownvoteAction(<%= @post.id %>, <%= voted_relationship_id(current_user.id, @post.id)%>);</script>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.hidden_field :post_id, value: @post.id %>
+	<%= f.hidden_field :vote_id, value: voted_relationship_id(current_user.id, @post.id) %>
+	<%= button_tag type: 'submit' do %>
+		<i id = "the-down-arrow" class="fas fa-arrow-down arrow post-footer-list downvoted"></i>
+	<%end%>
+<% end %>
