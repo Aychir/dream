@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :reports, :only => [:new, :create]
 
   resources :posts do
-      resources :votes, :only => [:create, :update, :destroy, :destroy_downvote] do
-          delete 'destroy_downvote', to: 'votes#destroy_downvote', as: :destroy_downvote
+      resources :votes, :only => [:create, :update, :destroy, :update_to_upvote] do
+          patch 'update_to_upvote', to: 'votes#update_to_upvote', as: :update_to_upvote
       end
   end
   post 'votes/create_downvote', to: 'votes#create_downvote', as: :create_downvote

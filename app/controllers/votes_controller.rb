@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
 
-	before_action :set_post, only: [:destroy]
+	before_action :set_post, only: [:destroy, :update]
 
   def create
     @vote = Vote.new(vote_params)
@@ -34,6 +34,19 @@ class VotesController < ApplicationController
     else
       @vote.destroy
     end
+  end
+
+  def update
+    #need to render createDownvote/create form so that the form points to deleting the new shit
+    #When one vote is made, the other form should be a create action
+
+    #This will be the update from upvote to downvote
+    @post_id = params[:vote][:post_id]
+  end
+
+  def update_to_upvote
+    @post_id = params[:vote][:post_id]
+    @vote_id = params[:vote_id]
   end
 
   def destroy

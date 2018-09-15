@@ -1,3 +1,7 @@
 $('#the-up-arrow').css('color', 'black');
 $("#the-upvote-form").attr("action", "/posts/<%= @post_id %>/votes");
 $("#undo-upvote").remove();
+
+$('#the-down-arrow').css('color', 'black');
+$("#the-downvote-form").attr("action", "/votes/<%= @vote_id %>/create_downvote");
+$("#undo-downvote").remove();
