@@ -1,3 +1,10 @@
+<%# 
+		In this form, the user has not voted on a post. Both forms should create a vote, just of different types.
+
+		Note: I repeat a lot of the hidden fields as a necessity because the forms will stay on the page until the user refreshes
+		or changes pages, the values must persist in the entirety of the cycle of voting on a post without refreshing.
+%>
+
 <%= form_for [@post, @vote], :remote => true, :html => {:id => "the-upvote-form", :class => "vote-buttons"} do |f| %>
 		<%= f.hidden_field :user_id, value: current_user.id %>
 		<%= f.hidden_field :post_id, value: @post.id %>
@@ -14,4 +21,3 @@
 			<i id = "the-down-arrow" class="fas fa-arrow-down arrow post-footer-list down-arrow"></i>
 		<%end%>
 <% end %>
-<%# Need to update create.js.eb to make the downvote form an update vote type kind of deal %>

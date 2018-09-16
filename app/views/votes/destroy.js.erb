@@ -1,13 +1,16 @@
+//Up arrow form should change back to a create vote of upvote type action
 $('#the-up-arrow').css('color', 'black');
 $("#the-upvote-form").attr("action", "/posts/<%= @post_id %>/votes");
+//Many different points that destroy can be reached, so we need to clear all of these methods
 $("#the-upvote-form input[value='patch']").remove();
-$("#the-upvote-form input[value='delete']").remove(); //Added this because of upvotedForm
+$("#the-upvote-form input[value='delete']").remove();
 $("#undo-upvote").remove();
 $("#changed-to-upvote").remove();
 
+//Up arrow form should change back to a create vote of downvote type action
 $('#the-down-arrow').css('color', 'black');
-//wrong action
 $("#the-downvote-form").attr("action", "/votes/create_downvote");
+//Many different points that destroy can be reached, so we need to clear all of these methods
 $("#the-downvote-form input[value='patch']").remove();
 $("#the-downvote-form input[value='delete']").remove();
 $("#undo-downvote").remove();

@@ -1,3 +1,12 @@
+<%# 
+		In this form, the user has already upvoted a post. The first form is to delete the vote while the second form is an update
+		method in order to change the vote_type.
+
+		Note: I repeat a lot of the hidden fields as a necessity because the forms will stay on the page until the user refreshes
+		or changes pages, the values must persist in the entirety of the cycle of voting on a post without refreshing. Also I have the
+		scripts because the initial action has the wrong route to perform.
+%>
+
 <%= form_for [@post, @vote], :remote => true, :html => {:id => "the-upvote-form", :class => "vote-buttons", :method => :delete} do |f| %>
 	<script type="text/javascript">changeUpvoteAction(<%= @post.id %>, <%= voted_relationship_id(current_user.id, @post.id)%>);</script>
 	<%= f.hidden_field :user_id, value: current_user.id %>
@@ -17,8 +26,3 @@
 		<i id = "the-down-arrow" class="fas fa-arrow-down arrow post-footer-list down-arrow"></i>
 	<%end%>
 <% end %>
-
-<%# I think there is an issue with changeUpvoteAction
- Do this:
- 	Load an upvoted post
- 	Down, up, up, up %>

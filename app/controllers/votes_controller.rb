@@ -15,7 +15,7 @@ class VotesController < ApplicationController
         format.js
       end
     else
-    	@vote.destroy
+    	@vote.destroy #Not sure if I need a response to this failing
     end
   end
 
@@ -28,11 +28,10 @@ class VotesController < ApplicationController
     if @vote.save
       respond_to do |format|
         format.html { redirect_to users_path }
-        #The response is the create.js.erb file in the votes view
         format.js { render 'createDownvote.js.erb' }
       end
     else
-      @vote.destroy
+      @vote.destroy #Not sure if I need a response to this failing
     end
   end
 
@@ -47,7 +46,7 @@ class VotesController < ApplicationController
       if @vote.update(vote_params)
         format.js
       else
-        @vote.destroy
+        @vote.destroy #Not sure if I need a response to this failing
       end
     end
   end
@@ -61,7 +60,7 @@ class VotesController < ApplicationController
       if @vote.update(vote_params)
         format.js { render 'update_to_upvote.js.erb' }
       else
-        @vote.destroy
+        @vote.destroy #Not sure if I need a response to this failing
       end
     end
   end

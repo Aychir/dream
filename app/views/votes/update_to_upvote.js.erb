@@ -1,11 +1,14 @@
+//The upvote form should be prepared to delete the vote
 $('#the-up-arrow').css('color', 'orange');
 $("#undo-upvote").remove();
 $("#changed-to-upvote").remove();
 $("#the-upvote-form").attr("action", "/posts/<%= @post_id %>/votes/<%= @vote_id %>");
 $("#the-upvote-form").append("<input id = \"undo-upvote\" name=\"_method\" type=\"hidden\" value=\"delete\" />");
 
+//The downvote form should be prepared to update the vote_type
 $('#the-down-arrow').css('color', 'black');
 $("#undo-downvote").remove();
 $("#changed-to-downvote").remove();
+$("#the-downvote-form input[value='delete']").remove(); //Not needed above because I added the changed-to-upvote line manually for the patch action
 $("#the-downvote-form").attr("action", "/posts/<%= @post_id %>/votes/<%= @vote_id %>");
 $("#the-downvote-form").append("<input id = \"changed-to-downvote\" name=\"_method\" type=\"hidden\" value=\"patch\" />");

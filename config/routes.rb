@@ -14,6 +14,7 @@ Rails.application.routes.draw do
           patch 'update_to_upvote', to: 'votes#update_to_upvote', as: :update_to_upvote
       end
   end
+  #No vote to belong to a post yet, so I don't think this route needs to be a member of post
   post 'votes/create_downvote', to: 'votes#create_downvote', as: :create_downvote
 
   match ':user/follow_user', to: 'relationships#follow_user', as: :follow_user, via: [:get, :post]
