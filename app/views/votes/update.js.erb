@@ -4,9 +4,9 @@
 */
 $('#the-up-arrow').css('color', 'black');
 $("#the-upvote-form").attr("action", "/posts/<%= @post_id %>/votes/<%= @vote.id %>/update_to_upvote");
-//Remove will automatically check if the elements exist and remove if they do
 $("#undo-upvote").remove();
 $("#changed-to-upvote").remove();
+$("#the-upvote-form input[value='delete']").remove();
 $("#the-upvote-form").append("<input id = \"changed-to-upvote\" name=\"_method\" type=\"hidden\" value=\"patch\" />");
 
 //TO-DO: Change the downvote form to be an update vote type form which changes vote type from upvote to downvote
@@ -17,5 +17,6 @@ $("#the-upvote-form").append("<input id = \"changed-to-upvote\" name=\"_method\"
 $('#the-down-arrow').css('color', 'blue');
 $("#the-downvote-form-form").attr("action", "/posts/<%= @post_id %>/votes/<%= @vote.id %>");
 $("#undo-downvote").remove();
+$("#the-downvote-form input[value='patch']").remove();
 $("#changed-to-downvote").remove();
 $("#the-downvote-form").append("<input id = \"undo-downvote\" name=\"_method\" type=\"hidden\" value=\"delete\" />");

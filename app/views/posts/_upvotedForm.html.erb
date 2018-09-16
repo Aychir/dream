@@ -3,15 +3,13 @@
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	<%= f.hidden_field :post_id, value: @post.id %>
 	<%= f.hidden_field :vote_id, value: voted_relationship_id(current_user.id, @post.id) %>
+	<%= f.hidden_field :vote_type, value: "upvote" %>
 	<%= button_tag type: 'submit' do %>
 		<i id = "the-up-arrow" class="fas fa-arrow-up arrow post-footer-list upvoted"></i>
 	<%end%>
 <% end %>
 <%= form_for [@post, @vote], :remote => true, :html => {:id => "the-downvote-form",  :class => "vote-buttons", :method => :patch} do |f| %>
 	<script type="text/javascript">changeDownvoteAction(<%= @post.id %>, <%= voted_relationship_id(current_user.id, @post.id)%>);</script>
-	<%# How do we delete the upvote and which process goes first? %>
-	<%# instead of deleting, could we just change the vote type it still is a vote? %>
-	<%# javascript response should change both forms, we need to either update as an upvote or delete the downvote #>
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	<%= f.hidden_field :post_id, value: @post.id %>
 	<%= f.hidden_field :vote_type, value: "downvote" %>

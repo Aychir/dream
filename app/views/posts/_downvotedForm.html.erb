@@ -1,10 +1,20 @@
-
+<%= form_for [@post, @vote], :remote => true, :url => post_vote_update_to_upvote_path(@post.id, voted_relationship_id(current_user.id, @post.id)), :html => {:id => "the-upvote-form",  :class => "vote-buttons"} do |f| %>
+	<script type="text/javascript">changeToUpdateUpvote(<%= @post.id %>, <%= voted_relationship_id(current_user.id, @post.id)%>);</script>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.hidden_field :post_id, value: @post.id %>
+	<%= f.hidden_field :vote_type, value: "upvote" %>
+	<%= button_tag type: 'submit' do %>
+		<i id = "the-up-arrow" class="fas fa-arrow-up arrow post-footer-list up-arrow"></i>
+	<%end%>
+	<input id="changed-to-upvote" name="_method" type="hidden" value="patch">
+<% end %>
 
 <%= form_for [@post, @vote], :remote => true, :html => {:id => "the-downvote-form", :class => "vote-buttons", :method => :delete} do |f| %>
 	<script type="text/javascript">changeDownvoteAction(<%= @post.id %>, <%= voted_relationship_id(current_user.id, @post.id)%>);</script>
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	<%= f.hidden_field :post_id, value: @post.id %>
 	<%= f.hidden_field :vote_id, value: voted_relationship_id(current_user.id, @post.id) %>
+	<%= f.hidden_field :vote_type, value: "downvote" %>
 	<%= button_tag type: 'submit' do %>
 		<i id = "the-down-arrow" class="fas fa-arrow-down arrow post-footer-list downvoted"></i>
 	<%end%>
