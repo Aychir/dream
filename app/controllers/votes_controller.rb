@@ -1,3 +1,4 @@
+require 'date'
 class VotesController < ApplicationController
 
 	before_action :set_post, only: [:destroy, :update]
@@ -7,6 +8,8 @@ class VotesController < ApplicationController
     @post_id = params[:vote][:post_id]
     @post = Post.find(@post_id)
     @score = @post.votes.upvote.count - @post.votes.downvote.count + 1
+
+    @post.hotness = hotness
 
     if @vote.save
       respond_to do |format|
@@ -25,6 +28,8 @@ class VotesController < ApplicationController
     @post = Post.find(@post_id)
     @score = @post.votes.upvote.count - @post.votes.downvote.count - 1
 
+    @post.hotness = hotness
+
     #Here I need to differentiate between upvote and downvote
 
     if @vote.save
@@ -38,14 +43,13 @@ class VotesController < ApplicationController
   end
 
   def update
-    #need to render createDownvote/create form so that the form points to deleting the new shit
-    #When one vote is made, the other form should be a create action
-
     #This will be the update from upvote to downvote
     @post_id = params[:vote][:post_id]
     @post = Post.find(@post_id)
     #Score hasn't updated yet so -1 to get back original score and -1 for the downvote
     @score = @post.votes.upvote.count - @post.votes.downvote.count - 2
+
+    @post.hotness = hotness
 
     respond_to do |format|
       if @vote.update(vote_params)
@@ -65,6 +69,8 @@ class VotesController < ApplicationController
     #Score hasn't updated yet so +1 to get back original score and +1 for the upvote
     @score = @post.votes.upvote.count - @post.votes.downvote.count + 2
 
+    @post.hotness = hotness
+
     respond_to do |format|
       if @vote.update(vote_params)
         format.js { render 'update_to_upvote.js.erb' }
@@ -81,7 +87,10 @@ class VotesController < ApplicationController
   		respond_to do |format|
         format.html { redirect_to users_path }
         #The response is the destroy.js.erb file in the votes view
+
+        #Do this here because we cannot tell if the vote destroyed was upvote or downvote, so we must pass it after deletion
         @score = @post.votes.upvote.count - @post.votes.downvote.count
+        hotness
         format.js {render locals: { score: @score }}
       end
   	end
@@ -96,17 +105,14 @@ class VotesController < ApplicationController
 	def vote_params
 		params.require(:vote).permit(:user_id, :post_id, :vote_type)
 	end
+
+  #Very similar to Reddit's own open source hotness algorithm
+  #Article that references algorithm: https://medium.com/hacking-and-gonzo/how-reddit-ranking-algorithms-work-ef111e33d0d9
+  def hotness
+    order = Math.log10([@score.abs, 1].max)
+    if @score > 0 then sign = 1 elsif @score < 0 then sign = -1 else sign = 0 end
+    seconds = @post.created_at.to_i - 1134028003
+    @hot = (sign * order + seconds / 45000).round(4)
+    puts @hot
+  end
 end
-
-=begin
-  
-So what's next?
--User not signed in shouldn't be able to vote but to open up a sign up/login dialogue?
--Implement voting for downvotes as well X
--Differentiate between voting types X
--Change implementation to reflect change in voting type
--Show when the post is upvoted and have a delete form instead of create form ready when page is loaded 
-end (Upon load determine if user has upvoted or downvoted)
--If a user has upvoted and then clicks the downvote, it must create a downvote and delete the upvote
-
-=end
