@@ -15,3 +15,5 @@ $("#undo-downvote").remove();
 $("#changed-to-downvote").remove();
 $("#the-downvote-form input[value='patch']").remove(); //from the upvoted form
 $("#the-downvote-form").append("<input id = \"undo-downvote\" name=\"_method\" type=\"hidden\" value=\"delete\" />");
+
+$("#score-count").text("<%= @score %> Points");

@@ -6,3 +6,5 @@ $("#the-upvote-form").append("<input id = \"changed-to-upvote\" name=\"_method\"
 $('#the-down-arrow').css('color', 'blue');
 $("#the-downvote-form").attr("action", "/posts/<%= @post_id %>/votes/<%= @vote.id %>");
 $("#the-downvote-form").append("<input id = \"undo-downvote\" name=\"_method\" type=\"hidden\" value=\"delete\" />");
+
+$("#score-count").text("<%= @score %> Points")

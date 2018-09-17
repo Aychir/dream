@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 		@type = @post.image.blob.content_type
 		@postId = @post.id
 		@vote = Vote.new
+		@score = @post.votes.upvote.count - @post.votes.downvote.count
   	end
 
   	def new

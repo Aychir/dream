@@ -5,4 +5,6 @@ $("#the-upvote-form").append("<input id = \"undo-upvote\" name=\"_method\" type=
 
 //Make the downvote form an update action to change the vote_type
 $("#the-downvote-form").attr("action", "/posts/<%= @post_id %>/votes/<%= @vote.id %>");
-$("#the-downvote-form").append("<input id = \"changed-to-downvote\" name=\"_method\" type=\"hidden\" value=\"patch\" />")
+$("#the-downvote-form").append("<input id = \"changed-to-downvote\" name=\"_method\" type=\"hidden\" value=\"patch\" />");
+
+$("#score-count").text("<%= @score %> Points");

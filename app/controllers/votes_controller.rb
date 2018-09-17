@@ -5,8 +5,8 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.new(vote_params)
     @post_id = params[:vote][:post_id]
-
-    #Here I need to differentiate between upvote and downvote
+    @post = Post.find(@post_id)
+    @score = @post.votes.upvote.count - @post.votes.downvote.count + 1
 
     if @vote.save
       respond_to do |format|
@@ -22,6 +22,8 @@ class VotesController < ApplicationController
   def create_downvote
     @vote = Vote.new(vote_params)
     @post_id = params[:vote][:post_id]
+    @post = Post.find(@post_id)
+    @score = @post.votes.upvote.count - @post.votes.downvote.count - 1
 
     #Here I need to differentiate between upvote and downvote
 
@@ -41,6 +43,9 @@ class VotesController < ApplicationController
 
     #This will be the update from upvote to downvote
     @post_id = params[:vote][:post_id]
+    @post = Post.find(@post_id)
+    #Score hasn't updated yet so -1 to get back original score and -1 for the downvote
+    @score = @post.votes.upvote.count - @post.votes.downvote.count - 2
 
     respond_to do |format|
       if @vote.update(vote_params)
@@ -56,6 +61,10 @@ class VotesController < ApplicationController
     @vote_id = params[:vote_id]
     @vote = Vote.find(@vote_id)
 
+    @post = Post.find(@post_id)
+    #Score hasn't updated yet so +1 to get back original score and +1 for the upvote
+    @score = @post.votes.upvote.count - @post.votes.downvote.count + 2
+
     respond_to do |format|
       if @vote.update(vote_params)
         format.js { render 'update_to_upvote.js.erb' }
@@ -67,27 +76,16 @@ class VotesController < ApplicationController
 
   def destroy
     @post_id = params[:vote][:post_id]
+    @post = Post.find(@post_id)
   	if @vote.destroy
   		respond_to do |format|
         format.html { redirect_to users_path }
         #The response is the destroy.js.erb file in the votes view
-        format.js
+        @score = @post.votes.upvote.count - @post.votes.downvote.count
+        format.js {render locals: { score: @score }}
       end
   	end
   end
-
-  def destroy_downvote
-    @post_id = params[:vote][:post_id]
-    @vote = Vote.find(params[:vote_id])
-    if @vote.destroy
-      respond_to do |format|
-        format.html { redirect_to users_path }
-        #The response is the destroy.js.erb file in the votes view
-        format.js { render 'destroyDownvote.js.erb' }
-      end
-    end
-  end
-
 
 	private 
 

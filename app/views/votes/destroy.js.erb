@@ -15,3 +15,5 @@ $("#the-downvote-form input[value='patch']").remove();
 $("#the-downvote-form input[value='delete']").remove();
 $("#undo-downvote").remove();
 $("#changed-to-downvote").remove();
+
+$("#score-count").text("<%= local_assigns[:score] %> Points")
