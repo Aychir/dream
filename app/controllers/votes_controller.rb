@@ -1,7 +1,7 @@
 require 'date'
 class VotesController < ApplicationController
 
-	before_action :set_post, only: [:destroy, :update]
+	before_action :set_vote, only: [:destroy, :update]
 
   def create
     @vote = Vote.new(vote_params)
@@ -90,7 +90,7 @@ class VotesController < ApplicationController
 
         #Do this here because we cannot tell if the vote destroyed was upvote or downvote, so we must pass it after deletion
         @score = @post.votes.upvote.count - @post.votes.downvote.count
-        hotness
+        @post.hotness = hotness
         format.js {render locals: { score: @score }}
       end
   	end
@@ -98,7 +98,7 @@ class VotesController < ApplicationController
 
 	private 
 
-	def set_post
+	def set_vote
      @vote = Vote.find(params[:id])
   end
 
@@ -113,6 +113,6 @@ class VotesController < ApplicationController
     if @score > 0 then sign = 1 elsif @score < 0 then sign = -1 else sign = 0 end
     seconds = @post.created_at.to_i - 1134028003
     @hot = (sign * order + seconds / 45000).round(4)
-    puts @hot
+    @vote.post.update_attributes({:hotness => @hot})
   end
 end

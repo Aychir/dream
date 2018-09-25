@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2018_09_17_035606) do
     t.string "title"
     t.integer "user_id"
     t.text "tags"
-    t.integer "hotness"
+    t.float "hotness"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
