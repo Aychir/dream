@@ -28,8 +28,8 @@ class PostsController < ApplicationController
   	end
 
   	def update
-  		@post.tags_will_change!
-  		parse_tags_on_update
+  		#required because the form turns tags from an array of strings into a string again
+  		parse_tags
   		respond_to do |format|
 		    if @post.update(update_post_params)
 		      format.html { redirect_to @post, notice: "Your post has been updated."}
@@ -42,8 +42,14 @@ class PostsController < ApplicationController
   	end
 
   	def create
+  		#build the post with all parameters passed from the creation form
     	@post = current_user.posts.new(post_params)
 
+    	#make the tags from the form lowercase for consistency as we prepare to turn the 
+    	#    string of tags from the form into an array of tags
+    	@post.tags[0].downcase
+
+    	#parse the string into an array of tags
     	parse_tags
 
 	    respond_to do |format|
@@ -72,29 +78,22 @@ class PostsController < ApplicationController
 			params.require(:post).permit(:caption, :title, :image)
 		end
 
-		#algorithm to parse tags for post creation
+		#algorithm to parse tags when updating or creating post
 		def parse_tags
-			puts @post.tags[0]
-			#make the tag lowercase for consistency
-    		@post.tags[0].downcase
-
-    		#parsing the input for hashtags, and making an array of it
-    		@post.tags = @post.tags[0].split("\#")
-
-    		#Take off the first element if splitting it makes an empty string at first index 
-    		@post.tags.shift if @post.tags[0] == ""
-
-    		#remove all nonalphanumeric characters in every string
-    		@post.tags.each do |tag|
-    			tag.gsub!(/\p{^Alnum}/, '')
-    		end
-		end
-
-		#algorithm to parse tags when updating post
-		def parse_tags_on_update
 			@tags = params[:post][:tags]
+
+			#parsing the input for hashtags, and making an array of it
 			@tags = @tags[0].split("\#")
 
+			#Take off the first element if splitting it makes an empty string at first index 
+			@tags.shift if @tags[0] == ""
+
+			#remove all nonalphanumeric characters in every string
+			@tags.each do |tag|
+    			tag.gsub!(/\p{^Alnum}/, '')
+    		end
+
+    		#replace the entire array with the parsed result, @tags
 			@post.tags.replace(@tags)
   			@post.save!
 		end
