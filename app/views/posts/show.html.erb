@@ -16,6 +16,9 @@
 						    <%if current_user != nil%>
 						    	<%= link_to 'Report Post', new_report_path(@post, reported_source: "post")%>
 						    <%end%>
+						    <%if(@post.user.id == current_user.id)%>
+						    	<%= link_to 'Update Post', edit_post_path(@post) %>
+						   	<%end%>
 					    </div>
 					</div>
 				</li>

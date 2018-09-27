@@ -1,0 +1,30 @@
+<%= form_for @post do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "field">
+    <%= form.text_field :title, placeholder: 'Title', class: 'form-field' %> 
+  </div>
+
+  <div class="field">
+    <%= form.text_field :caption, placeholder: 'Caption', class: 'form-field' %>  
+  </div>
+
+  <div class = "field">
+    <%= form.text_field :tags, multiple: true, placeholder: 'Add hashtags by typing \'#\' followed by a word! (Ex: #fun)' , class: 'form-field' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update Post", class: "loginButton" %>
+  </div>
+<% end %>
+
