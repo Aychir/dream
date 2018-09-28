@@ -107,6 +107,7 @@ class PostsController < ApplicationController
     		@tags.reject! {|tag| tag == ""}
 
     		#re-add the hashtag symbol to the now parsed array of tags
+    		#I did this for ease of output in update form and for diplaying tags when we will display them in show in the future
     		@tags.each_with_index do |tag, index|
     			@tags[index] = "#" + tag
     		end

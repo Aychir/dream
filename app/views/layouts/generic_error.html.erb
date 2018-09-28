@@ -32,9 +32,11 @@
         	<div class = "error-outer">
 	          	<div class="error-sheet">
 	          		<div class = "error-inner">  
-					  <div id = "frowny-face"><h6>:(</h6></div>
-					  <p>We're going to be honest, we're not sure what happened- please go back and try again.</p>
-					  <%= link_to "Back to home", root_path %>
+					  <div id = "frowny-face" class = "error-message"><h6>:(</h6></div>
+            <br>
+					  <p class = "error-message">We're going to be honest, we're not sure what happened- please go back and try again.</p>
+            <br>
+					  <%= link_to "Back to home", root_path, class: "back-home-error-link" %>
 					  </div>
 				</div>
 			</div>

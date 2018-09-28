@@ -10,19 +10,32 @@
 .error-sheet{
 	/*Item displays like a td element, aligning vertically*/ 
 	display: table-cell;
+	text-align: center;
 }
 
 .error-inner{
-	/*Here we center the object horizontally*/
-	margin-left: auto;
-	margin-right: auto;
 	/*This is to add distance from the edge of a smaller screen size.*/
 	padding-left: 24px;
 	padding-right: 24px;
 	/*This prevents text from overflowing, by setting a limit.*/
 	max-width: 60%;
+	display: inline-block;
 }
 
 #frowny-face h6{
 	font-size: 3rem;
+}
+
+#frowny-face{
+	float: left;
+}
+
+.back-home-error-link{
+	float: left;
+}
+
+.error-message{
+	/*Allows the message div to be the width of the message*/
+	display: inline-block;
+	text-align: left;
 }
