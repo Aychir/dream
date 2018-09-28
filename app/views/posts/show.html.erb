@@ -13,11 +13,14 @@
 					    <div id="settings-dropdown" class="dropdown-content">
 					    	<a href="#" onclick="copyPostUrlFunction('<%= post_url(@post.id) %>')">Get Post Link</a>
 						    <a href="#" onclick="hidePostFunction(<%= @postId %>)">Hide Post</a>
-						    <%if current_user != nil%>
+						    <%if current_user != nil && current_user.id != @post.user.id%>
 						    	<%= link_to 'Report Post', new_report_path(@post, reported_source: "post")%>
 						    <%end%>
 						    <%if(@post.user.id == current_user.id)%>
 						    	<%= link_to 'Update Post', edit_post_path(@post) %>
+						   	<%end%>
+						   	<%if(@post.user.id == current_user.id)%>
+						    	<%= link_to 'Delete Post', @post, method: :delete %>
 						   	<%end%>
 					    </div>
 					</div>

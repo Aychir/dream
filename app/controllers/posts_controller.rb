@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 	include VotesHelper
 
-	before_action :set_post, only: [:show, :edit, :update]
+	before_action :set_post, only: [:show, :edit, :update, :destroy]
 
 	def index
 	end
@@ -26,6 +26,19 @@ class PostsController < ApplicationController
   			redirect_to root_path, :notice => "You cannot edit another user's post!"
   		end
   	end
+
+  	def destroy
+    #Only way a user can delete a post is if the post being deleted belongs to current user
+    if @post.user.id == current_user.id
+        @post.destroy
+        respond_to do |format|
+          format.html { redirect_to users_url, notice: 'Post was successfully destroyed.' }
+          format.json { head :no_content }
+        end
+    else
+        redirect_to users_path, :notice => "You cannot destroy another user's post..."
+    end
+  end
 
   	def update
   		#required because the form turns tags from an array of strings into a string again
