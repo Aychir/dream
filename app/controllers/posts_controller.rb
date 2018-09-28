@@ -85,13 +85,13 @@ class PostsController < ApplicationController
 			#parsing the input for hashtags, and making an array of it
 			@tags = @tags[0].split("\#")
 
-			#Take off the first element if splitting it makes an empty string at first index 
-			@tags.shift if @tags[0] == ""
-
 			#remove all nonalphanumeric characters in every string
 			@tags.each do |tag|
     			tag.gsub!(/\p{^Alnum}/, '')
     		end
+
+    		#remove any tags that are empty
+    		@tags.reject! {|tag| tag == ""}
 
     		#replace the entire array with the parsed result, @tags
 			@post.tags.replace(@tags)
