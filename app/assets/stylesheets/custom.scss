@@ -208,7 +208,7 @@ li .post-header-list{
 	padding-left: 8px;
 }
 
-#footer-middle{
+.right-border{
 	border-right: 1px solid rgb(169, 135, 165);
 }
 
@@ -258,4 +258,28 @@ li .post-header-list{
 .vote-buttons button{
 	border: 0;
 	background-color: transparent;
+}
+
+.post-tabs{
+	list-style: none;
+	overflow: hidden;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.post-tabs li{
+	float: left;
+	display: table;
+	width: 50%;
+	text-align: center;
+}
+
+.post-tab-category{
+	display: table-cell;
+	color: #d065ff;
+	background-color: #343a40;
+	padding-top: 8px;
+	padding-bottom: 8px;
 }

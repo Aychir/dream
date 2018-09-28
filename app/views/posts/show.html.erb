@@ -67,7 +67,7 @@
 				<% end %>
 			<% end %>
 			<ul id = "post-footer">
-				<li id = "footer-middle">
+				<li class = "right-border">
 					<% if user_signed_in? %>
 						<% if has_upvoted_for(current_user.id, @post.id) %>
 							<%= render 'upvotedForm', post: @post, vote: @vote %>
