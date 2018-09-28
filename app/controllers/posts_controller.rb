@@ -6,13 +6,22 @@ class PostsController < ApplicationController
 	def index
 	end
 
+	#Not much going on here, just assigning variables
 	def show
 		@width = @post.image.metadata[:width]
 		@height = @post.image.metadata[:height]
+		#get the aspect ratio of the image for the various cropping rules for showing a post
 		@ratio = @width.to_f/@height
+
+		#returns image or video, depending on content type
 		@type = @post.image.blob.content_type
+
 		@postId = @post.id
+
+		#Need this to generate a form for the votes in showing of post
 		@vote = Vote.new
+
+		#The displayed score for the post, the actual value is the 'hotness' value associated to a post when voted upon
 		@score = @post.votes.upvote.count - @post.votes.downvote.count
   	end
 
@@ -63,7 +72,9 @@ class PostsController < ApplicationController
     	@post.tags[0].downcase
 
     	#parse the string into an array of tags
-    	parse_tags
+    	if(Post.was_attached)
+    		parse_tags
+    	end
 
 	    respond_to do |format|
 	      if @post.save

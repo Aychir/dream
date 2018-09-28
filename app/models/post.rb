@@ -22,10 +22,17 @@ class Post < ApplicationRecord
 	private
 
 	def image_attached
+		@attach = true
 		if !image.attached?
 			image.purge
 			self.errors.add(:post, "must be attached!")
+			@attach = false
 		end
+
+	end
+
+	def self.was_attached
+		return @attach
 	end
 
 	def correct_image_type
