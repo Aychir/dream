@@ -19,10 +19,13 @@ class ReportsController < ApplicationController
     else
       @userCheck = false
       @post = Post.find(params[:format])
-      if(!current_user_has_reported(current_user.id, @post.id))
+      @user = @post.user
+      if(@user != current_user && !current_user_has_reported(current_user.id, @post.id))
         @report = Report.new
+      elsif @user == current_user
+        redirect_to post_url(@post.id), notice: 'You cannot report your own post...'
       else
-        redirect_to users_path, notice: 'You cannot report this post again...'
+        redirect_to post_url(@post.id), notice: 'You cannot report this post again...'
       end
     end
   end

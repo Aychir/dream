@@ -106,6 +106,11 @@ class PostsController < ApplicationController
     		#remove any tags that are empty
     		@tags.reject! {|tag| tag == ""}
 
+    		#re-add the hashtag symbol to the now parsed array of tags
+    		@tags.each_with_index do |tag, index|
+    			@tags[index] = "#" + tag
+    		end
+
     		#replace the entire array with the parsed result, @tags
 			@post.tags.replace(@tags)
   			@post.save!
