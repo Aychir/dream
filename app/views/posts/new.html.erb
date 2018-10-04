@@ -3,8 +3,16 @@
     <div class = "form-template-inner">
       <div class = "insideFormTemplate">
 		<ul class = "post-tabs">
-			<li><h3 class = "post-tab-category right-border">Media</h3></li>
-			<li><h3 class = "post-tab-category">Text</h3></li>
+			<li class = "right-border"><h3 class = "post-tab-category right-border">
+				<%= form_for @post, :remote => true, :url => new_post_path, method: "get" do |form| %>
+					<%= form.submit "Media", class: "post-tab-category-text text-brand-color", id: "media-tab"%>
+				<% end %>
+			</h3></li>
+			<li><h3 class = "post-tab-category text-white">
+				<%= form_for @post, :remote => true, :url => new_text_post_path, method: "get" do |form| %>
+					<%= form.submit "Text", class: "post-tab-category-text text-white", id: "text-tab"%>
+				<% end %>
+			</h3></li>
 		</ul>
 		<%= render 'form', post: @post %>
 	  </div>

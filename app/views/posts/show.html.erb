@@ -1,91 +1,95 @@
-<% if @post.image.attached? %>
-		<div class = "post-container" id = <%= @postId %> >
-			<ul class = "post-header">
-				<li><p id = "post-avatar" class = "post-header-list"></p></li>
-				<li><p class = "post-header-list">&#8226;</p></li>
-				<li><p class = "post-header-list"><%=@post.user.username%></p></li>
-				<li id = "right-side-header"><p class = "post-header-list"><%=time_ago_in_words(@post.created_at)%> ago</p></li>
-				<li>
-					<div class="post-header-list">
-					    <button onclick="postDropdownFunction()" id = "settings-button">
-								<i class="fas fa-ellipsis-v"></i>
-						</button>
-					    <div id="settings-dropdown" class="dropdown-content">
-					    	<a href="#" onclick="copyPostUrlFunction('<%= post_url(@post.id) %>')">Get Post Link</a>
-						    <a href="#" onclick="hidePostFunction(<%= @postId %>)">Hide Post</a>
-						    <%if current_user != nil && current_user.id != @post.user.id%>
-						    	<%= link_to 'Report Post', new_report_path(@post, reported_source: "post")%>
-						    <%end%>
-						    <%if(@post.user.id == current_user.id)%>
-						    	<%= link_to 'Update Post', edit_post_path(@post) %>
-						   	<%end%>
-						   	<%if(@post.user.id == current_user.id)%>
-						    	<%= link_to 'Delete Post', @post, method: :delete %>
-						   	<%end%>
-					    </div>
-					</div>
-				</li>
-			</ul>
-			<div class = "post-title"><%= link_to @post.title, post_url(@post.id) %></div>
-			<% if @type.chr == 'i' %>
-				<% if @width > 1080 && @ratio >= 0.8 && @ratio <= 1.91%>
-			    	<%#good ratio no need to crop%>
-			    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize"%>
-			    <% elsif @width > 1080 && @ratio < 0.8 %>
-			    	<%#crop vertically%>
-			    	<% @shaveSize = 1080/0.8 %>
-			    	<% @shaveHeight = 1080/@ratio %>
-			    	<%= image_tag @post.image.variant(resize: "1080", shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
-			    <% elsif @width > 1080 && @ratio > 1.91%>
-			    	<%#No longer cropping horizontally%>
-			    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize" %>
-			    <% elsif @width < 320 && @ratio >= 0.8 && @ratio <= 1.91 %>
-			    	<%= image_tag @post.image.variant(resize: "320"), class: "image-resize"%>
-			    <% elsif @width < 320 && @ratio < 0.8 %>
-			    	<%#crop vertically%>
-			    	<% @shaveSize = 320/0.8 %>
-			    	<% @shaveHeight = 320/@ratio %>
-			    	<%= image_tag @post.image.variant(resize: "320", shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
-			    <% elsif @width < 320 && @ratio > 1.91 %>
-					<%# No longer cropping horizontally%>	    	
-			    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize" %>
-			    <% elsif @width >= 320 && @width <= 1080 && @ratio < 0.8 %>
-			    	<% @shaveSize = @width/0.8 %>
-			    	<% @shaveHeight = @width/@ratio %>
-			    	<%= image_tag @post.image.variant(shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
-			    <% elsif @width >= 320 && @width <= 1080 && @ratio > 1.91 %>
-			    	<%# No longer cropping horizontally%>
-			    	<%= image_tag @post.image, class: "image-resize" %>
-			    <% else %>
-			    	<%= image_tag @post.image, class: "image-resize" %>
+<div class = "post-container" id = <%= @postId %> >
+	<ul class = "post-header">
+		<li><p id = "post-avatar" class = "post-header-list"></p></li>
+		<li><p class = "post-header-list">&#8226;</p></li>
+		<li><p class = "post-header-list"><%=@post.user.username%></p></li>
+		<li id = "right-side-header"><p class = "post-header-list"><%=time_ago_in_words(@post.created_at)%> ago</p></li>
+		<li>
+			<div class="post-header-list">
+			    <button onclick="postDropdownFunction()" id = "settings-button">
+						<i class="fas fa-ellipsis-v"></i>
+				</button>
+			    <div id="settings-dropdown" class="dropdown-content">
+			    	<a href="#" onclick="copyPostUrlFunction('<%= post_url(@post.id) %>')">Get Post Link</a>
+				    <a href="#" onclick="hidePostFunction(<%= @postId %>)">Hide Post</a>
+				    <%if current_user != nil && current_user.id != @post.user.id%>
+				    	<%= link_to 'Report Post', new_report_path(@post, reported_source: "post")%>
+				    <%end%>
+				    <%if(@post.user.id == current_user.id)%>
+				    	<%= link_to 'Update Post', edit_post_path(@post) %>
+				   	<%end%>
+				   	<%if(@post.user.id == current_user.id)%>
+				    	<%= link_to 'Delete Post', @post, method: :delete %>
+				   	<%end%>
+			    </div>
+			</div>
+		</li>
+	</ul>
+	<div class = "post-title"><%= link_to @post.title, post_url(@post.id) %></div>
+	<% if @post.image.attached? %>
+				<% if @type.chr == 'i' %>
+					<% if @width > 1080 && @ratio >= 0.8 && @ratio <= 1.91%>
+				    	<%#good ratio no need to crop%>
+				    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize"%>
+				    <% elsif @width > 1080 && @ratio < 0.8 %>
+				    	<%#crop vertically%>
+				    	<% @shaveSize = 1080/0.8 %>
+				    	<% @shaveHeight = 1080/@ratio %>
+				    	<%= image_tag @post.image.variant(resize: "1080", shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
+				    <% elsif @width > 1080 && @ratio > 1.91%>
+				    	<%#No longer cropping horizontally%>
+				    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize" %>
+				    <% elsif @width < 320 && @ratio >= 0.8 && @ratio <= 1.91 %>
+				    	<%= image_tag @post.image.variant(resize: "320"), class: "image-resize"%>
+				    <% elsif @width < 320 && @ratio < 0.8 %>
+				    	<%#crop vertically%>
+				    	<% @shaveSize = 320/0.8 %>
+				    	<% @shaveHeight = 320/@ratio %>
+				    	<%= image_tag @post.image.variant(resize: "320", shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
+				    <% elsif @width < 320 && @ratio > 1.91 %>
+						<%# No longer cropping horizontally%>	    	
+				    	<%= image_tag @post.image.variant(resize: "1080"), class: "image-resize" %>
+				    <% elsif @width >= 320 && @width <= 1080 && @ratio < 0.8 %>
+				    	<% @shaveSize = @width/0.8 %>
+				    	<% @shaveHeight = @width/@ratio %>
+				    	<%= image_tag @post.image.variant(shave: "x#{(@shaveHeight - @shaveSize)/2}"), class: "image-resize" %>
+				    <% elsif @width >= 320 && @width <= 1080 && @ratio > 1.91 %>
+				    	<%# No longer cropping horizontally%>
+				    	<%= image_tag @post.image, class: "image-resize" %>
+				    <% else %>
+				    	<%= image_tag @post.image, class: "image-resize" %>
+					<% end %>
+				<% elsif @type.chr == 'v' %>
+					<% if @width > 614 %>
+						<%= video_tag(url_for(@post.image), class: "too-wide", :controls => "true") %>
+					<% else %>
+						<%= video_tag(url_for(@post.image), class: "too-narrow", :controls => "true") %>
+					<% end %>
+				<% end %>
+	<% else %>
+		<div class = "text-post-content">
+			<p><%= @post.caption %></p>
+		</div>
+	<% end %>
+	<ul id = "post-footer">
+		<li class = "right-border">
+			<% if user_signed_in? %>
+				<% if has_upvoted_for(current_user.id, @post.id) %>
+					<%= render 'upvotedForm', post: @post, vote: @vote %>
+				<% elsif has_downvoted_for(current_user.id, @post.id)%>
+					<%= render 'downvotedForm', post: @post, vote: @vote %>
+				<% else %>
+					<%= render 'noVotesForm', post: @post, vote: @vote %>
 				<% end %>
 			<% else %>
-				<% if @width > 614 %>
-					<%= video_tag(url_for(@post.image), class: "too-wide", :controls => "true") %>
-				<% else %>
-					<%= video_tag(url_for(@post.image), class: "too-narrow", :controls => "true") %>
-				<% end %>
+				<i id = "the-up-arrow" class="fas fa-arrow-up arrow post-footer-list"></i>
+				<i id = "the-down-arrow" class="fas fa-arrow-down arrow post-footer-list down-arrow"></i>
 			<% end %>
-			<ul id = "post-footer">
-				<li class = "right-border">
-					<% if user_signed_in? %>
-						<% if has_upvoted_for(current_user.id, @post.id) %>
-							<%= render 'upvotedForm', post: @post, vote: @vote %>
-						<% elsif has_downvoted_for(current_user.id, @post.id)%>
-							<%= render 'downvotedForm', post: @post, vote: @vote %>
-						<% else %>
-							<%= render 'noVotesForm', post: @post, vote: @vote %>
-						<% end %>
-					<% else %>
-						<i id = "the-up-arrow" class="fas fa-arrow-up arrow post-footer-list"></i>
-						<i id = "the-down-arrow" class="fas fa-arrow-down arrow post-footer-list down-arrow"></i>
-					<% end %>
-					<p id = "score-count" class = "footer-counts"><%= @score %> Points</p> 
-				</li>
-				<li>
-					<i id = "comment-icon" class="far fa-comment-alt"></i>
-					<p class = "footer-counts">N Comments</p>
-				</li>
-			</ul>
-		</div>
-<% end %>
+			<p id = "score-count" class = "footer-counts"><%= @score %> Points</p> 
+		</li>
+		<li>
+			<i id = "comment-icon" class="far fa-comment-alt"></i>
+			<p class = "footer-counts">N Comments</p>
+		</li>
+	</ul>
+</div>

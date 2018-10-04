@@ -6,28 +6,49 @@ class PostsController < ApplicationController
 	def index
 	end
 
-	#Not much going on here, just assigning variables
 	def show
-		@width = @post.image.metadata[:width]
-		@height = @post.image.metadata[:height]
-		#get the aspect ratio of the image for the various cropping rules for showing a post
-		@ratio = @width.to_f/@height
+    #If the caption isn't nil or blank, then it must be a video or image
+    if @post.caption == nil || @post.caption == ""
+  		@width = @post.image.metadata[:width]
+  		@height = @post.image.metadata[:height]
 
-		#returns image or video, depending on content type
-		@type = @post.image.blob.content_type
+  		#get the aspect ratio of the image for the various cropping rules for showing a post
+  		@ratio = @width.to_f/@height
 
-		@postId = @post.id
+  		#returns image or video, depending on content type
+  		@type = @post.image.blob.content_type
+
+  		@postId = @post.id
+    #Assigning type "t" because the post is not a video or image
+    else
+      @type = "t"
+    end
 
 		#Need this to generate a form for the votes in showing of post
 		@vote = Vote.new
 
 		#The displayed score for the post, the actual value is the 'hotness' value associated to a post when voted upon
 		@score = @post.votes.upvote.count - @post.votes.downvote.count
-  	end
+  end
 
   	def new
     	@post = current_user.posts.build
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
   	end
+
+    def new_text_post
+      #Not sure if we need this
+      @post = current_user.posts.build
+
+      respond_to do |format|
+        format.html
+        format.js {render 'new_text_post.js.erb'}
+      end
+    end
 
   	def edit
   		#Need to check that the current user is the one that made the post, otherwise just render the form to change the post

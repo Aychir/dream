@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   #No vote to belong to a post yet, so I don't think this route needs to be a member of post
   post 'votes/create_downvote', to: 'votes#create_downvote', as: :create_downvote
 
+  #Need a route for the different type of post upload- a text post
+  get '/new_text_post', to: 'posts#new_text_post', as: :new_text_post
+
   match ':user/follow_user', to: 'relationships#follow_user', as: :follow_user, via: [:get, :post]
   match ':user/unfollow_user', to: 'relationships#unfollow_user', as: :unfollow_user, via: [:get, :post]
   #Calling follow_user_path will return an HTTP post response by invoking follow_user from the relationships controller
