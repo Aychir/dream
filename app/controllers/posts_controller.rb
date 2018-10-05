@@ -93,7 +93,7 @@ class PostsController < ApplicationController
     	@post.tags[0].downcase
 
     	#parse the string into an array of tags
-    	if(Post.was_attached)
+    	if(@post.valid?)
     		parse_tags
     	end
 
@@ -133,19 +133,19 @@ class PostsController < ApplicationController
 			#remove all nonalphanumeric characters in every string
 			@tags.each do |tag|
     			tag.gsub!(/\p{^Alnum}/, '')
-    		end
+    	end
 
-    		#remove any tags that are empty
-    		@tags.reject! {|tag| tag == ""}
+  		#remove any tags that are empty
+  		@tags.reject! {|tag| tag == ""}
 
-    		#re-add the hashtag symbol to the now parsed array of tags
-    		#I did this for ease of output in update form and for diplaying tags when we will display them in show in the future
-    		@tags.each_with_index do |tag, index|
-    			@tags[index] = "#" + tag
-    		end
+  		#re-add the hashtag symbol to the now parsed array of tags
+  		#I did this for ease of output in update form and for diplaying tags when we will display them in show in the future
+  		@tags.each_with_index do |tag, index|
+  			@tags[index] = "#" + tag
+  		end
 
     		#replace the entire array with the parsed result, @tags
 			@post.tags.replace(@tags)
-  			@post.save!
+  		@post.save!
 		end
 end

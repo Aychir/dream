@@ -12,7 +12,7 @@
   <% end %>
 
   <div class = "field">
-    <%= form.text_field :title, placeholder: 'Title', class: 'form-field' %> 
+    <%= form.text_field :title, placeholder: 'Title', class: 'form-field', :maxlength => 5 %> 
   </div>
 
   <div id = "media-content" class="field">
@@ -20,11 +20,11 @@
   </div>
 
   <div id = "text-content" class = "field">
-    <%= form.cktext_area :caption, ckeditor: { language: 'us'} %>
+    <%= form.cktext_area :caption, ckeditor: { language: 'us'}, :maxlength => 20000 %>
   </div>
 
   <div class = "field">
-    <%= form.text_field :tags, multiple: true, placeholder: 'Add hashtags by typing \'#\' followed by a word! (Ex: #fun)' , class: 'form-field' %>
+    <%= form.text_field :tags, multiple: true, placeholder: 'Add hashtags by typing \'#\' followed by a word! (Ex: #fun)' , class: 'form-field', :maxlength => 1000 %>
   </div>
 
   <div class="actions">

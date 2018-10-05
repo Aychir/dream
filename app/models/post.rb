@@ -22,20 +22,13 @@ class Post < ApplicationRecord
 	private
 
 	def image_attached
-		@attach = true
 		if !image.attached?
 			#Nested if statement, check if caption is attached (this would be a text post)
 			if !self.attribute_present?(:caption)
 				image.purge
 				self.errors.add(:post, "must be attached!")
-				@attach = false
 			end
 		end
-
-	end
-
-	def self.was_attached
-		return @attach
 	end
 
 	def correct_image_type
