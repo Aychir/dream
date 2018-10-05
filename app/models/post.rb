@@ -17,6 +17,12 @@ class Post < ApplicationRecord
 
 	validate :correct_image_size
 
+	validates_length_of :title, :maximum => 5000
+
+	validates_length_of :caption, :maximum => 20000
+
+	validates_length_of :tags, :maximum => 500
+
 	serialize :tags, Array
 
 	private
