@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :votes, :only => [:create, :update, :destroy, :update_to_upvote] do
           patch 'update_to_upvote', to: 'votes#update_to_upvote', as: :update_to_upvote
       end
+      get '/show_full_post', to: 'posts#show_full_post', as: :show_full_post
   end
   #No vote to belong to a post yet, so I don't think this route needs to be a member of post
   post 'votes/create_downvote', to: 'votes#create_downvote', as: :create_downvote
