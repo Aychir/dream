@@ -118,6 +118,8 @@ end
 
       #The displayed score for the post, the actual value is the 'hotness' value associated to a post when voted upon
       @score = @post.votes.upvote.count - @post.votes.downvote.count
+
+      puts "HERE"
     end
 
 		def set_post

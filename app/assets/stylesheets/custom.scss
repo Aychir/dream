@@ -297,12 +297,34 @@ li .post-header-list{
 }
 
 .text-post-content{
-	margin-top: 16px;
-	margin-bottom: 16px;
+	margin-top: 32px;
+	margin-bottom: 32px;
 	padding-left: 8px;
 	padding-right: 8px;
 }
 
 #text-content{
 	display: none;
+}
+
+#bottom-tab {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* Animation  */
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+#bottom-tab-icon{
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 0;
+}
+
+#hidden-tab-header{
+	position: absolute;
+	z-index: -1;
 }
