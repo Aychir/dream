@@ -32,7 +32,7 @@
 				    	<%#good ratio no need to crop%>
 				    	<%= image_tag @post.image.variant(resize: "1080", auto_orient: true), class: "image-resize"%>
 				    <% elsif @width > 1080 && @ratio < 0.8 %>
-				    	<%#crop vertically%>
+				    	<%#crop vertically because it is too long%>
 				    	<% @shaveSize = 1080/0.8 %>
 				    	<% @shaveHeight = 1080/@ratio %>
 				    	<%= image_tag @post.image.variant(resize: "1080", shave: "x#{(@shaveHeight - @shaveSize)/2}", auto_orient: true), class: "image-resize" %>

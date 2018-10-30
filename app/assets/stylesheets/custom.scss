@@ -314,7 +314,7 @@ li .post-header-list{
   justify-content: center;
   /* Animation  */
   transition-property: all;
-  transition-duration: .5s;
+  transition-duration: 3s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
 
@@ -324,7 +324,24 @@ li .post-header-list{
 	margin-bottom: 0;
 }
 
-#hidden-tab-header{
+#hidden-tab-container{
 	position: absolute;
+	padding-left: 16px;
+	padding-right: 16px;
+	width: 100%;
 	z-index: -1;
+	background-color: white;
+}
+
+#bottom-tab.expanded{
+	top: 42px; /* temporary, must adjust to title size as well as post header and the size of the tab itself */
+}
+
+#hidden-tab-container.expanded{
+	height: 767px; /* temporary, must adjust to title size as well as post header and the size of the tab itself */
+	z-index: 1;
+}
+
+#hashtags-title{
+	text-align: center;
 }

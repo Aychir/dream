@@ -72,9 +72,12 @@
 		</div>
 	<% end %>
 	<div id = "bottom-tab">
-		<p id = "bottom-tab-icon">Bottom.</p>
-		<div id = "hidden-tab-header">
-			<h4>Hashtags</h4>
+		<a id = "bottom-tab-icon">Bottom.</a>
+		<div id = "hidden-tab-container">
+			<h4 id = "hashtags-title">Hashtags</h4>
+			<p><% @post.tags.each do |tags| %>
+				<a><%= tags %></a>
+			<% end %></p>
 		</div>
 	</div>
 	<ul id = "post-footer">
