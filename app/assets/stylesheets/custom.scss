@@ -312,10 +312,12 @@ li .post-header-list{
   width: 100%;
   display: flex;
   justify-content: center;
-  /* Animation  */
-  transition-property: all;
-  transition-duration: 3s;
-  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  /* Animation to make hashtags disappear */
+  -webkit-transition: all 1s ease 0s;
+  transition: all 1s ease 0s;
+
+  /* Transition won't work unless top is defined, must calculate this value as needed, top = header + title + content */
+  top: 120px;
 }
 
 #bottom-tab-icon{
@@ -331,15 +333,26 @@ li .post-header-list{
 	width: 100%;
 	z-index: -1;
 	background-color: white;
+
+	/* Animation to make hashtags disappear */
+	-webkit-transition: all 1s ease 0s;
+  	transition: all 1s ease 0s;
 }
 
 #bottom-tab.expanded{
 	top: 42px; /* temporary, must adjust to title size as well as post header and the size of the tab itself */
+	
+	/* Animation to show hashtags */
+	transition: top 1s ease 0s;
 }
 
 #hidden-tab-container.expanded{
 	height: 767px; /* temporary, must adjust to title size as well as post header and the size of the tab itself */
 	z-index: 1;
+
+	/* Animation to show hashtags */
+	-webkit-transition: all 1s ease 0s;
+  	transition: all 1s ease 0s;
 }
 
 #hashtags-title{
